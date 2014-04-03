@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B01FF7E118EDA6D300632809 /* TDLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B01FF7E018EDA6D300632809 /* TDLTableViewCell.m */; };
 		B0BCB06118EC4B4E0065D4DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BCB06018EC4B4E0065D4DD /* Foundation.framework */; };
 		B0BCB06318EC4B4E0065D4DD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BCB06218EC4B4E0065D4DD /* CoreGraphics.framework */; };
 		B0BCB06518EC4B4E0065D4DD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BCB06418EC4B4E0065D4DD /* UIKit.framework */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B01FF7DF18EDA6D300632809 /* TDLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLTableViewCell.h; sourceTree = "<group>"; };
+		B01FF7E018EDA6D300632809 /* TDLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLTableViewCell.m; sourceTree = "<group>"; };
 		B0BCB05D18EC4B4E0065D4DD /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0BCB06018EC4B4E0065D4DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B0BCB06218EC4B4E0065D4DD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -107,9 +110,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B01FF7E218EDA7D500632809 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B0BCB08F18EC4C760065D4DD /* TDLTableViewController.h */,
+				B0BCB09018EC4C760065D4DD /* TDLTableViewController.m */,
+				B01FF7E318EDA7E400632809 /* Tableview */,
+			);
+			name = Controllers;
+			path = ToDo;
+			sourceTree = "<group>";
+		};
+		B01FF7E318EDA7E400632809 /* Tableview */ = {
+			isa = PBXGroup;
+			children = (
+				B01FF7DF18EDA6D300632809 /* TDLTableViewCell.h */,
+				B01FF7E018EDA6D300632809 /* TDLTableViewCell.m */,
+			);
+			name = Tableview;
+			sourceTree = "<group>";
+		};
 		B0BCB05418EC4B4E0065D4DD = {
 			isa = PBXGroup;
 			children = (
+				B01FF7E218EDA7D500632809 /* Controllers */,
 				B0BCB06618EC4B4E0065D4DD /* ToDo */,
 				B0BCB07F18EC4B4E0065D4DD /* ToDoTests */,
 				B0BCB05F18EC4B4E0065D4DD /* Frameworks */,
@@ -142,8 +166,6 @@
 			children = (
 				B0BCB06F18EC4B4E0065D4DD /* TDLAppDelegate.h */,
 				B0BCB07018EC4B4E0065D4DD /* TDLAppDelegate.m */,
-				B0BCB08F18EC4C760065D4DD /* TDLTableViewController.h */,
-				B0BCB09018EC4C760065D4DD /* TDLTableViewController.m */,
 				B0BCB0B018EC8AF80065D4DD /* img */,
 				B0BCB07218EC4B4E0065D4DD /* Images.xcassets */,
 				B0BCB06718EC4B4E0065D4DD /* Supporting Files */,
@@ -313,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01FF7E118EDA6D300632809 /* TDLTableViewCell.m in Sources */,
 				B0BCB09118EC4C760065D4DD /* TDLTableViewController.m in Sources */,
 				B0BCB06D18EC4B4E0065D4DD /* main.m in Sources */,
 				B0BCB07118EC4B4E0065D4DD /* TDLAppDelegate.m in Sources */,
@@ -512,6 +535,7 @@
 				B0BCB08B18EC4B4E0065D4DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B0BCB08C18EC4B4E0065D4DD /* Build configuration list for PBXNativeTarget "ToDoTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +544,7 @@
 				B0BCB08E18EC4B4E0065D4DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

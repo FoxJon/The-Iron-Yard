@@ -12,9 +12,7 @@
 @implementation TDLTableViewController
 
 {
-    //NSArray * listItems;        // This is a declaration
-    NSArray * listItems;
-    NSArray * listImages;
+    NSArray * listItems;    // This is a declaration
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -31,23 +29,28 @@
         //    NSLog(@"%@", day);
         //}
         
-        listItems = @[@"Ali_Houshmand", @"Ashby_Thornwell", @"Austen_Johnson", @"Austin_Nolan", @"Derek_Weber", @"Ed_Salter", @"Heidi_Proske", @"Jeff_King", @"Jeffery_Moulds", @"Jisha_Obukwelu", @"John_Yam", @"Jon_Fox", @"Savitha_Reddy", @"TJ_Mercer", @"Teddy_Conyers"];
-        listImages = @[[UIImage imageNamed:@"AliHoushmand"],
-                       [UIImage imageNamed:@"AshbyThornwell"],
-                       [UIImage imageNamed:@"AustenJohnson"],
-                       [UIImage imageNamed:@"AustinNolan"],
-                       [UIImage imageNamed:@"DerekWeber"],
-                       [UIImage imageNamed:@"EdSalter"],
-                       [UIImage imageNamed:@"HeidiProske"],
-                       [UIImage imageNamed:@"JeffKing"],
-                       [UIImage imageNamed:@"JefferyMoulds"],
-                       [UIImage imageNamed:@"JishaObukwelu"],
-                       [UIImage imageNamed:@"JohnYam"],
-                       [UIImage imageNamed:@"JonFox"],
-                       [UIImage imageNamed:@"SavithaReddy"],
-                       [UIImage imageNamed:@"TJMercer"],
-                       [UIImage imageNamed:@"TeddyConyers"]];
+        // NSDictionary * listExample = [NSDictionary alloc]initWithObjects:<#(NSArray *)#> forKeys:<#(NSArray *)#>;    // old way
         
+        // Make a dictionary
+        listItems = @[
+                      @{@"name" : @"Ali_Houshmand", @"image" :[UIImage imageNamed:@"AliHoushmand"]},
+                      @{@"name" : @"Ashby_Thornwell", @"image" : [UIImage imageNamed:@"AshbyThornwell"]},
+                      @{@"name" : @"Austen_Johnson", @"image" : [UIImage imageNamed:@"AustenJohnson"]},
+                      @{@"name" : @"Austin_Nolan", @"image" :[UIImage imageNamed:@"AustinNolan"]},
+                      @{@"name" : @"Derek_Weber", @"image" : [UIImage imageNamed:@"DerekWeber"]},
+                      @{@"name" : @"Ed_Salter", @"image" : [UIImage imageNamed:@"EdSalter"]},
+                      @{@"name" : @"Heidi_Proske", @"image" : [UIImage imageNamed:@"HeidiProske"]},
+                      @{@"name" : @"Jeff_King", @"image" : [UIImage imageNamed:@"JeffKing"]},
+                      @{@"name" : @"Jeffery_Moulds", @"image" : [UIImage imageNamed:@"JefferyMoulds"]},
+                      @{@"name" : @"Jisha_Obukwelu", @"image" : [UIImage imageNamed:@"JishaObukwelu"]},
+                      @{@"name" : @"John_Yam", @"image" : [UIImage imageNamed:@"JohnYam"]},
+                      @{@"name" : @"Jon_Fox", @"image" : [UIImage imageNamed:@"JonFox"]},
+                      @{@"name" : @"Savitha_Reddy", @"image" : [UIImage imageNamed:@"SavithaReddy"]},
+                      @{@"name" : @"TJ_Mercer", @"image" : [UIImage imageNamed:@"TJMercer"]},
+                      @{@"name" : @"Teddy_Conyers", @"image" : [UIImage imageNamed:@"TeddyConyers"]},
+                      ];
+        
+
         self.tableView.contentInset = UIEdgeInsetsMake(25, 0, 0, 0);
         self.tableView.rowHeight = 25;
         self.tableView.backgroundColor = [UIColor darkGrayColor];
@@ -62,12 +65,14 @@
         self.tableView.tableFooterView = footer;
 
 
-        UILabel * titleHeader = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 30)];
+        UILabel * titleHeader = [[UILabel alloc] initWithFrame:CGRectMake(140, 10, 300, 30)];
         
         titleHeader.text = @"My Class";
         titleHeader.textColor = [UIColor whiteColor];
         
         [header addSubview:titleHeader];
+        
+        
         
         
         
@@ -109,17 +114,21 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] init];
     }
-    
-    int index = [indexPath row];
- 
-    // Configure the cell...
-    // NSString * names = listItems[index];
-    
-    cell.textLabel.text = listItems[index];
-    cell.imageView.image = listImages[index];
-    cell.backgroundColor = [UIColor blueColor];
+                                                                    //    int index = [indexPath row];     //old way
+    int index = indexPath.row;                                      //new way. Literal. dot notation
 
+// Configure the cell...
+
+    cell.backgroundColor = [UIColor blueColor];
     
+                                                                    //    NSDictionary * listItem = [listItems objectAtIndex:index];   // old way - instance method
+    NSDictionary * listItem = listItems[index];                     // literal way
+    
+                                                                    //    cell.textLabel.text = [listItem objectForKey:@"name"];        //old way - instance method
+    cell.textLabel.text = listItem[@"name"];                        //literal way
+    cell.imageView.image = listItem[@"image"];
+    
+
     return cell;
 }
 
