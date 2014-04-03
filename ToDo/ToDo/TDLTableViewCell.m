@@ -34,26 +34,26 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
-        profileImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 30, 30)];
+        profileImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 20, 60, 60)];
         
-        profileImage.layer.cornerRadius = 15;
+        profileImage.layer.cornerRadius = 30;
         profileImage.layer.masksToBounds = YES;
         
         [self.contentView addSubview:profileImage];
 
         
-        profileName = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 200, 30)];
+        profileName = [[UILabel alloc] initWithFrame:CGRectMake(100, 20, 200, 30)];
         
         profileName.textColor = [UIColor darkGrayColor];
-        profileName.font = [UIFont fontWithName:@"ChalkboardSE-Bold" size:20];
+        profileName.font = [UIFont systemFontOfSize: 20];
 
         
         [self.contentView addSubview:profileName];
         
-        profileURL = [[UILabel alloc] initWithFrame:CGRectMake(60, 20, 200, 30)];
+        profileURL = [[UILabel alloc] initWithFrame:CGRectMake(100, 50, 200, 30)];
         
         profileURL.textColor = [UIColor lightGrayColor];
-        profileURL.font = [UIFont systemFontOfSize:13];
+        profileURL.font = [UIFont systemFontOfSize:12];
         
         [self.contentView addSubview:profileURL];
         

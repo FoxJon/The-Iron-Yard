@@ -42,18 +42,17 @@
                       ];
         
 
-        self.tableView.contentInset = UIEdgeInsetsMake(25, 0, 0, 0);
-        self.tableView.rowHeight = 50;
-        self.tableView.backgroundColor = [UIColor darkGrayColor];
+        self.tableView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+        self.tableView.rowHeight = 100;
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20);
         
         UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-        header.backgroundColor = [UIColor colorWithRed:64/255.0f green:103/255.0f blue:116/255.0f alpha:1.0f];
+        header.backgroundColor = [UIColor whiteColor];
         self.tableView.tableHeaderView = header;
         //[self.tableView setTableHeaderView:header]  is the same thing
         
         UIView * footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-        footer.backgroundColor = [UIColor blueColor];
+        footer.backgroundColor = [UIColor whiteColor];
         self.tableView.tableFooterView = footer;
 
 
@@ -67,16 +66,16 @@
 //        
 //        [header addSubview:titleHeader];
         
-        UITextField * nameField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 160, 30)];
+        UITextField * nameField = [[UITextField alloc] initWithFrame:CGRectMake(20, 20, 160, 30)];
         
-        nameField.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+        nameField.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
         nameField.layer.cornerRadius = 6;
         nameField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 30)];
         nameField.leftViewMode = UITextFieldViewModeAlways;
         
         [header addSubview:nameField];
         
-        UIButton * submitButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 10, 100, 30)];
+        UIButton * submitButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 20, 100, 30)];
         
         [submitButton setTitle:@"New User" forState:UIControlStateNormal];
         submitButton.backgroundColor = [UIColor darkGrayColor];
@@ -84,11 +83,11 @@
 
         [header addSubview:submitButton];
         
-        UILabel * titleHeader = [[UILabel alloc] initWithFrame:CGRectMake(20, 60, 280, 30)];
+        UILabel * titleHeader = [[UILabel alloc] initWithFrame:CGRectMake(20, 70, 280, 30)];
         
         titleHeader.text = @"Github Users";
         titleHeader.backgroundColor = [UIColor lightGrayColor];
-        titleHeader.font = [UIFont fontWithName:@"ChalkboardSE-Bold" size:30];
+        titleHeader.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:30];
         titleHeader.layer.cornerRadius = 6;
         titleHeader.layer.masksToBounds = YES;
 
