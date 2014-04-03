@@ -7,7 +7,7 @@
 //
 
 #import "TDLTableViewController.h"
-
+#import "TDLTableViewCell.h"
 
 @implementation TDLTableViewController
 
@@ -110,23 +110,26 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] init];
-    }
-                                                                    //    int index = [indexPath row];     //old way
+    TDLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    if (cell == nil) cell = [[TDLTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    
+//  int index = [indexPath row];                                    //old way
     int index = indexPath.row;                                      //new way. Literal. dot notation
 
 // Configure the cell...
 
     cell.backgroundColor = [UIColor blueColor];
     
-                                                                    //    NSDictionary * listItem = [listItems objectAtIndex:index];   // old way - instance method
+//  NSDictionary * listItem = [listItems objectAtIndex:index];      // old way - instance method
     NSDictionary * listItem = listItems[index];                     // literal way
     
-                                                                    //    cell.textLabel.text = [listItem objectForKey:@"name"];        //old way - instance method
-    cell.textLabel.text = listItem[@"name"];                        //literal way
-    cell.imageView.image = listItem[@"image"];
+    cell.profileInfo = listItem;
+    
+//  cell.textLabel.text = [listItem objectForKey:@"name"];          //old way - instance method
+//  cell.textLabel.text = listItem[@"name"];                        //literal way
+//  [[cell imageView] setImage:listItem[@"image"];                  //old way
+//  cell.imageView.image = listItem[@"image"];                      //. notation
     
 
     return cell;

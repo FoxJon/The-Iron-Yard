@@ -10,4 +10,6 @@
 
 @interface TDLTableViewCell : UITableViewCell
 
+@ property (nonatomic) NSDictionary * profileInfo;
+
 @end
