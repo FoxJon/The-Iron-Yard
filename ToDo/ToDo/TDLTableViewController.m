@@ -20,18 +20,7 @@
     self = [super initWithStyle:style];
     if (self)
     {
-        //listItems = [[NSArray alloc]initWithObjects:@"Monday", @"Tuesday", @"Wednesday", nil];                    // Long way. Only need to alloc/init this one time. Pointer above sees this.
-        // NSLog(@"List Items: %@...%@ %@", listItems, listItems[0], @"This concludes my list!");
-        
-        //listItems = @[@"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday", @"Sunday"];       // The short way. A "literal"
-        //for (NSString *day in listItems)
-        //{
-        //    NSLog(@"%@", day);
-        //}
-        
-        // NSDictionary * listExample = [NSDictionary alloc]initWithObjects:<#(NSArray *)#> forKeys:<#(NSArray *)#>;    // old way
-        
-        // Make a dictionary
+
         listItems = @[
                       @{@"name" : @"Ali_Houshmand", @"image" :[UIImage imageNamed:@"AliHoushmand"]},
                       @{@"name" : @"Ashby_Thornwell", @"image" : [UIImage imageNamed:@"AshbyThornwell"]},
@@ -52,7 +41,7 @@
         
 
         self.tableView.contentInset = UIEdgeInsetsMake(25, 0, 0, 0);
-        self.tableView.rowHeight = 25;
+        self.tableView.rowHeight = 50;
         self.tableView.backgroundColor = [UIColor darkGrayColor];
         
         UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
@@ -112,25 +101,16 @@
 {
     TDLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
-    if (cell == nil) cell = [[TDLTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    //if (cell == nil)
+        cell = [[TDLTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     
-//  int index = [indexPath row];                                    //old way
-    int index = indexPath.row;                                      //new way. Literal. dot notation
-
-// Configure the cell...
+    int index = indexPath.row;                                      //Literal
 
     cell.backgroundColor = [UIColor blueColor];
     
-//  NSDictionary * listItem = [listItems objectAtIndex:index];      // old way - instance method
-    NSDictionary * listItem = listItems[index];                     // literal way
+    NSDictionary * listItem = listItems[index];                     // literal
     
     cell.profileInfo = listItem;
-    
-//  cell.textLabel.text = [listItem objectForKey:@"name"];          //old way - instance method
-//  cell.textLabel.text = listItem[@"name"];                        //literal way
-//  [[cell imageView] setImage:listItem[@"image"];                  //old way
-//  cell.imageView.image = listItem[@"image"];                      //. notation
-    
 
     return cell;
 }

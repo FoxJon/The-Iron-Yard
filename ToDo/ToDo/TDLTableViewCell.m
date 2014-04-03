@@ -10,7 +10,7 @@
 
 @implementation TDLTableViewCell
 
-@synthesize profileInfo = _profileInfo;     // this line is needed if you overwrite both setter and getter methods
+//@synthesize profileInfo = _profileInfo;     // this line is needed if you overwrite both setter and getter methods
 
 
 //@synthesize profile = _profile;   // these items are all set automatically when you set @property in the .h file
@@ -35,19 +35,25 @@
     return self;
 }
 
-- (NSDictionary *)profileInfo   // Not necessary. This is overwriting nil to a standard value. Getter
-{
-    if (_profileInfo == nil)
-    {
-        _profileInfo = @{@"name": @"Someone", @"image":[UIImage imageNamed:@"default"]};
-    }
-    return _profileInfo;
 
-}
-
-- (void) setProfile:(NSDictionary *)profileInfo  // _ is only used in these two methods inside the {}. Setter
+- (void) setProfileInfo:(NSDictionary *)profileInfo  // _ is only used in these two methods inside the {}. Setter
 {
-    if(profileInfo != nil) _profileInfo = profileInfo;
+    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 30, 30)];
+    
+    imageView.image = profileInfo[@"image"];
+    imageView.layer.cornerRadius = 15;
+    imageView.layer.masksToBounds = YES;
+    
+    [self.contentView addSubview:imageView];
+    
+    UILabel * labelView = [[UILabel alloc] initWithFrame:CGRectMake(100, 10, 200, 30)];
+    labelView.text = profileInfo[@"name"];
+    
+    [self.contentView addSubview:labelView];
+    
+    
+    
+    _profileInfo = profileInfo;
 }
 
 
