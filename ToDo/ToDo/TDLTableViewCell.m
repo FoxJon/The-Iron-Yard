@@ -23,13 +23,40 @@
 //{
 //   _profile = profile;
 //}
-
-
+{
+    UIImageView * profileImage;
+    UILabel * profileName;
+    UILabel * profileURL;
+}
+    
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self)
     {
+        profileImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 30, 30)];
+        
+        profileImage.layer.cornerRadius = 15;
+        profileImage.layer.masksToBounds = YES;
+        
+        [self.contentView addSubview:profileImage];
+
+        
+        profileName = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, 200, 30)];
+        
+        profileName.textColor = [UIColor darkGrayColor];
+        profileName.font = [UIFont fontWithName:@"ChalkboardSE-Bold" size:20];
+
+        
+        [self.contentView addSubview:profileName];
+        
+        profileURL = [[UILabel alloc] initWithFrame:CGRectMake(60, 20, 200, 30)];
+        
+        profileURL.textColor = [UIColor lightGrayColor];
+        profileURL.font = [UIFont systemFontOfSize:13];
+        
+        [self.contentView addSubview:profileURL];
+        
         
     }
     return self;
@@ -38,19 +65,13 @@
 
 - (void) setProfileInfo:(NSDictionary *)profileInfo  // _ is only used in these two methods inside the {}. Setter
 {
-    UIImageView * imageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 10, 30, 30)];
     
-    imageView.image = profileInfo[@"image"];
-    imageView.layer.cornerRadius = 15;
-    imageView.layer.masksToBounds = YES;
+    profileImage.image = profileInfo[@"image"];
+    profileName.text = profileInfo[@"name"];
     
-    [self.contentView addSubview:imageView];
-    
-    UILabel * labelView = [[UILabel alloc] initWithFrame:CGRectMake(100, 10, 200, 30)];
-    labelView.text = profileInfo[@"name"];
-    
-    [self.contentView addSubview:labelView];
-    
+//  profileURL.text = [profileInfo objectForKey:@"github"];
+    profileURL.text = profileInfo[@"github"];
+
     
     
     _profileInfo = profileInfo;

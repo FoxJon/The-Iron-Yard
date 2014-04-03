@@ -22,47 +22,80 @@
     {
 
         listItems = @[
-                      @{@"name" : @"Ali_Houshmand", @"image" :[UIImage imageNamed:@"AliHoushmand"]},
-                      @{@"name" : @"Ashby_Thornwell", @"image" : [UIImage imageNamed:@"AshbyThornwell"]},
-                      @{@"name" : @"Austen_Johnson", @"image" : [UIImage imageNamed:@"AustenJohnson"]},
-                      @{@"name" : @"Austin_Nolan", @"image" :[UIImage imageNamed:@"AustinNolan"]},
-                      @{@"name" : @"Derek_Weber", @"image" : [UIImage imageNamed:@"DerekWeber"]},
-                      @{@"name" : @"Ed_Salter", @"image" : [UIImage imageNamed:@"EdSalter"]},
-                      @{@"name" : @"Heidi_Proske", @"image" : [UIImage imageNamed:@"HeidiProske"]},
-                      @{@"name" : @"Jeff_King", @"image" : [UIImage imageNamed:@"JeffKing"]},
-                      @{@"name" : @"Jeffery_Moulds", @"image" : [UIImage imageNamed:@"JefferyMoulds"]},
-                      @{@"name" : @"Jisha_Obukwelu", @"image" : [UIImage imageNamed:@"JishaObukwelu"]},
-                      @{@"name" : @"John_Yam", @"image" : [UIImage imageNamed:@"JohnYam"]},
-                      @{@"name" : @"Jon_Fox", @"image" : [UIImage imageNamed:@"JonFox"]},
-                      @{@"name" : @"Savitha_Reddy", @"image" : [UIImage imageNamed:@"SavithaReddy"]},
-                      @{@"name" : @"TJ_Mercer", @"image" : [UIImage imageNamed:@"TJMercer"]},
-                      @{@"name" : @"Teddy_Conyers", @"image" : [UIImage imageNamed:@"TeddyConyers"]},
+                      @{@"name" : @"Ali_Houshmand", @"image" :[UIImage imageNamed:@"AliHoushmand"], @"github" : @"https://github.com/HoushmandA06"},
+                      @{@"name" : @"Ashby_Thornwell", @"image" : [UIImage imageNamed:@"AshbyThornwell"], @"github" : @"https://github.com/athornwell"},
+                      @{@"name" : @"Austen_Johnson", @"image" : [UIImage imageNamed:@"AustenJohnson"], @"github" : @"https://github.com/ajohnson21"},
+                      @{@"name" : @"Austin_Nolan", @"image" :[UIImage imageNamed:@"AustinNolan"], @"github" : @"https://github.com/adnolan99"},
+                      @{@"name" : @"Derek_Weber", @"image" : [UIImage imageNamed:@"DerekWeber"], @"github" : @"https://github.com/dweber03"},
+                      @{@"name" : @"Ed_Salter", @"image" : [UIImage imageNamed:@"EdSalter"], @"github" : @"https://github.com/MadArkitekt"},
+                      @{@"name" : @"Heidi_Proske", @"image" : [UIImage imageNamed:@"HeidiProske"], @"github" : @"https://github.com/justagirlcoding"},
+                      @{@"name" : @"Jeff_King", @"image" : [UIImage imageNamed:@"JeffKing"], @"github" : @"https://github.com/rampis"},
+                      @{@"name" : @"Jeffery_Moulds", @"image" : [UIImage imageNamed:@"JefferyMoulds"], @"github" : @"https://github.com/jdmgithub"},
+                      @{@"name" : @"Jisha_Obukwelu", @"image" : [UIImage imageNamed:@"JishaObukwelu"], @"github" : @"https://github.com/Jiobu"},
+                      @{@"name" : @"John_Yam", @"image" : [UIImage imageNamed:@"JohnYam"], @"github" : @"https://github.com/yamski"},
+                      @{@"name" : @"Jon_Fox", @"image" : [UIImage imageNamed:@"JonFox"], @"github" : @"https://github.com/FoxJon"},
+                      @{@"name" : @"Savitha_Reddy", @"image" : [UIImage imageNamed:@"SavithaReddy"], @"github" : @"https://github.com/savithareddy"},
+                      @{@"name" : @"TJ_Mercer", @"image" : [UIImage imageNamed:@"TJMercer"], @"github" : @"https://github.com/gwanunig14"},
+                      @{@"name" : @"Teddy_Conyers", @"image" : [UIImage imageNamed:@"TeddyConyers"], @"github" : @"https://github.com/talented76"},
+                      @{@"name" : @"Jo_Albright", @"image" : [UIImage imageNamed:@"JoAlbright"], @"github" : @"https://github.com/joalbright"},
+
                       ];
         
 
         self.tableView.contentInset = UIEdgeInsetsMake(25, 0, 0, 0);
         self.tableView.rowHeight = 50;
         self.tableView.backgroundColor = [UIColor darkGrayColor];
+        self.tableView.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20);
         
-        UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-        header.backgroundColor = [UIColor greenColor];
+        UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+        header.backgroundColor = [UIColor colorWithRed:64/255.0f green:103/255.0f blue:116/255.0f alpha:1.0f];
         self.tableView.tableHeaderView = header;
         //[self.tableView setTableHeaderView:header]  is the same thing
         
         UIView * footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-        footer.backgroundColor = [UIColor greenColor];
+        footer.backgroundColor = [UIColor blueColor];
         self.tableView.tableFooterView = footer;
 
 
-        UILabel * titleHeader = [[UILabel alloc] initWithFrame:CGRectMake(140, 10, 300, 30)];
+//        UILabel * titleHeader = [[UILabel alloc] initWithFrame:CGRectMake(130, 10, 300, 30)];
+//        
+//        titleHeader.text = @"My Class";
+//        titleHeader.textColor = [UIColor whiteColor];
+//        titleHeader.font = [UIFont systemFontOfSize:35];
+//        
+//
+//        
+//        [header addSubview:titleHeader];
         
-        titleHeader.text = @"My Class";
-        titleHeader.textColor = [UIColor whiteColor];
+        UITextField * nameField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 160, 30)];
+        
+        nameField.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+        nameField.layer.cornerRadius = 6;
+        nameField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 30)];
+        nameField.leftViewMode = UITextFieldViewModeAlways;
+        
+        [header addSubview:nameField];
+        
+        UIButton * submitButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 10, 100, 30)];
+        
+        [submitButton setTitle:@"New User" forState:UIControlStateNormal];
+        submitButton.backgroundColor = [UIColor darkGrayColor];
+        submitButton.layer.cornerRadius = 6;
+
+        [header addSubview:submitButton];
+        
+        UILabel * titleHeader = [[UILabel alloc] initWithFrame:CGRectMake(20, 60, 280, 30)];
+        
+        titleHeader.text = @"Github Users";
+        titleHeader.backgroundColor = [UIColor lightGrayColor];
+        titleHeader.font = [UIFont fontWithName:@"ChalkboardSE-Bold" size:30];
+        titleHeader.layer.cornerRadius = 6;
+        titleHeader.layer.masksToBounds = YES;
+
+        
+    
         
         [header addSubview:titleHeader];
-        
-        
-        
         
         
     }
@@ -101,12 +134,12 @@
 {
     TDLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
-    //if (cell == nil)
+    if (cell == nil)
         cell = [[TDLTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     
     int index = indexPath.row;                                      //Literal
 
-    cell.backgroundColor = [UIColor blueColor];
+    cell.backgroundColor = [UIColor whiteColor];
     
     NSDictionary * listItem = listItems[index];                     // literal
     
