@@ -8,7 +8,7 @@
 
 #import "TDLTableViewController.h"
 #import "TDLTableViewCell.h"
-#import "TDLWebViewController.h"
+#import "TDLGitHubRequest.h"
 
 @implementation TDLTableViewController
 
@@ -49,13 +49,18 @@
     
     NSLog(@"clicking");
     
-    [listItems addObject:@{@"name" : userName,@"image" : [UIImage imageNamed:@"unknown"],@"github" : [NSString stringWithFormat:@"https://github.com/%@", userName]}];
+    //[listItems addObject:@{@"name" : userName,@"image" : [UIImage imageNamed:@"unknown"],@"github" : [NSString stringWithFormat:@"https://github.com/%@", userName]}];
    
+    NSDictionary * userInfo = [TDLGitHubRequest getUserWithUserName:userName];
+    
+    if ([[userInfo allKeys] count] == 4)[listItems addObject:userInfo];
+    else NSLog(@"not enough data");
+    
     [nameField resignFirstResponder];
     [self.tableView reloadData];
     
     NSLog(@"listItems Count : %d", [listItems count]);
-    }
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
     [self newUser];
@@ -66,25 +71,26 @@
 {
     [super viewDidLoad];
     
-    listItems = [@[
-                   @{@"name" : @"Ali_Houshmand", @"image" :[UIImage imageNamed:@"AliHoushmand"], @"github" : @"https://github.com/HoushmandA06"},
-                   @{@"name" : @"Ashby_Thornwell", @"image" : [UIImage imageNamed:@"AshbyThornwell"], @"github" : @"https://github.com/athornwell"},
-                   @{@"name" : @"Austen_Johnson", @"image" : [UIImage imageNamed:@"AustenJohnson"], @"github" : @"https://github.com/ajohnson21"},
-                   @{@"name" : @"Austin_Nolan", @"image" :[UIImage imageNamed:@"AustinNolan"], @"github" : @"https://github.com/adnolan99"},
-                   @{@"name" : @"Derek_Weber", @"image" : [UIImage imageNamed:@"DerekWeber"], @"github" : @"https://github.com/dweber03"},
-                   @{@"name" : @"Ed_Salter", @"image" : [UIImage imageNamed:@"EdSalter"], @"github" : @"https://github.com/MadArkitekt"},
-                   @{@"name" : @"Heidi_Proske", @"image" : [UIImage imageNamed:@"HeidiProske"], @"github" : @"https://github.com/justagirlcoding"},
-                   @{@"name" : @"Jeff_King", @"image" : [UIImage imageNamed:@"JeffKing"], @"github" : @"https://github.com/rampis"},
-                   @{@"name" : @"Jeffery_Moulds", @"image" : [UIImage imageNamed:@"JefferyMoulds"], @"github" : @"https://github.com/jdmgithub"},
-                   @{@"name" : @"Jisha_Obukwelu", @"image" : [UIImage imageNamed:@"JishaObukwelu"], @"github" : @"https://github.com/Jiobu"},
-                   @{@"name" : @"John_Yam", @"image" : [UIImage imageNamed:@"JohnYam"], @"github" : @"https://github.com/yamski"},
-                   @{@"name" : @"Jon_Fox", @"image" : [UIImage imageNamed:@"JonFox"], @"github" : @"https://github.com/FoxJon"},
-                   @{@"name" : @"Savitha_Reddy", @"image" : [UIImage imageNamed:@"SavithaReddy"], @"github" : @"https://github.com/savithareddy"},
-                   @{@"name" : @"TJ_Mercer", @"image" : [UIImage imageNamed:@"TJMercer"], @"github" : @"https://github.com/gwanunig14"},
-                   @{@"name" : @"Teddy_Conyers", @"image" : [UIImage imageNamed:@"TeddyConyers"], @"github" : @"https://github.com/talented76"},
-                   @{@"name" : @"Jo_Albright", @"image" : [UIImage imageNamed:@"JoAlbright"], @"github" : @"https://github.com/joalbright"},
-                   ]mutableCopy];
+//    listItems = [@[
+//                   @{@"name" : @"Ali_Houshmand", @"image" :[UIImage imageNamed:@"AliHoushmand"], @"github" : @"https://github.com/HoushmandA06"},
+//                   @{@"name" : @"Ashby_Thornwell", @"image" : [UIImage imageNamed:@"AshbyThornwell"], @"github" : @"https://github.com/athornwell"},
+//                   @{@"name" : @"Austen_Johnson", @"image" : [UIImage imageNamed:@"AustenJohnson"], @"github" : @"https://github.com/ajohnson21"},
+//                   @{@"name" : @"Austin_Nolan", @"image" :[UIImage imageNamed:@"AustinNolan"], @"github" : @"https://github.com/adnolan99"},
+//                   @{@"name" : @"Derek_Weber", @"image" : [UIImage imageNamed:@"DerekWeber"], @"github" : @"https://github.com/dweber03"},
+//                   @{@"name" : @"Ed_Salter", @"image" : [UIImage imageNamed:@"EdSalter"], @"github" : @"https://github.com/MadArkitekt"},
+//                   @{@"name" : @"Heidi_Proske", @"image" : [UIImage imageNamed:@"HeidiProske"], @"github" : @"https://github.com/justagirlcoding"},
+//                   @{@"name" : @"Jeff_King", @"image" : [UIImage imageNamed:@"JeffKing"], @"github" : @"https://github.com/rampis"},
+//                   @{@"name" : @"Jeffery_Moulds", @"image" : [UIImage imageNamed:@"JefferyMoulds"], @"github" : @"https://github.com/jdmgithub"},
+//                   @{@"name" : @"Jisha_Obukwelu", @"image" : [UIImage imageNamed:@"JishaObukwelu"], @"github" : @"https://github.com/Jiobu"},
+//                   @{@"name" : @"John_Yam", @"image" : [UIImage imageNamed:@"JohnYam"], @"github" : @"https://github.com/yamski"},
+//                   @{@"name" : @"Jon_Fox", @"image" : [UIImage imageNamed:@"JonFox"], @"github" : @"https://github.com/FoxJon"},
+//                   @{@"name" : @"Savitha_Reddy", @"image" : [UIImage imageNamed:@"SavithaReddy"], @"github" : @"https://github.com/savithareddy"},
+//                   @{@"name" : @"TJ_Mercer", @"image" : [UIImage imageNamed:@"TJMercer"], @"github" : @"https://github.com/gwanunig14"},
+//                   @{@"name" : @"Teddy_Conyers", @"image" : [UIImage imageNamed:@"TeddyConyers"], @"github" : @"https://github.com/talented76"},
+//                   @{@"name" : @"Jo_Albright", @"image" : [UIImage imageNamed:@"JoAlbright"], @"github" : @"https://github.com/joalbright"},
+//                   ]mutableCopy];
     
+    listItems = [@[] mutableCopy];
     
     self.tableView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
     self.tableView.rowHeight = 100;
@@ -182,8 +188,26 @@
     
     NSLog(@"%@", [listItem objectForKey:@"github"]);
     
-
-
+    UIViewController * webController = [[UIViewController alloc]init];
+    
+    UIWebView * webView = [[UIWebView alloc] init];
+    
+    webController.view = webView;
+    
+    UIWindow * window = [[UIApplication sharedApplication].windows firstObject];
+    
+    UINavigationController * navController = (UINavigationController *)window.rootViewController;
+    
+    [navController pushViewController:webController animated:YES];
+    
+    NSURL *url = [NSURL URLWithString:listItem[@"github"]];             //allocating a class method
+    
+    NSURLRequest * request = [NSURLRequest requestWithURL:url];          //allocating a class method
+    
+    [webView loadRequest:request];
+    
+    
+    // [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[listItem objectForKey:@"github"]]]];
 
 }
 
@@ -198,17 +222,17 @@
 
 #pragma mark - Navigation
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSLog(@"preparing for segue: %@", segue.identifier);
-    
-    if ([segue.identifier isEqualToString:@"showGitHub"]) {
-        
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    NSLog(@"preparing for segue: %@", segue.identifier);
+//    
+//    if ([segue.identifier isEqualToString:@"showGitHub"]) {
+
 //        (TDLWebViewController *)segue.destinationViewControllern loadRequest:<#(NSURLRequest *)#>
 //        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
 //        [segue.destinationViewController setGitHubUrl:];
-    }
-}
+    //}
+//}
 
 
 @end

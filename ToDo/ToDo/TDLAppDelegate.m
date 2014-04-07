@@ -13,15 +13,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-   // TDLTableViewController * rootViewController = [[TDLTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    TDLTableViewController * rootViewController = [[TDLTableViewController alloc] initWithStyle:UITableViewStylePlain];
     
-  //  UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
     
-//    self.window.rootViewController = navController;
-//    
-//    [self.window makeKeyAndVisible];
+    self.window.rootViewController = navController;
+    
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

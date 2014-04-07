@@ -14,6 +14,7 @@
     UIImageView * profileImage;
     UILabel * profileName;
     UILabel * profileURL;
+    UILabel * profileLocation;
     
 }
     
@@ -61,19 +62,35 @@
     profileURL.font = [UIFont systemFontOfSize:12];
     
     [self.contentView addSubview:profileURL];
+    
+    profileLocation = [[UILabel alloc] initWithFrame:CGRectMake(200, 20, 200, 30)];
+    profileLocation.textColor = [UIColor lightGrayColor];
+
+    
+    
+    [self.contentView addSubview:profileLocation];
+
+
 }
 
 
 - (void) setProfileInfo:(NSDictionary *)profileInfo  // Setter
 {
+    NSURL * imageURL = [NSURL URLWithString:profileInfo[@"image"]];
     
-    profileImage.image = profileInfo[@"image"];
+    NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
+
+    UIImage * image = [UIImage imageWithData:imageData];
+//    
+    profileImage.image = image;
+    
+//    profileImage.image = profileInfo[@"image"];
     profileName.text = profileInfo[@"name"];
     
 //  profileURL.text = [profileInfo objectForKey:@"github"];
     profileURL.text = profileInfo[@"github"];
 
-    
+    profileLocation.text = profileInfo[@"location"];
     
     _profileInfo = profileInfo;
 }
