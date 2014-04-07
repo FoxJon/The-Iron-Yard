@@ -15,14 +15,21 @@
 {
     NSMutableArray * listItems;    // This is a declaration
     UITextField * nameField;
+    UINavigationController * navController;
+}
+
+- (void)toggleEdit{
+
+    [self.tableView setEditing:!self.tableView.editing animated:YES];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
     if (self)
     {
-
+        UIBarButtonItem * editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(toggleEdit)];
         
+        self.navigationItem.rightBarButtonItem = editButton;
     }
     return self;
 }
@@ -90,9 +97,23 @@
 //                   @{@"name" : @"Jo_Albright", @"image" : [UIImage imageNamed:@"JoAlbright"], @"github" : @"https://github.com/joalbright"},
 //                   ]mutableCopy];
     
-    listItems = [@[] mutableCopy];
+    listItems = [@[
+//                   @{
+//                       @"name" : @"Jon Fox",
+//                       @"image" : @"https://avatars1.githubusercontent.com/u/7116114?s=460",
+//                       @"github" : @"https://github.com/FoxJon",
+//                       @"location" : @"Chicago, IL"
+//                       },
+//                   @{
+//                       @"name" : @"John Yam",
+//                       @"image" : @"https://avatars1.githubusercontent.com/u/2688381?s=460",
+//                       @"github" : @"https://github.com/yamski",
+//                       @"location" : @"Atlanta, GA"
+//                       }
+                   
+                   ] mutableCopy];
     
-    self.tableView.contentInset = UIEdgeInsetsMake(50, 0, 0, 0);
+    //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     self.tableView.rowHeight = 100;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20);
     
@@ -194,11 +215,7 @@
     
     webController.view = webView;
     
-    UIWindow * window = [[UIApplication sharedApplication].windows firstObject];
-    
-    UINavigationController * navController = (UINavigationController *)window.rootViewController;
-    
-    [navController pushViewController:webController animated:YES];
+    [self.navigationController pushViewController:webController animated:YES];
     
     NSURL *url = [NSURL URLWithString:listItem[@"github"]];             //allocating a class method
     
@@ -211,14 +228,50 @@
 
 }
 
+#pragma - Delete Row
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+
+//    [listItems removeObjectAtIndex:indexPath.row];
+    
+    NSDictionary * listItem = [self getListItem:indexPath.row];
+    
+    [listItems removeObjectIdenticalTo:listItem];
+    
+    [self.tableView reloadData];
+}
+
+
+#pragma - Move Row
+
+- (BOOL) tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
+-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    
+    if (sourceIndexPath == destinationIndexPath) return;  //  return stops the method from running
+    
+    NSDictionary * sourceItem = [self getListItem:sourceIndexPath.row];
+    
+    NSDictionary * toItem = [self getListItem:destinationIndexPath.row];
+    
+    [listItems removeObjectIdenticalTo:sourceItem];
+    [listItems insertObject:sourceItem atIndex:[listItems indexOfObject:toItem]];
+
+}
+
+
 - (NSDictionary *)getListItem:(NSInteger)row
 {
     NSArray * reverseArray = [[listItems reverseObjectEnumerator] allObjects];
     return reverseArray[row];
     
 }
-
-
 
 #pragma mark - Navigation
 

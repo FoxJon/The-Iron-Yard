@@ -56,15 +56,17 @@
     
     [self.contentView addSubview:profileName];
     
-    profileURL = [[UILabel alloc] initWithFrame:CGRectMake(100, 50, 200, 30)];
+    profileURL = [[UILabel alloc] initWithFrame:CGRectMake(100, 60, 200, 30)];
     
     profileURL.textColor = [UIColor lightGrayColor];
     profileURL.font = [UIFont systemFontOfSize:12];
     
     [self.contentView addSubview:profileURL];
     
-    profileLocation = [[UILabel alloc] initWithFrame:CGRectMake(200, 20, 200, 30)];
+    profileLocation = [[UILabel alloc] initWithFrame:CGRectMake(100, 40, 200, 30)];
     profileLocation.textColor = [UIColor lightGrayColor];
+    profileLocation.font = [UIFont systemFontOfSize:14];
+
 
     
     
@@ -81,10 +83,9 @@
     NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
 
     UIImage * image = [UIImage imageWithData:imageData];
-//    
+   
     profileImage.image = image;
     
-//    profileImage.image = profileInfo[@"image"];
     profileName.text = profileInfo[@"name"];
     
 //  profileURL.text = [profileInfo objectForKey:@"github"];
