@@ -13,13 +13,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    self.window.rootViewController = [[TDLTableViewController alloc] initWithStyle:UITableViewStylePlain];
-
-    self.window.backgroundColor = [UIColor blueColor];
+   // TDLTableViewController * rootViewController = [[TDLTableViewController alloc] initWithStyle:UITableViewStylePlain];
     
-    [self.window makeKeyAndVisible];
+  //  UINavigationController * navController = [[UINavigationController alloc] initWithRootViewController:rootViewController];
+    
+//    self.window.rootViewController = navController;
+//    
+//    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 
