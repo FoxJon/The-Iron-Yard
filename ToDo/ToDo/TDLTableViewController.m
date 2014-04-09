@@ -18,18 +18,18 @@
     UINavigationController * navController;
 }
 
-- (void)toggleEdit{
-
-    [self.tableView setEditing:!self.tableView.editing animated:YES];
-}
+//- (void)toggleEdit{
+//
+//    [self.tableView setEditing:!self.tableView.editing animated:YES];
+//}
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
     if (self)
     {
-        UIBarButtonItem * editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(toggleEdit)];
-        
-        self.navigationItem.rightBarButtonItem = editButton;
+//        UIBarButtonItem * editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(toggleEdit)];
+//        
+//        self.navigationItem.rightBarButtonItem = editButton;
     }
     return self;
 }
@@ -43,6 +43,8 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     textField.placeholder = @"Enter here";
 }
+
+
 
 
 - (void) newUser{
@@ -60,16 +62,26 @@
    
     NSDictionary * userInfo = [TDLGitHubRequest getUserWithUserName:userName];
     
-    if ([[userInfo allKeys] count] == 4)[listItems addObject:userInfo];
-    else NSLog(@"not enough data");
+    if ([[userInfo allKeys] count] == 4)
+    {
+        [listItems addObject:userInfo];
+    } else {
+        NSLog(@"not enough data");
     
+    UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Bad Information" message:@"Unable to add user." delegate:self cancelButtonTitle:@"Try Again" otherButtonTitles:nil];
+    
+    [alertView show];
+    }
     [nameField resignFirstResponder];
     [self.tableView reloadData];
     
     NSLog(@"listItems Count : %d", [listItems count]);
+    
+    [self saveData];
+
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{         // for the return button
     [self newUser];
     return YES;
 }
@@ -77,6 +89,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
     
 //    listItems = [@[
 //                   @{@"name" : @"Ali_Houshmand", @"image" :[UIImage imageNamed:@"AliHoushmand"], @"github" : @"https://github.com/HoushmandA06"},
@@ -109,9 +124,18 @@
 //                       @"image" : @"https://avatars1.githubusercontent.com/u/2688381?s=460",
 //                       @"github" : @"https://github.com/yamski",
 //                       @"location" : @"Atlanta, GA"
+//                       },
+//                   @{
+//                       @"name" : @"John Yam",
+//                       @"image" : @"https://avatars1.githubusercontent.com/u/2688381?s=460",
+//                       @"github" : @"https://github.com/yamski",
+//                       @"location" : @"Atlanta, GA"
 //                       }
                    
                    ] mutableCopy];
+    
+    [self loadListItems];
+
     
     //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     self.tableView.rowHeight = 100;
@@ -242,7 +266,14 @@
     
     [listItems removeObjectIdenticalTo:listItem];
     
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
+    
+    TDLTableViewCell * cell = (TDLTableViewCell * )[tableView cellForRowAtIndexPath:indexPath];
+    cell.alpha = 0;
+    
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    [self saveData];
 }
 
 
@@ -262,6 +293,8 @@
     
     [listItems removeObjectIdenticalTo:sourceItem];
     [listItems insertObject:sourceItem atIndex:[listItems indexOfObject:toItem]];
+    
+    [self saveData];
 
 }
 
@@ -273,6 +306,29 @@
     
 }
 
+#pragma mark - Save data
+
+
+- (void)saveData{
+    NSString * path = [self listArchivePath];
+    NSData * data = [NSKeyedArchiver archivedDataWithRootObject:listItems];
+    [data writeToFile:path options:NSDataWritingAtomic error:nil];
+}
+
+-(NSString *)listArchivePath{
+    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentDirectory = documentDirectories[0];
+    return [documentDirectory stringByAppendingPathComponent:@"listdata.data"];
+}
+
+- (void) loadListItems{
+    NSString * path = [self listArchivePath];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        listItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+    }
+}
+
+
 #pragma mark - Navigation
 
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -280,7 +336,7 @@
 //    
 //    if ([segue.identifier isEqualToString:@"showGitHub"]) {
 
-//        (TDLWebViewController *)segue.destinationViewControllern loadRequest:<#(NSURLRequest *)#>
+//        (TDLWebViewController *)segue.destinationViewControllern loadRequest:
 //        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         
 //        [segue.destinationViewController setGitHubUrl:];

@@ -51,6 +51,8 @@
     if(githubProfile[@"avatar_url"] != nil) userInfo[@"image"] = githubProfile[@"avatar_url"];
     if(githubProfile[@"html_url"] != nil) userInfo[@"github"] = githubProfile[@"html_url"];
     if(githubProfile[@"location"] != nil) userInfo[@"location"] = githubProfile[@"location"];
+    
+    
 
 //    userInfo = @{
 //                 @"name": githubProfile[@"name"],
