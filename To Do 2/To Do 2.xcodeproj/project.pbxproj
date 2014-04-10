@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B02C974218F5D4300025101D /* MOVE.m in Sources */ = {isa = PBXBuildFile; fileRef = B02C974118F5D4300025101D /* MOVE.m */; };
 		B045E0E018F44B5400898CFB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B045E0DF18F44B5400898CFB /* Foundation.framework */; };
 		B045E0E218F44B5400898CFB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B045E0E118F44B5400898CFB /* CoreGraphics.framework */; };
 		B045E0E418F44B5400898CFB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B045E0E318F44B5400898CFB /* UIKit.framework */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B02C974018F5D4300025101D /* MOVE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOVE.h; sourceTree = "<group>"; };
+		B02C974118F5D4300025101D /* MOVE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOVE.m; sourceTree = "<group>"; };
 		B045E0DC18F44B5400898CFB /* To Do 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To Do 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B045E0DF18F44B5400898CFB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B045E0E118F44B5400898CFB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -113,6 +116,8 @@
 		B045E0E518F44B5400898CFB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B02C974018F5D4300025101D /* MOVE.h */,
+				B02C974118F5D4300025101D /* MOVE.m */,
 				B045E10E18F44B9100898CFB /* TDLTableViewController.h */,
 				B045E10F18F44B9100898CFB /* TDLTableViewController.m */,
 				B045E11418F44CFB00898CFB /* Tableview */,
@@ -259,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B02C974218F5D4300025101D /* MOVE.m in Sources */,
 				B045E11318F44BB100898CFB /* TDLTableViewCell.m in Sources */,
 				B045E11018F44B9100898CFB /* TDLTableViewController.m in Sources */,
 				B045E0EC18F44B5400898CFB /* main.m in Sources */,
@@ -459,6 +465,7 @@
 				B045E10A18F44B5400898CFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B045E10B18F44B5400898CFB /* Build configuration list for PBXNativeTarget "To Do 2Tests" */ = {
 			isa = XCConfigurationList;
@@ -467,6 +474,7 @@
 				B045E10D18F44B5400898CFB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
