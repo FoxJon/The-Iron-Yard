@@ -58,11 +58,11 @@
     
     NSLog(@"clicking");
     
-    //[listItems addObject:@{@"name" : userName,@"image" : [UIImage imageNamed:@"unknown"],@"github" : [NSString stringWithFormat:@"https://github.com/%@", userName]}];
+    //[listItems addObject:@{@"name" : userName,@"avatar_url" : [UIImage imageNamed:@"unknown"],@"html_url" : [NSString stringWithFormat:@"https://github.com/%@", userName]}];
    
     NSDictionary * userInfo = [TDLGitHubRequest getUserWithUserName:userName];
     
-    if ([[userInfo allKeys] count] == 4)
+    if ([[userInfo allKeys] count] > 4)
     {
         [listItems addObject:userInfo];
     } else {
@@ -94,48 +94,49 @@
     
     
 //    listItems = [@[
-//                   @{@"name" : @"Ali_Houshmand", @"image" :[UIImage imageNamed:@"AliHoushmand"], @"github" : @"https://github.com/HoushmandA06"},
-//                   @{@"name" : @"Ashby_Thornwell", @"image" : [UIImage imageNamed:@"AshbyThornwell"], @"github" : @"https://github.com/athornwell"},
-//                   @{@"name" : @"Austen_Johnson", @"image" : [UIImage imageNamed:@"AustenJohnson"], @"github" : @"https://github.com/ajohnson21"},
-//                   @{@"name" : @"Austin_Nolan", @"image" :[UIImage imageNamed:@"AustinNolan"], @"github" : @"https://github.com/adnolan99"},
-//                   @{@"name" : @"Derek_Weber", @"image" : [UIImage imageNamed:@"DerekWeber"], @"github" : @"https://github.com/dweber03"},
-//                   @{@"name" : @"Ed_Salter", @"image" : [UIImage imageNamed:@"EdSalter"], @"github" : @"https://github.com/MadArkitekt"},
-//                   @{@"name" : @"Heidi_Proske", @"image" : [UIImage imageNamed:@"HeidiProske"], @"github" : @"https://github.com/justagirlcoding"},
-//                   @{@"name" : @"Jeff_King", @"image" : [UIImage imageNamed:@"JeffKing"], @"github" : @"https://github.com/rampis"},
-//                   @{@"name" : @"Jeffery_Moulds", @"image" : [UIImage imageNamed:@"JefferyMoulds"], @"github" : @"https://github.com/jdmgithub"},
-//                   @{@"name" : @"Jisha_Obukwelu", @"image" : [UIImage imageNamed:@"JishaObukwelu"], @"github" : @"https://github.com/Jiobu"},
-//                   @{@"name" : @"John_Yam", @"image" : [UIImage imageNamed:@"JohnYam"], @"github" : @"https://github.com/yamski"},
-//                   @{@"name" : @"Jon_Fox", @"image" : [UIImage imageNamed:@"JonFox"], @"github" : @"https://github.com/FoxJon"},
-//                   @{@"name" : @"Savitha_Reddy", @"image" : [UIImage imageNamed:@"SavithaReddy"], @"github" : @"https://github.com/savithareddy"},
-//                   @{@"name" : @"TJ_Mercer", @"image" : [UIImage imageNamed:@"TJMercer"], @"github" : @"https://github.com/gwanunig14"},
-//                   @{@"name" : @"Teddy_Conyers", @"image" : [UIImage imageNamed:@"TeddyConyers"], @"github" : @"https://github.com/talented76"},
-//                   @{@"name" : @"Jo_Albright", @"image" : [UIImage imageNamed:@"JoAlbright"], @"github" : @"https://github.com/joalbright"},
+//                   @{@"name" : @"Ali_Houshmand", @"avatar_url" :[UIImage imageNamed:@"AliHoushmand"], @"html_url" : @"https://github.com/HoushmandA06"},
+//                   @{@"name" : @"Ashby_Thornwell", @"avatar_url" : [UIImage imageNamed:@"AshbyThornwell"], @"html_url" : @"https://github.com/athornwell"},
+//                   @{@"name" : @"Austen_Johnson", @"avatar_url" : [UIImage imageNamed:@"AustenJohnson"], @"html_url" : @"https://github.com/ajohnson21"},
+//                   @{@"name" : @"Austin_Nolan", @"avatar_url" :[UIImage imageNamed:@"AustinNolan"], @"html_url" : @"https://github.com/adnolan99"},
+//                   @{@"name" : @"Derek_Weber", @"avatar_url" : [UIImage imageNamed:@"DerekWeber"], @"html_url" : @"https://github.com/dweber03"},
+//                   @{@"name" : @"Ed_Salter", @"avatar_url" : [UIImage imageNamed:@"EdSalter"], @"html_url" : @"https://github.com/MadArkitekt"},
+//                   @{@"name" : @"Heidi_Proske", @"avatar_url" : [UIImage imageNamed:@"HeidiProske"], @"html_url" : @"https://github.com/justagirlcoding"},
+//                   @{@"name" : @"Jeff_King", @"avatar_url" : [UIImage imageNamed:@"JeffKing"], @"html_url" : @"https://github.com/rampis"},
+//                   @{@"name" : @"Jeffery_Moulds", @"avatar_url" : [UIImage imageNamed:@"JefferyMoulds"], @"html_url" : @"https://github.com/jdmgithub"},
+//                   @{@"name" : @"Jisha_Obukwelu", @"avatar_url" : [UIImage imageNamed:@"JishaObukwelu"], @"html_url" : @"https://github.com/Jiobu"},
+//                   @{@"name" : @"John_Yam", @"avatar_url" : [UIImage imageNamed:@"JohnYam"], @"html_url" : @"https://github.com/yamski"},
+//                   @{@"name" : @"Jon_Fox", @"avatar_url" : [UIImage imageNamed:@"JonFox"], @"html_url" : @"https://github.com/FoxJon"},
+//                   @{@"name" : @"Savitha_Reddy", @"avatar_url" : [UIImage imageNamed:@"SavithaReddy"], @"html_url" : @"https://github.com/savithareddy"},
+//                   @{@"name" : @"TJ_Mercer", @"avatar_url" : [UIImage imageNamed:@"TJMercer"], @"html_url" : @"https://github.com/gwanunig14"},
+//                   @{@"name" : @"Teddy_Conyers", @"avatar_url" : [UIImage imageNamed:@"TeddyConyers"], @"html_url" : @"https://github.com/talented76"},
+//                   @{@"name" : @"Jo_Albright", @"avatar_url" : [UIImage imageNamed:@"JoAlbright"], @"html_url" : @"https://github.com/joalbright"},
 //                   ]mutableCopy];
     
     listItems = [@[
 //                   @{
 //                       @"name" : @"Jon Fox",
-//                       @"image" : @"https://avatars1.githubusercontent.com/u/7116114?s=460",
-//                       @"github" : @"https://github.com/FoxJon",
+//                       @"avatar_url" : @"https://avatars1.githubusercontent.com/u/7116114?s=460",
+//                       @"html_url" : @"https://github.com/FoxJon",
 //                       @"location" : @"Chicago, IL"
 //                       },
 //                   @{
 //                       @"name" : @"John Yam",
-//                       @"image" : @"https://avatars1.githubusercontent.com/u/2688381?s=460",
-//                       @"github" : @"https://github.com/yamski",
+//                       @"avatar_url" : @"https://avatars1.githubusercontent.com/u/2688381?s=460",
+//                       @"html_url" : @"https://github.com/yamski",
 //                       @"location" : @"Atlanta, GA"
 //                       },
 //                   @{
 //                       @"name" : @"John Yam",
-//                       @"image" : @"https://avatars1.githubusercontent.com/u/2688381?s=460",
-//                       @"github" : @"https://github.com/yamski",
+//                       @"avatar_url" : @"https://avatars1.githubusercontent.com/u/2688381?s=460",
+//                       @"html_url" : @"https://github.com/yamski",
 //                       @"location" : @"Atlanta, GA"
 //                       }
                    
                    ] mutableCopy];
     
-    [self loadListItems];
+//    [self loadListItems];
 
+    NSLog(@"%@",NULL);
     
     //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     self.tableView.rowHeight = 100;
@@ -231,7 +232,7 @@
 
     NSDictionary * listItem = [self getListItem:indexPath.row];
     
-    NSLog(@"%@", [listItem objectForKey:@"github"]);
+    NSLog(@"%@", [listItem objectForKey:@"html_url"]);
     
     UIViewController * webController = [[UIViewController alloc]init];
     
@@ -241,14 +242,14 @@
     
     [self.navigationController pushViewController:webController animated:YES];
     
-    NSURL *url = [NSURL URLWithString:listItem[@"github"]];             //allocating a class method
+    NSURL *url = [NSURL URLWithString:listItem[@"html_url"]];             //allocating a class method
     
     NSURLRequest * request = [NSURLRequest requestWithURL:url];          //allocating a class method
     
     [webView loadRequest:request];
     
     
-    // [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[listItem objectForKey:@"github"]]]];
+    // [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[listItem objectForKey:@"html_url"]]]];
 
 }
 

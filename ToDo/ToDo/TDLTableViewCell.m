@@ -78,7 +78,7 @@
 
 - (void) setProfileInfo:(NSDictionary *)profileInfo  // Setter
 {
-    NSURL * imageURL = [NSURL URLWithString:profileInfo[@"image"]];
+    NSURL * imageURL = [NSURL URLWithString:profileInfo[@"avatar_url"]];
     
     NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
 
@@ -89,9 +89,12 @@
     profileName.text = profileInfo[@"name"];
     
 //  profileURL.text = [profileInfo objectForKey:@"github"];
-    profileURL.text = profileInfo[@"github"];
+    profileURL.text = profileInfo[@"html_url"];
 
-    profileLocation.text = profileInfo[@"location"];
+    if([profileInfo[@"location"] isEqualToString:@""])
+        profileLocation.text = @"Somewhere Unknown";
+    else
+        profileLocation.text = profileInfo[@"location"];
     
     _profileInfo = profileInfo;
 }

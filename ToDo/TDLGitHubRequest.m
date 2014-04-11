@@ -47,12 +47,15 @@
     
 //  if (githubProfile[@"name"] !=nil)[userInfo setObject:githubProfile[@"name"] forKey:@"name"];
     
-    if(githubProfile[@"name"] != nil) userInfo[@"name"] = githubProfile[@"name"];
-    if(githubProfile[@"avatar_url"] != nil) userInfo[@"image"] = githubProfile[@"avatar_url"];
-    if(githubProfile[@"html_url"] != nil) userInfo[@"github"] = githubProfile[@"html_url"];
-    if(githubProfile[@"location"] != nil) userInfo[@"location"] = githubProfile[@"location"];
+//    if(githubProfile[@"name"] != nil) userInfo[@"name"] = githubProfile[@"name"];
+//    if(githubProfile[@"avatar_url"] != nil) userInfo[@"image"] = githubProfile[@"avatar_url"];
+//    if(githubProfile[@"html_url"] != nil) userInfo[@"github"] = githubProfile[@"html_url"];
+//    if(githubProfile[@"location"] != nil) userInfo[@"location"] = githubProfile[@"location"];
     
-    
+    for (NSString * key in [githubProfile allKeys])
+    {
+        userInfo[key] = [TDLGitHubRequest checkBadValue:githubProfile[key]];
+    }
 
 //    userInfo = @{
 //                 @"name": githubProfile[@"name"],
@@ -61,6 +64,16 @@
 //                 @"location": githubProfile[@"location"]};
 
     return userInfo;
+}
+
++ (id)checkBadValue:(id)value
+{
+    if (value != nil && ![value isKindOfClass:[NSNull class]])
+    {
+        return value;
+    }
+    
+    return @"";
 }
 
 
