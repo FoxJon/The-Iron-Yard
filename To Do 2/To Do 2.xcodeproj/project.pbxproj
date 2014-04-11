@@ -21,7 +21,7 @@
 		B045E10318F44B5400898CFB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B045E10118F44B5400898CFB /* InfoPlist.strings */; };
 		B045E10518F44B5400898CFB /* To_Do_2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = B045E10418F44B5400898CFB /* To_Do_2Tests.m */; };
 		B045E11018F44B9100898CFB /* TDLTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B045E10F18F44B9100898CFB /* TDLTableViewController.m */; };
-		B045E11318F44BB100898CFB /* TDLTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B045E11218F44BB100898CFB /* TDLTableViewCell.m */; };
+		B045E11318F44BB100898CFB /* TDLCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B045E11218F44BB100898CFB /* TDLCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,8 +55,8 @@
 		B045E10418F44B5400898CFB /* To_Do_2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = To_Do_2Tests.m; sourceTree = "<group>"; };
 		B045E10E18F44B9100898CFB /* TDLTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLTableViewController.h; sourceTree = "<group>"; };
 		B045E10F18F44B9100898CFB /* TDLTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLTableViewController.m; sourceTree = "<group>"; };
-		B045E11118F44BB100898CFB /* TDLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLTableViewCell.h; sourceTree = "<group>"; };
-		B045E11218F44BB100898CFB /* TDLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLTableViewCell.m; sourceTree = "<group>"; };
+		B045E11118F44BB100898CFB /* TDLCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLCell.h; sourceTree = "<group>"; };
+		B045E11218F44BB100898CFB /* TDLCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +118,8 @@
 			children = (
 				B02C974018F5D4300025101D /* MOVE.h */,
 				B02C974118F5D4300025101D /* MOVE.m */,
+				B045E11118F44BB100898CFB /* TDLCell.h */,
+				B045E11218F44BB100898CFB /* TDLCell.m */,
 				B045E10E18F44B9100898CFB /* TDLTableViewController.h */,
 				B045E10F18F44B9100898CFB /* TDLTableViewController.m */,
 				B045E11418F44CFB00898CFB /* Tableview */,
@@ -162,8 +164,6 @@
 		B045E11418F44CFB00898CFB /* Tableview */ = {
 			isa = PBXGroup;
 			children = (
-				B045E11118F44BB100898CFB /* TDLTableViewCell.h */,
-				B045E11218F44BB100898CFB /* TDLTableViewCell.m */,
 			);
 			name = Tableview;
 			sourceTree = "<group>";
@@ -265,7 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B02C974218F5D4300025101D /* MOVE.m in Sources */,
-				B045E11318F44BB100898CFB /* TDLTableViewCell.m in Sources */,
+				B045E11318F44BB100898CFB /* TDLCell.m in Sources */,
 				B045E11018F44B9100898CFB /* TDLTableViewController.m in Sources */,
 				B045E0EC18F44B5400898CFB /* main.m in Sources */,
 				B045E0F018F44B5400898CFB /* TDLAppDelegate.m in Sources */,
