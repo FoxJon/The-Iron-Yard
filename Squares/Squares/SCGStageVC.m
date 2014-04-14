@@ -51,23 +51,29 @@
 {
     [super viewDidLoad]; //when the view controller loads on the screen
     
-    gameSize = 4;
+    gameSize = 6;
     
     float circleWidth = SCREEN_WIDTH / gameSize;
-    float squareWidth = circleWidth /2;
+    float squareWidth = circleWidth /1.25;
+    float squareOffset = circleWidth - ( squareWidth / 2 );
     
     //create squares
     for (int sRow = 0; sRow < gameSize - 1; sRow++)
     {
         for (int sCol = 0; sCol < gameSize - 1; sCol++)
         {
-            float squareX = ((circleWidth - squareWidth) * 1.5) + (circleWidth * sCol);
-            float squareY = ((circleWidth - squareWidth) * 1.5) + (circleWidth * sRow) + ((SCREEN_HEIGHT - SCREEN_WIDTH) / 2);
+//            float squareX = ((circleWidth - squareWidth) * 1.5) + (circleWidth * sCol);
+//            float squareY = ((circleWidth - squareWidth) * 1.5) + (circleWidth * sRow) + ((SCREEN_HEIGHT - SCREEN_WIDTH) / 2);
+            
+            float squareX = squareOffset + (circleWidth * sCol);
+            float squareY = squareOffset + (circleWidth * sRow) + ((SCREEN_HEIGHT - SCREEN_WIDTH) / 2);
             
             SCGSquare * square = [[SCGSquare alloc] initWithFrame:CGRectMake(squareX, squareY, squareWidth, squareWidth)];
         
-            square.backgroundColor = [UIColor lightGrayColor];
+            square.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.006f];
+            square.layer.cornerRadius = 10;
             
+
             NSString * key = [NSString stringWithFormat:@"c%dr%d",sCol,sRow]; //0,1 will say c0r1
 
             allSquares[key] = square;
@@ -104,7 +110,11 @@
     NSString * key = [NSString stringWithFormat:@"c%dr%d", (int)position.x, (int)position.y];
     
     //set player num to value in tapped dots
-    tappedDots[key] = @(playerTurn);
+//    if (tappedDots[key] == (tappedDots[key])) {
+//        NSLog(@"change to grey");
+//    }else{
+        tappedDots[key] = @(playerTurn);
+//    }
     
     // set player num to value in tappedDots
     [self checkForSquareAroundPosition:position];
