@@ -13,6 +13,9 @@
 {
     int gameSize;
     
+    UIView * home;
+    UIView * gameBoard;
+    
     NSArray * playerColors;
     
     int playerTurn;
@@ -25,6 +28,8 @@
     NSString * topRightDot;
     NSString * bottomLeftDot;
     NSString * bottomRightDot;
+    UIButton * startButton;
+    UIButton * homeButton;
 
 }
 
@@ -34,15 +39,13 @@
     if (self) {
         // Custom initialization
         
-        playerColors = @[BLUE_COLOR, ORANGE_COLOR];     // O is blue, 1 is orange, 2 is grey
+        playerColors = @[RED_COLOR, GREEN_COLOR];     // O is red, 1 is green, 2 is grey
         
         playerTurn = 0;
         
         tappedDots = [@{}mutableCopy];
         
         allSquares = [@{}mutableCopy];
-
-        
     }
     return self;
 }
@@ -51,10 +54,42 @@
 {
     [super viewDidLoad]; //when the view controller loads on the screen
     
+    home = [[UIView alloc]initWithFrame:CGRectMake(0,0,SCREEN_WIDTH, SCREEN_HEIGHT)];
+    home.backgroundColor = [UIColor colorWithRed:58/255.0f green:215/255.0f blue:232/255.0f alpha:1.0f]; //teal color
+    
+    startButton = [[UIButton alloc] initWithFrame:CGRectMake(110, (SCREEN_HEIGHT * 0.85), 100, 30)];
+    [startButton setTitle:@"START" forState:UIControlStateNormal];
+    [startButton addTarget:self action:@selector(loadGameBoard) forControlEvents:UIControlEventTouchUpInside];
+    startButton.backgroundColor = [UIColor darkGrayColor];
+    startButton.layer.cornerRadius = 6;
+
+    [home addSubview:startButton];
+    [self.view addSubview:home];
+    
+}
+
+-(void) loadGameBoard{
+
+    gameBoard = [[UIView alloc]initWithFrame:CGRectMake(0,0,SCREEN_WIDTH, SCREEN_HEIGHT)];
+    gameBoard.backgroundColor = [UIColor colorWithRed:58/255.0f green:215/255.0f blue:232/255.0f alpha:1.0f];
+    
+    [self.view insertSubview:gameBoard belowSubview:home];
+    
+    [home removeFromSuperview];
+    
+    homeButton = [[UIButton alloc] initWithFrame:CGRectMake(110, (SCREEN_HEIGHT * 0.10), 100, 30)];
+    
+    [homeButton setTitle:@"HOME" forState:UIControlStateNormal];
+    [homeButton addTarget:self action:@selector(viewDidLoad) forControlEvents:UIControlEventTouchUpInside];
+    homeButton.backgroundColor = [UIColor darkGrayColor];
+    homeButton.layer.cornerRadius = 6;
+    
+    [gameBoard addSubview:homeButton];
+    
     gameSize = 6;
     
     float circleWidth = SCREEN_WIDTH / gameSize;
-    float squareWidth = circleWidth /1.25;
+    float squareWidth = circleWidth /1.1;
     float squareOffset = circleWidth - ( squareWidth / 2 );
     
     //create squares
@@ -62,46 +97,47 @@
     {
         for (int sCol = 0; sCol < gameSize - 1; sCol++)
         {
-//            float squareX = ((circleWidth - squareWidth) * 1.5) + (circleWidth * sCol);
-//            float squareY = ((circleWidth - squareWidth) * 1.5) + (circleWidth * sRow) + ((SCREEN_HEIGHT - SCREEN_WIDTH) / 2);
+            //            float squareX = ((circleWidth - squareWidth) * 1.5) + (circleWidth * sCol);
+            //            float squareY = ((circleWidth - squareWidth) * 1.5) + (circleWidth * sRow) + ((SCREEN_HEIGHT - SCREEN_WIDTH) / 2);
             
             float squareX = squareOffset + (circleWidth * sCol);
             float squareY = squareOffset + (circleWidth * sRow) + ((SCREEN_HEIGHT - SCREEN_WIDTH) / 2);
             
             SCGSquare * square = [[SCGSquare alloc] initWithFrame:CGRectMake(squareX, squareY, squareWidth, squareWidth)];
-        
-            square.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.006f];
-            square.layer.cornerRadius = 10;
             
-
+            square.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
+            square.layer.cornerRadius = 0;
+            
+            
             NSString * key = [NSString stringWithFormat:@"c%dr%d",sCol,sRow]; //0,1 will say c0r1
-
+            
             allSquares[key] = square;
             
             [self.view addSubview:square];
-                                      
+            
         }
     }
     
     //create circles
     for (int row = 0; row < gameSize; row++){
         for (int col = 0; col < gameSize; col++){
-        
-        float circleX = circleWidth * col;
-        float circleY = (circleWidth * row) + ((SCREEN_HEIGHT - SCREEN_WIDTH) / 2);
-        
-        SCGCircle * circle = [[SCGCircle alloc]initWithFrame:CGRectMake(circleX, circleY, circleWidth, circleWidth)];
-        
-        circle.position = (CGPoint){col,row};
-        circle.delegate = self;
-        
-        NSString * key = [NSString stringWithFormat:@"c%dr%d",col,row]; //0,1 will say c0r1
-        
-        tappedDots[key] = @2;
-        
-        [self.view addSubview:circle];
+            
+            float circleX = circleWidth * col;
+            float circleY = (circleWidth * row) + ((SCREEN_HEIGHT - SCREEN_WIDTH) / 2);
+            
+            SCGCircle * circle = [[SCGCircle alloc]initWithFrame:CGRectMake(circleX, circleY, circleWidth, circleWidth)];
+            
+            circle.position = (CGPoint){col,row};
+            circle.delegate = self;
+            
+            NSString * key = [NSString stringWithFormat:@"c%dr%d",col,row]; //0,1 will say c0r1
+            
+            tappedDots[key] = @2;
+            
+            [self.view addSubview:circle];
         }
     }
+    
 }
 
 -(UIColor *)circleTappedWithPosition:(CGPoint)position{
