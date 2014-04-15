@@ -9,6 +9,7 @@
 #import "SCGStageVC.h"
 #import "SCGSquare.h"
 #import "SCGBackgroundLayer.h"
+#import "MOVE.h"
 
 @implementation SCGStageVC
 {
@@ -31,6 +32,13 @@
     NSString * bottomRightDot;
     UIButton * startButton;
     UIButton * homeButton;
+    UILabel * titleLabel;
+    UIButton *playerButton;
+    UIButton * gridSize;
+    UILabel *player1Label;
+    UILabel *player2Label;
+    UILabel *player1Dot;
+    UILabel *player2Dot;
 
 }
 
@@ -40,7 +48,7 @@
     if (self) {
         // Custom initialization
         
-        playerColors = @[RED_COLOR, GREEN_COLOR];     // O is red, 1 is green, 2 is grey
+        playerColors = @[LIGHTBLUE_COLOR, DARKBLUE_COLOR];     // O is lightblue, 1 is darkblue, 2 is white
         
         playerTurn = 0;
         
@@ -56,8 +64,7 @@
     [super viewDidLoad]; //when the view controller loads on the screen
     
     gameBoard = [[UIView alloc]initWithFrame:CGRectMake(0,0,SCREEN_WIDTH, SCREEN_HEIGHT)];
-    startButton = [[UIButton alloc] initWithFrame:CGRectMake(110, (SCREEN_HEIGHT * 0.85), 100, 30)];
-    homeButton = [[UIButton alloc] initWithFrame:CGRectMake(110, (SCREEN_HEIGHT * 0.10), 100, 30)];
+    homeButton = [[UIButton alloc] initWithFrame:CGRectMake(280, (SCREEN_HEIGHT * 0.03), 18, 18)];
 
     [self loadGameBoard];
     
@@ -69,31 +76,107 @@
 }
 
 -(void) loadGameBoard{
-    
+   
+    [homeButton removeFromSuperview];
+    [player1Label removeFromSuperview];
+    [player2Label removeFromSuperview];
+    [player1Dot removeFromSuperview];
+    [player2Dot removeFromSuperview];
+
     CAGradientLayer *bgLayer = [SCGBackgroundLayer blueGradient];
     bgLayer.frame = gameBoard.bounds;
     [gameBoard.layer insertSublayer:bgLayer atIndex:0];
     
     [self.view addSubview:gameBoard];
     
+    startButton = [[UIButton alloc] initWithFrame:CGRectMake(110, (SCREEN_HEIGHT * 0.99), 100, 30)];
     [startButton setTitle:@"START" forState:UIControlStateNormal];
     [startButton addTarget:self action:@selector(loadGameElements) forControlEvents:UIControlEventTouchUpInside];
     startButton.backgroundColor = [UIColor darkGrayColor];
     startButton.layer.cornerRadius = 6;
     [gameBoard addSubview:startButton];
+    [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"duration" : @.8}];
+    [MOVE animateView:startButton properties:@{@"alpha":@1.0, @"duration":@0.8,@"delay":@0.0}];
+    
+    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 50, 200, 200)];
+    titleLabel.backgroundColor = [UIColor lightGrayColor];
+    [gameBoard addSubview:titleLabel];
+
+    playerButton = [[UIButton alloc] initWithFrame:CGRectMake(60, (SCREEN_HEIGHT * 0.99), 200, 30)];
+    [playerButton setTitle:@"1 PLAYER | 2 PLAYER" forState:UIControlStateNormal];
+    [playerButton addTarget:self action:@selector(loadGameElements) forControlEvents:UIControlEventTouchUpInside];
+    playerButton.backgroundColor = [UIColor darkGrayColor];
+    playerButton.layer.cornerRadius = 6;
+    [gameBoard addSubview:playerButton];
+    [MOVE animateView:playerButton properties:@{@"y": @(SCREEN_HEIGHT * 0.65),@"duration" : @.8}];
+    [MOVE animateView:playerButton properties:@{@"alpha":@1.0, @"duration":@0.8,@"delay":@0.0}];
+
+    
+    gridSize = [[UIButton alloc] initWithFrame:CGRectMake(125, (SCREEN_HEIGHT * 0.99), 70, 30)];
+    [gridSize setTitle:@"4 | 6 | 8" forState:UIControlStateNormal];
+    [gridSize addTarget:self action:@selector(loadGameElements) forControlEvents:UIControlEventTouchUpInside];
+    gridSize.backgroundColor = [UIColor darkGrayColor];
+    gridSize.layer.cornerRadius = 6;
+    [gameBoard addSubview:gridSize];
+    [MOVE animateView:gridSize properties:@{@"y": @(SCREEN_HEIGHT * 0.75),@"duration" : @.8}];
+    [MOVE animateView:gridSize properties:@{@"alpha":@1.0, @"duration":@0.8,@"delay":@0.0}];
+    
+}
+- (void)checkGameSize{
+    
+    gameSize = 6;
+
 }
 
 -(void)loadGameElements{
     
     [startButton removeFromSuperview];
-   
-    [homeButton setTitle:@"HOME" forState:UIControlStateNormal];
-    [homeButton addTarget:self action:@selector(viewDidLoad) forControlEvents:UIControlEventTouchUpInside];
-    homeButton.backgroundColor = [UIColor darkGrayColor];
+    [titleLabel removeFromSuperview];
+    [playerButton removeFromSuperview];
+    [gridSize removeFromSuperview];
+
+    [homeButton setTitle:@"H" forState:UIControlStateNormal];
+    [homeButton addTarget:self action:@selector(loadGameBoard) forControlEvents:UIControlEventTouchUpInside];
+    homeButton.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
     homeButton.layer.cornerRadius = 6;
     [gameBoard addSubview:homeButton];
+    
+    player1Label = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.03), 90, 18)];
+    player1Label.text = @" PLAYER 1";
+    player1Label.textColor = [UIColor whiteColor];
+    player1Label.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
+    player1Label.layer.cornerRadius = 6;
+    player1Label.layer.masksToBounds = YES;
+    [gameBoard addSubview:player1Label];
+    [MOVE animateView:player1Label properties:@{@"x": @20,@"duration" : @1.0}];
+    
+    player1Dot = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.03), 18, 18)];
+    player1Dot.backgroundColor = LIGHTBLUE_COLOR;
+    player1Dot.layer.cornerRadius = 9;
+    player1Dot.layer.masksToBounds = YES;
+    [gameBoard addSubview:player1Dot];
+    [MOVE animateView:player1Dot properties:@{@"x": @120,@"duration" : @1.0}];
+    
+    player2Label = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.08), 90, 18)];
+    player2Label.text = @" PLAYER 2";
+    player2Label.textColor = [UIColor whiteColor];
+    player2Label.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
+    player2Label.layer.cornerRadius = 6;
+    player2Label.layer.masksToBounds = YES;
+    [gameBoard addSubview:player2Label];
+    [MOVE animateView:player2Label properties:@{@"x": @20,@"duration" : @1.0}];
+    
+    player2Dot = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.08), 18, 18)];
+    player2Dot.backgroundColor = DARKBLUE_COLOR;
+    player2Dot.layer.cornerRadius = 9;
+    player2Dot.layer.masksToBounds = YES;
+    [gameBoard addSubview:player2Dot];
+    [MOVE animateView:player2Dot properties:@{@"x": @120,@"duration" : @1.0}];
 
-    gameSize = 6;
+
+
+
+    [self checkGameSize];
     
     float circleWidth = SCREEN_WIDTH / gameSize;
     float squareWidth = circleWidth /1.1;
@@ -120,6 +203,7 @@
             
             allSquares[key] = square;
             
+            [MOVE animateView:square properties:@{@"alpha":@1.0, @"duration":@2.0,@"delay":@.5}];
             [self.view addSubview:square];
             
         }
@@ -141,6 +225,7 @@
             
             tappedDots[key] = @2;
             
+            [MOVE animateView:circle properties:@{@"alpha":@1, @"duration":@0.2,@"delay":@0.3}];
             [self.view addSubview:circle];
         }
     }
