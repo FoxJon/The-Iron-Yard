@@ -66,12 +66,12 @@
     gameBoard = [[UIView alloc]initWithFrame:CGRectMake(0,0,SCREEN_WIDTH, SCREEN_HEIGHT)];
     homeButton = [[UIButton alloc] initWithFrame:CGRectMake(280, (SCREEN_HEIGHT * 0.03), 18, 18)];
 
-    [self loadGameBoard];
     
 }
 
--(void) viewWillAppear:(BOOL)animated {
-   
+-(void) viewDidAppear:(BOOL)animated {
+    [self loadGameBoard];
+
 
 }
 
@@ -94,22 +94,24 @@
     [startButton addTarget:self action:@selector(loadGameElements) forControlEvents:UIControlEventTouchUpInside];
     startButton.backgroundColor = [UIColor darkGrayColor];
     startButton.layer.cornerRadius = 6;
+    startButton.alpha = 0;
     [gameBoard addSubview:startButton];
-    [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"duration" : @.8}];
-    [MOVE animateView:startButton properties:@{@"alpha":@1.0, @"duration":@0.8,@"delay":@0.0}];
+//    [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"duration" : @.8}];
+    [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"alpha":@1.0, @"duration":@1.0}];
     
     titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 50, 200, 200)];
     titleLabel.backgroundColor = [UIColor lightGrayColor];
     [gameBoard addSubview:titleLabel];
 
     playerButton = [[UIButton alloc] initWithFrame:CGRectMake(60, (SCREEN_HEIGHT * 0.99), 200, 30)];
-    [playerButton setTitle:@"1 PLAYER | 2 PLAYER" forState:UIControlStateNormal];
+    [playerButton setTitle:@"1 PLAYER | 2 PLAYERS" forState:UIControlStateNormal];
     [playerButton addTarget:self action:@selector(loadGameElements) forControlEvents:UIControlEventTouchUpInside];
     playerButton.backgroundColor = [UIColor darkGrayColor];
     playerButton.layer.cornerRadius = 6;
+    playerButton.alpha = 0;
     [gameBoard addSubview:playerButton];
-    [MOVE animateView:playerButton properties:@{@"y": @(SCREEN_HEIGHT * 0.65),@"duration" : @.8}];
-    [MOVE animateView:playerButton properties:@{@"alpha":@1.0, @"duration":@0.8,@"delay":@0.0}];
+   // [MOVE animateView:playerButton properties:@{@"y": @(SCREEN_HEIGHT * 0.65),@"duration" : @.8}];
+    [MOVE animateView:playerButton properties:@{@"y": @(SCREEN_HEIGHT * 0.65),@"alpha":@1.0, @"duration":@1.0}];
 
     
     gridSize = [[UIButton alloc] initWithFrame:CGRectMake(125, (SCREEN_HEIGHT * 0.99), 70, 30)];
@@ -117,9 +119,10 @@
     [gridSize addTarget:self action:@selector(loadGameElements) forControlEvents:UIControlEventTouchUpInside];
     gridSize.backgroundColor = [UIColor darkGrayColor];
     gridSize.layer.cornerRadius = 6;
+    gridSize.alpha = 0;
     [gameBoard addSubview:gridSize];
-    [MOVE animateView:gridSize properties:@{@"y": @(SCREEN_HEIGHT * 0.75),@"duration" : @.8}];
-    [MOVE animateView:gridSize properties:@{@"alpha":@1.0, @"duration":@0.8,@"delay":@0.0}];
+    //[MOVE animateView:gridSize properties:@{@"y": @(SCREEN_HEIGHT * 0.75),@"duration" : @.8}];
+    [MOVE animateView:gridSize properties:@{@"y": @(SCREEN_HEIGHT * 0.75),@"alpha":@1.0, @"duration":@1.0}];
     
 }
 - (void)checkGameSize{
