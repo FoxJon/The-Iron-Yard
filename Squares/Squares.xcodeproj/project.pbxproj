@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B039D4D918FCAF8600F64AFA /* SCGBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B039D4D818FCAF8600F64AFA /* SCGBackgroundLayer.m */; };
 		B0AC0A0318F8247200A38715 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AC0A0218F8247200A38715 /* Foundation.framework */; };
 		B0AC0A0518F8247200A38715 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AC0A0418F8247200A38715 /* CoreGraphics.framework */; };
 		B0AC0A0718F8247200A38715 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AC0A0618F8247200A38715 /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B039D4D718FCAF8600F64AFA /* SCGBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGBackgroundLayer.h; sourceTree = "<group>"; };
+		B039D4D818FCAF8600F64AFA /* SCGBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGBackgroundLayer.m; sourceTree = "<group>"; };
 		B0AC09FF18F8247200A38715 /* ▢s & ◯s.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "▢s & ◯s.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0AC0A0218F8247200A38715 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B0AC0A0418F8247200A38715 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -169,6 +172,8 @@
 		B0AC0A3218F8273500A38715 /* Random */ = {
 			isa = PBXGroup;
 			children = (
+				B039D4D718FCAF8600F64AFA /* SCGBackgroundLayer.h */,
+				B039D4D818FCAF8600F64AFA /* SCGBackgroundLayer.m */,
 			);
 			name = Random;
 			path = Squares;
@@ -286,6 +291,7 @@
 				B0AC0A1318F8247200A38715 /* SCGAppDelegate.m in Sources */,
 				B0AC0A0F18F8247200A38715 /* main.m in Sources */,
 				B0AC0A3518F8280700A38715 /* SCGStageVC.m in Sources */,
+				B039D4D918FCAF8600F64AFA /* SCGBackgroundLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,6 +492,7 @@
 				B0AC0A2D18F8247200A38715 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B0AC0A2E18F8247200A38715 /* Build configuration list for PBXNativeTarget "SquaresTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +501,7 @@
 				B0AC0A3018F8247200A38715 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

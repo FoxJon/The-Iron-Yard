@@ -8,12 +8,13 @@
 
 #import "SCGStageVC.h"
 #import "SCGSquare.h"
+#import "SCGBackgroundLayer.h"
 
 @implementation SCGStageVC
 {
     int gameSize;
     
-    UIView * home;
+   // UIView * home;
     UIView * gameBoard;
     
     NSArray * playerColors;
@@ -54,38 +55,44 @@
 {
     [super viewDidLoad]; //when the view controller loads on the screen
     
-    home = [[UIView alloc]initWithFrame:CGRectMake(0,0,SCREEN_WIDTH, SCREEN_HEIGHT)];
-    home.backgroundColor = [UIColor colorWithRed:58/255.0f green:215/255.0f blue:232/255.0f alpha:1.0f]; //teal color
-    
+    gameBoard = [[UIView alloc]initWithFrame:CGRectMake(0,0,SCREEN_WIDTH, SCREEN_HEIGHT)];
     startButton = [[UIButton alloc] initWithFrame:CGRectMake(110, (SCREEN_HEIGHT * 0.85), 100, 30)];
-    [startButton setTitle:@"START" forState:UIControlStateNormal];
-    [startButton addTarget:self action:@selector(loadGameBoard) forControlEvents:UIControlEventTouchUpInside];
-    startButton.backgroundColor = [UIColor darkGrayColor];
-    startButton.layer.cornerRadius = 6;
+    homeButton = [[UIButton alloc] initWithFrame:CGRectMake(110, (SCREEN_HEIGHT * 0.10), 100, 30)];
 
-    [home addSubview:startButton];
-    [self.view addSubview:home];
+    [self loadGameBoard];
     
 }
 
--(void) loadGameBoard{
+-(void) viewWillAppear:(BOOL)animated {
+   
 
-    gameBoard = [[UIView alloc]initWithFrame:CGRectMake(0,0,SCREEN_WIDTH, SCREEN_HEIGHT)];
-    gameBoard.backgroundColor = [UIColor colorWithRed:58/255.0f green:215/255.0f blue:232/255.0f alpha:1.0f];
+}
+
+-(void) loadGameBoard{
     
-    [self.view insertSubview:gameBoard belowSubview:home];
+    CAGradientLayer *bgLayer = [SCGBackgroundLayer blueGradient];
+    bgLayer.frame = gameBoard.bounds;
+    [gameBoard.layer insertSublayer:bgLayer atIndex:0];
     
-    [home removeFromSuperview];
+    [self.view addSubview:gameBoard];
     
-    homeButton = [[UIButton alloc] initWithFrame:CGRectMake(110, (SCREEN_HEIGHT * 0.10), 100, 30)];
+    [startButton setTitle:@"START" forState:UIControlStateNormal];
+    [startButton addTarget:self action:@selector(loadGameElements) forControlEvents:UIControlEventTouchUpInside];
+    startButton.backgroundColor = [UIColor darkGrayColor];
+    startButton.layer.cornerRadius = 6;
+    [gameBoard addSubview:startButton];
+}
+
+-(void)loadGameElements{
     
+    [startButton removeFromSuperview];
+   
     [homeButton setTitle:@"HOME" forState:UIControlStateNormal];
     [homeButton addTarget:self action:@selector(viewDidLoad) forControlEvents:UIControlEventTouchUpInside];
     homeButton.backgroundColor = [UIColor darkGrayColor];
     homeButton.layer.cornerRadius = 6;
-    
     [gameBoard addSubview:homeButton];
-    
+
     gameSize = 6;
     
     float circleWidth = SCREEN_WIDTH / gameSize;
