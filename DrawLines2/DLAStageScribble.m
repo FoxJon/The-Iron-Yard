@@ -9,12 +9,7 @@
 #import "DLAStageScribble.h"
 
 @implementation DLAStageScribble
-{
-    NSMutableArray * scribbles;
-    UIButton * redButton;
-    UIButton * blueButton;
-    UIButton * greenButton;
-}
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -26,33 +21,28 @@
         self.lineColor = [UIColor colorWithWhite:0.3 alpha:1.0];
        
         // Initialization code
-        scribbles = [@[]mutableCopy];
+        self.lines = [@[]mutableCopy];
         
-        //self.backgroundColor = [UIColor whiteColor];
-        
-//        redButton = [[UIButton alloc] initWithFrame:CGRectMake(55, (SCREEN_HEIGHT * 0.89), 50 , 50)];
-//        redButton.backgroundColor = [UIColor redColor];
-//        redButton.layer.cornerRadius = 6;
-//        [redButton addTarget:self action:@selector(changeLineColor:) forControlEvents:UIControlEventTouchUpInside];
-//        [self addSubview:redButton];
-//        
-//        blueButton = [[UIButton alloc] initWithFrame:CGRectMake(135, (SCREEN_HEIGHT * 0.89), 50 , 50)];
-//        blueButton.backgroundColor = [UIColor blueColor];
-//        blueButton.layer.cornerRadius = 6;
-//        [blueButton addTarget:self action:@selector(changeLineColor:) forControlEvents:UIControlEventTouchUpInside];
-//        [self addSubview:blueButton];
-//        
-//        greenButton = [[UIButton alloc] initWithFrame:CGRectMake(215, (SCREEN_HEIGHT * 0.89), 50 , 50)];
-//        greenButton.backgroundColor = [UIColor greenColor];
-//        greenButton.layer.cornerRadius = 6;
-//        [greenButton addTarget:self action:@selector(changeLineColor:) forControlEvents:UIControlEventTouchUpInside];
-//        [self addSubview:greenButton];
-        
-        
-
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
+
+-(void)clearStage{
+    NSLog(@"Clear Here");
+
+    [self.lines removeAllObjects];
+    [self setNeedsDisplay];
+}
+
+-(void)undo{
+    NSLog(@"Undo Here");
+
+    [self.lines removeLastObject];
+    [self setNeedsDisplay];
+}
+
+
 -(void)setLineWidth:(float)lineWidth{
     _lineWidth = lineWidth;
     [self setNeedsDisplay];
@@ -78,23 +68,29 @@
     // Drawing code
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    //[[UIColor cyanColor] set];
-    
     CGContextSetLineCap(context, kCGLineCapRound);
-    CGContextSetLineWidth(context, self.lineWidth);
+    CGContextSetLineJoin(context, kCGLineJoinRound);
     
+    CGContextMoveToPoint(context, 50, 50);
+    CGContextAddCurveToPoint(context, 270, 50, 270, 400, 50, 400);    //control"anchor" point
+    
+//    CGContextAddEllipseInRect(<#CGContextRef context#>, <#CGRect rect#>);
+//    CGContextFillPath(<#CGContextRef c#>);
+    
+    CGContextSetLineWidth(context, self.lineWidth);
     [self.lineColor set];
+
+    CGContextStrokePath(context);                           // can fill it or stroke it
 
    // CGContextClearRect(context, rect);            //clears the context
 
 
-    for (NSDictionary * scribble in scribbles) {
-       // CGContextSetStrokeColorWithColor(context, [self randomColor].CGColor);
+    for (NSDictionary * line in self.lines) {
         
-        CGContextSetLineWidth(context, [scribble[@"width"] floatValue]);
-        [(UIColor * )scribble[@"color"] set];
+        CGContextSetLineWidth(context, [line[@"width"] floatValue]);
+        [(UIColor * )line[@"color"] set];
         
-        NSArray * points = scribble[@"points"];
+        NSArray * points = line[@"points"];
         
         CGPoint start = [points[0] CGPointValue];
         
@@ -102,12 +98,9 @@
         
         for (NSValue * value in points) {
             
-            //int index = [scribble indexOfObject:value];
             CGPoint point = [value CGPointValue];
-            //if (index > 0) CGContextAddLineToPoint(context, point.x, point.y);
             CGContextAddLineToPoint(context, point.x, point.y);
         }
-        CGContextStrokePath(context);                           // can fill it or stroke it
     }
     
 }
@@ -116,7 +109,7 @@
     for (UITouch * touch in touches) {
         CGPoint location = [touch locationInView:self];
         
-        [scribbles addObject:[@{
+        [self.lines addObject:[@{
                                 @"color" : self.lineColor,
                                 @"width" : @(self.lineWidth),
                                 @"points" : [@[[NSValue valueWithCGPoint:location]]mutableCopy]
@@ -127,42 +120,21 @@
     }
     [self setNeedsDisplay];
  }
-//-(UIColor *)randomColor
-//{
-//    CGFloat red = arc4random_uniform(255) / 255.0;
-//    CGFloat green = arc4random_uniform(255) / 255.0;
-//    CGFloat blue = arc4random_uniform(255) / 255.0;
-//    UIColor *color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0];
-//    //NSLog(@"%@", color);
-//    return color;
-//}
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
-    for (UITouch * touch in touches) {
-        CGPoint location = [touch locationInView:self];
-        
-//        [[scribbles lastObject] addObject:[NSValue valueWithCGPoint:location]];
-
-        [[scribbles lastObject] [@"points"] addObject:[NSValue valueWithCGPoint:location]];
-
-        NSLog(@"TOUCHES MOVED X = %f Y = %f", location.x, location.y);
-
-    }
-    [self setNeedsDisplay];
+    [self doTouch:touches];
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    for (UITouch * touch in touches) {
-        CGPoint location = [touch locationInView:self];
-        
-//       [[scribbles lastObject] addObject:[NSValue valueWithCGPoint:location]];
-        
-        [[scribbles lastObject] [@"points"] addObject:[NSValue valueWithCGPoint:location]];
-
-        NSLog(@"TOUCHES ENDED X = %f Y = %f", location.x, location.y);
-
-    }
+    
+    [self doTouch:touches];
+}
+-(void)doTouch:(NSSet *)touches{
+    UITouch * touch = [touches allObjects] [0];
+    CGPoint location = [touch locationInView:self];
+    [[self.lines lastObject][@"points"] addObject:[NSValue valueWithCGPoint:location]];
     [self setNeedsDisplay];
+    
 }
 
 
