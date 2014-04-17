@@ -23,7 +23,7 @@
         // Initialization code
         self.lines = [@[]mutableCopy];
         
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor blackColor];
     }
     return self;
 }
@@ -72,23 +72,41 @@
     CGContextSetLineJoin(context, kCGLineJoinRound);
  
    // CGContextSetFillColor(context, CGColorGetComponents([[UIColor redColor] CGColor]));
-    CGContextSetFillColorWithColor(context, [[UIColor redColor] CGColor]);  //Fills a square.
-    CGContextFillRect(context, CGRectMake(100, 200, 100, 100));             //clears current path
+//    CGContextSetFillColorWithColor(context, [UIColor redColor].CGColor);  //Fills a square.
+//    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
+//    CGContextFillRect(context, CGRectMake(100, 200, 100, 100));             //clears current path
+//    
+//    
+//    CGContextAddEllipseInRect(context, CGRectMake(100, 75, 100, 75));   //draws an elipse
+//    CGContextFillPath(context);                                         //fills current path. clears current path
+//    
+//    CGContextAddRect(context, CGRectMake(100, 100, 100, 100));          //draws an empty square
     
-    
-    CGContextAddEllipseInRect(context, CGRectMake(100, 75, 100, 75));   //draws an elipse
-    CGContextFillPath(context);                                         //fills current path. clears current path
-    
-    CGContextAddRect(context, CGRectMake(100, 100, 100, 100));          //draws an empty square
+    CGContextSetLineWidth(context, 20.0);
+    [[UIColor redColor] set];
+    CGContextFillEllipseInRect(context, CGRectMake(100, 100, 100, 100));
+    [[UIColor colorWithWhite:1.0 alpha:0.5]set];
+    CGContextStrokeEllipseInRect(context, CGRectMake(150, 100, 100, 100));
+    CGContextAddEllipseInRect(context, CGRectMake(200, 100, 100, 100));
 
+//    
+//    CGContextMoveToPoint(context, 100, 200);
+//    CGContextAddCurveToPoint(context, 150, 100, 150, 100, 200, 200);    //control"anchor" point
+//    
+//    CGContextMoveToPoint(context, 150, 150);
+//    CGContextAddArc(context, 100.0, 300.0, 90.0, 90.0, M_PI/2.0, false);
+//    CGContextAddArc(context, 250.0, 250.0, 30.0, 3.0*M_PI/2.0, M_PI, true);
     
-    CGContextMoveToPoint(context, 100, 200);
-    CGContextAddCurveToPoint(context, 150, 100, 150, 100, 200, 200);    //control"anchor" point
+    CGContextMoveToPoint(context, 50, 50);
     
-    CGContextMoveToPoint(context, 150, 150);
-    CGContextAddArc(context, 100.0, 300.0, 90.0, 90.0, M_PI/2.0, false);
-    CGContextAddArc(context, 250.0, 250.0, 30.0, 3.0*M_PI/2.0, M_PI, true);
+    CGContextAddLineToPoint(context, 100, 100);
+    CGContextAddLineToPoint(context, 100, 150);
     
+    CGContextAddLineToPoint(context, 50, 150);
+    CGContextAddLineToPoint(context, 50, 50);
+    
+    CGContextStrokePath(context);                         // can use stroke or fill
+//    
     
     CGContextSetLineWidth(context, self.lineWidth);
     [self.lineColor set];

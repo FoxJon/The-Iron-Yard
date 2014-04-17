@@ -138,6 +138,7 @@
     
     if ([scribbleView isMemberOfClass:[DLAStageScribble class]]) {
         scribbleView = [[DLAStageLines alloc] initWithFrame:self.view.frame];
+        
     } else {
         scribbleView = [[DLAStageScribble alloc] initWithFrame:self.view.frame];
     }
