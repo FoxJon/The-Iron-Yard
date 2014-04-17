@@ -49,6 +49,8 @@
     slider.minimumValue = 2.0;
     slider.maximumValue = 20.0;
     slider.value = lineWidth;
+    slider.transform = CGAffineTransformMakeRotation(3 * M_PI / 2);
+    slider.frame = CGRectMake(SCREEN_WIDTH - 43, SCREEN_HEIGHT - 400, 23, 280);
     
     [slider addTarget:self action:@selector(changeSize:) forControlEvents:UIControlEventValueChanged];
     
