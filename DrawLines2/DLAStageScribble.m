@@ -23,7 +23,7 @@
         // Initialization code
         self.lines = [@[]mutableCopy];
         
-        self.backgroundColor = [UIColor whiteColor];
+        self.backgroundColor = [UIColor blackColor];
     }
     return self;
 }
@@ -59,9 +59,9 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 
--(void)changeLineColor: (UIButton *) sender{
-    [self setLineColor:sender.backgroundColor];
-}
+//-(void)changeLineColor: (UIButton *) sender{
+//    [self setLineColor:sender.backgroundColor];
+//}
 
 - (void)drawRect:(CGRect)rect
 {
@@ -73,16 +73,19 @@
     
     CGContextMoveToPoint(context, 50, 50);
     CGContextAddCurveToPoint(context, 270, 50, 270, 400, 50, 400);    //control"anchor" point
+
     
-//    CGContextAddEllipseInRect(<#CGContextRef context#>, <#CGRect rect#>);
-//    CGContextFillPath(<#CGContextRef c#>);
+//    CGContextFillRect(context, CGRectMake(100, 100, 100, 100));
+//    CGContextSetFillColor(context, CGColorGetComponents([[UIColor whiteColor] CGColor]));
+//    CGContextFillPath(context);
+    
     
     CGContextSetLineWidth(context, self.lineWidth);
     [self.lineColor set];
 
-    CGContextStrokePath(context);                           // can fill it or stroke it
 
    // CGContextClearRect(context, rect);            //clears the context
+    
 
 
     for (NSDictionary * line in self.lines) {
@@ -101,8 +104,9 @@
             CGPoint point = [value CGPointValue];
             CGContextAddLineToPoint(context, point.x, point.y);
         }
+        CGContextStrokePath(context);                           // can fill it or stroke it
+
     }
-    
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
