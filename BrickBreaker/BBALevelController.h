@@ -8,8 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BBALevelController : UIViewController <UICollisionBehaviorDelegate>
+@protocol BBALevelDelegate;
+
+@interface BBALevelController : UIViewController
+
+@property (nonatomic, assign) id<BBALevelDelegate> delegate;
 
 -(void) resetLevel;
+
+@end
+
+@protocol BBALevelDelegate <NSObject>
+
+@optional
+
+-(void)addPoints: (int)points;
+-(void)addLives: (int)totalLives;
+
+-(void)gameDone;
 
 @end
