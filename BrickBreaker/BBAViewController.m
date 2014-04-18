@@ -18,6 +18,7 @@
 {
     BBALevelController * level;
     UIButton * startButton;
+    UILabel * startButtonRing;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -40,7 +41,17 @@
     [self.view addSubview:level.view];
 
     
-    startButton = [[UIButton alloc] initWithFrame:CGRectMake(100, 100, 100, 30)];
+    
+    startButtonRing = [[UILabel alloc] initWithFrame:CGRectMake((240 - 125), (160 - 75), 250, 150)];
+    startButtonRing.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.6];
+    startButtonRing.layer.cornerRadius = 6;
+    startButtonRing.alpha = 0.1;
+    startButtonRing.layer.masksToBounds = YES;
+    
+    [self.view addSubview:startButtonRing];
+
+    
+    startButton = [[UIButton alloc] initWithFrame:CGRectMake((240 - 100), (160 - 50), 200, 100)];
     
     [startButton setTitle:@"START" forState:UIControlStateNormal];
     [startButton addTarget:self action:@selector(resetNewGame) forControlEvents:UIControlEventTouchUpInside];
@@ -56,6 +67,7 @@
 - (void)resetNewGame{
     
     [startButton removeFromSuperview];
+    [startButtonRing removeFromSuperview];
     
     [level resetLevel];
     
@@ -66,16 +78,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

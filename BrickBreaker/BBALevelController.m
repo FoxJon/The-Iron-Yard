@@ -176,17 +176,17 @@
 -(void)createBricks
 {
     int brickCols = 10;
-    float brickWidth = (SCREEN_WIDTH - (10 * (brickCols + 1))) / brickCols;
+    float brickWidth = (SCREEN_WIDTH - (brickCols + 1)) / brickCols;
     //float brickWidth = SCREEN_WIDTH / brickCols;
 
  
     for (int i = 0; i < brickCols; i++)
     {
-        float brickX = ((brickWidth + 10) * i) + 10;
-        UIView * brick = [[UIView alloc]initWithFrame:CGRectMake(brickX, 10, brickWidth, 30)];
+        float brickX = ((brickWidth + 1) * i);
+        UIView * brick = [[UIView alloc]initWithFrame:CGRectMake(brickX, 10, brickWidth, 15)];
         
-        brick.layer.cornerRadius = 6;
-        brick.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1.0];
+        brick.layer.cornerRadius = 4;
+        brick.backgroundColor = [UIColor colorWithRed:0.0 green:0.0 blue:1.0 alpha:0.7];
         
         [self.view addSubview:brick];
         [self.bricks addObject:brick];
