@@ -21,6 +21,8 @@
     UILabel * buttonRing;
     UILabel * scoreLabel;
     UILabel * livesLabel;
+    UILabel * totalScoreLabel;
+    UILabel * highScoreLabel;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -78,6 +80,9 @@
     
     [startButton removeFromSuperview];
     [buttonRing removeFromSuperview];
+    [totalScoreLabel removeFromSuperview];
+    [highScoreLabel removeFromSuperview];
+
     
     [level resetLevel];
     
@@ -117,13 +122,13 @@
     
     [self.view addSubview:endButton];
     
-    UILabel * totalScoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 87, 250, 175, 20)];
+    totalScoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 87, 250, 175, 20)];
     totalScoreLabel.backgroundColor = [UIColor clearColor];
     totalScoreLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     totalScoreLabel.text = [NSString stringWithFormat:@"  TOTAL SCORE: %d", points];
     [self.view addSubview:totalScoreLabel];
 
-    UILabel * highScoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 87, 270, 175, 20)];
+    highScoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 87, 270, 175, 20)];
     highScoreLabel.backgroundColor = [UIColor clearColor];
     highScoreLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     
