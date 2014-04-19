@@ -24,7 +24,7 @@
 
 -(void)addPoints: (int)points;
 -(void)addLives: (int)totalLives;
+-(void)gameDone:(int)points;
 
--(void)gameDone;
 
 @end

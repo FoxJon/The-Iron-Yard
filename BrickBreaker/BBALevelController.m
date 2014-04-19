@@ -134,10 +134,10 @@
                 [self.collider removeItem:brick];
                 
                 brickCount += 1;
-                [self brickCounter];
+                [self statsLogger];
                 
                 points += brick.tag;
-                [self pointLogger];
+                [self statsLogger];
                 [self pointLabelWithBrick:brick];
             }
             else
@@ -164,7 +164,7 @@
          [self.collider removeItem:ball];
          
          lives += 1;
-         [self livesLogger];
+         [self statsLogger];
          
 //         if(
 //            [self.delegate respondsToSelector:@selector(gameDone)]
@@ -173,32 +173,26 @@
      }
 }
 
--(void)brickCounter
+-(void) statsLogger
+
 {
     NSLog(@"Total bricks = %d", brickCount);
 
     if (brickCount == brickCols * brickRows) {
-        [self.delegate gameDone];
+        [self.delegate gameDone:points];
     }
-    
-}
 
--(void)pointLogger
-{
     NSLog(@"SCORE = %d", points);
     [self.delegate addPoints:points];
-}
 
--(void)livesLogger
-{
     totalLives = multiball - lives;
     NSLog(@"LIVES = %d", totalLives);
-        
-    if (multiball == lives) {
-        [self.delegate addLives:lives];
-    }
-
+    [self.delegate addLives:totalLives];
+     if (multiball == lives) {
+         [self.delegate gameDone:points];
+     }
 }
+
 
 -(void)pointLabelWithBrick:(UIView *)brick
 {

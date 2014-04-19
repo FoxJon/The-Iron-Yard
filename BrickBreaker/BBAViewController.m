@@ -17,9 +17,8 @@
 {
     BBALevelController * level;
     UIButton * startButton;
-    UILabel * startButtonRing;
-    UILabel * endButtonRing;
     UIButton * endButton;
+    UILabel * buttonRing;
     UILabel * scoreLabel;
     UILabel * livesLabel;
 }
@@ -39,16 +38,13 @@
 {
     [super viewDidLoad];
     
+    buttonRing = [[UILabel alloc] initWithFrame:CGRectMake((240 - 125), (160 - 75), 250, 150)];
+    buttonRing.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.6];
+    buttonRing.layer.cornerRadius = 6;
+    buttonRing.alpha = 0.1;
+    buttonRing.layer.masksToBounds = YES;
     
-
-    
-    startButtonRing = [[UILabel alloc] initWithFrame:CGRectMake((240 - 125), (160 - 75), 250, 150)];
-    startButtonRing.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.6];
-    startButtonRing.layer.cornerRadius = 6;
-    startButtonRing.alpha = 0.1;
-    startButtonRing.layer.masksToBounds = YES;
-    
-    [self.view addSubview:startButtonRing];
+    [self.view addSubview:buttonRing];
 
     
     startButton = [[UIButton alloc] initWithFrame:CGRectMake((240 - 100), (160 - 50), 200, 100)];
@@ -59,8 +55,6 @@
     startButton.layer.cornerRadius = 6;
     
     [self.view addSubview:startButton];
-
-    
     // Do any additional setup after loading the view.
 }
 
@@ -83,7 +77,7 @@
     [self.view addSubview:level.view];
     
     [startButton removeFromSuperview];
-    [startButtonRing removeFromSuperview];
+    [buttonRing removeFromSuperview];
     
     [level resetLevel];
     
@@ -95,13 +89,58 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) gameDone{
+- (void) gameDone:(int)points
+{
     
     NSLog(@"Game Done");
     
     [level.view removeFromSuperview];
-    [self endGameWin];
 
+    [scoreLabel removeFromSuperview];
+    [livesLabel removeFromSuperview];
+    
+    buttonRing = [[UILabel alloc] initWithFrame:CGRectMake((240 - 125), (160 - 75), 250, 150)];
+    buttonRing.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.6];
+    buttonRing.layer.cornerRadius = 6;
+    buttonRing.alpha = 0.1;
+    buttonRing.layer.masksToBounds = YES;
+    
+    [self.view addSubview:buttonRing];
+    
+    
+    endButton = [[UIButton alloc] initWithFrame:CGRectMake((240 - 100), (160 - 50), 200, 100)];
+    
+    [endButton setTitle:@"GAME OVER" forState:UIControlStateNormal];
+    [endButton addTarget:self action:@selector(resetNewGame) forControlEvents:UIControlEventTouchUpInside];
+    endButton.backgroundColor = [UIColor redColor];
+    endButton.layer.cornerRadius = 6;
+    
+    [self.view addSubview:endButton];
+    
+    UILabel * totalScoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 87, 250, 175, 20)];
+    totalScoreLabel.backgroundColor = [UIColor clearColor];
+    totalScoreLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    totalScoreLabel.text = [NSString stringWithFormat:@"  TOTAL SCORE: %d", points];
+    [self.view addSubview:totalScoreLabel];
+
+//    UILabel * highScoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 87, 20, 175, 20)];
+//    highScoreLabel.backgroundColor = [UIColor clearColor];
+//    highScoreLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    
+    
+//   NSMutableArray * highScore = [@[ @"0"] mutableCopy];
+
+//    if (points > [highScore objectAtIndex:0])
+//    {
+//        [highScore objectAtIndex:0] = points;
+//        highScoreLabel.text = [NSString stringWithFormat:@"NEW HIGH SCORE!! %@", [highScore objectAtIndex:0]];
+//        [self.view addSubview:highScoreLabel];
+//    }
+//    else
+//    {
+//    highScoreLabel.text = [NSString stringWithFormat:@"HIGH SCORE: %@", [highScore objectAtIndex:0]];
+//    [self.view addSubview:highScoreLabel];
+//    }
 }
 
 -(void)addPoints:(int)points
@@ -115,29 +154,6 @@
     livesLabel.text = [NSString stringWithFormat:@"LIVES: %d", totalLives];
 }
 
--(void) endGameWin
-{
-    [scoreLabel removeFromSuperview];
-    [livesLabel removeFromSuperview];
-    
-    endButtonRing = [[UILabel alloc] initWithFrame:CGRectMake((240 - 125), (160 - 75), 250, 150)];
-    endButtonRing.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.6];
-    endButtonRing.layer.cornerRadius = 6;
-    endButtonRing.alpha = 0.1;
-    endButtonRing.layer.masksToBounds = YES;
-    
-    [self.view addSubview:endButtonRing];
-    
-    
-    endButton = [[UIButton alloc] initWithFrame:CGRectMake((240 - 100), (160 - 50), 200, 100)];
-    
-    [endButton setTitle:@"YOU WIN" forState:UIControlStateNormal];
-    [endButton addTarget:self action:@selector(resetNewGame) forControlEvents:UIControlEventTouchUpInside];
-    endButton.backgroundColor = [UIColor redColor];
-    endButton.layer.cornerRadius = 6;
-    
-    [self.view addSubview:endButton];
-}
 
 -(BOOL)prefersStatusBarHidden {return YES;}
 
