@@ -128,24 +128,24 @@
     totalScoreLabel.text = [NSString stringWithFormat:@"  TOTAL SCORE: %d", points];
     [self.view addSubview:totalScoreLabel];
 
-    highScoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 87, 270, 175, 20)];
+    highScoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 87, 270, 200, 20)];
     highScoreLabel.backgroundColor = [UIColor clearColor];
     highScoreLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     
     
-//   NSMutableArray * highScore = [@[ @"0"] mutableCopy];
+   static int highScore = 0;
 
-//    if (points > [highScore objectAtIndex:0])
-//    {
-//        [highScore objectAtIndex:0] = points;
-//        highScoreLabel.text = [NSString stringWithFormat:@"NEW HIGH SCORE!! %@", [highScore objectAtIndex:0]];
-//        [self.view addSubview:highScoreLabel];
-//    }
-//    else
-//    {
-    highScoreLabel.text = [NSString stringWithFormat:@"  HIGH SCORE: %d", points];
+    if (points > highScore)
+    {
+        highScore = points;
+        highScoreLabel.text = [NSString stringWithFormat:@"NEW HIGH SCORE!! %d", highScore];
+        [self.view addSubview:highScoreLabel];
+    }
+    else
+    {
+    highScoreLabel.text = [NSString stringWithFormat:@"  HIGH SCORE: %d", highScore];
     [self.view addSubview:highScoreLabel];
-//    }
+    }
 }
 
 -(void)addPoints:(int)points

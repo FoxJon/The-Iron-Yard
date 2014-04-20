@@ -284,7 +284,7 @@
 
 -(void)createBall
 {
-    multiball = 16;
+    multiball = 1;
     
     for (int i = 0; i < multiball; i++) {
     
