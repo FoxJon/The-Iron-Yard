@@ -65,11 +65,13 @@
     scoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(420, 0, 60, 20)];
     scoreLabel.backgroundColor = [UIColor clearColor];
     scoreLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    scoreLabel.text = [NSString stringWithFormat:@"0"];
     [self.view addSubview:scoreLabel];
     
     livesLabel = [[UILabel alloc]initWithFrame:CGRectMake(10, 0, 100, 20)];
     livesLabel.backgroundColor = [UIColor clearColor];
     livesLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    livesLabel.text = [NSString stringWithFormat:@"LIVES: 3"];
     [self.view addSubview:livesLabel];
     
     level = [[BBALevelController alloc] initWithNibName:nil bundle:nil];
@@ -128,7 +130,7 @@
     totalScoreLabel.text = [NSString stringWithFormat:@"  TOTAL SCORE: %d", points];
     [self.view addSubview:totalScoreLabel];
 
-    highScoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 87, 270, 200, 20)];
+    highScoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(SCREEN_WIDTH/2 - 87, 270, 220, 20)];
     highScoreLabel.backgroundColor = [UIColor clearColor];
     highScoreLabel.textColor = [UIColor colorWithWhite:0.5 alpha:1.0];
     

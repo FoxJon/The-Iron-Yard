@@ -48,11 +48,10 @@
     int brickCols;
     int brickRows;
     UIView * ball;
+    UIView * newBall;
     UILabel * scoreLabel;
     UILabel * livesLabel;
     int lives;
-    int totalLives;
-    int multiball;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -158,18 +157,31 @@
          NSLog(@"FLOOR");
 
          ball = (UIView *)item;
+         newBall = (UIView *)item;
+
          
      
          [ball removeFromSuperview];
          [self.collider removeItem:ball];
+         [self.balls removeObject:ball];
+         
+         [newBall removeFromSuperview];
+         [self.collider removeItem:newBall];
+         [self.balls removeObject:newBall];
          
          lives += 1;
          [self statsLogger];
          
-//         if(
-//            [self.delegate respondsToSelector:@selector(gameDone)]
-//            )
-//        [self.delegate gameDone];
+         int totalLives = 3;
+         totalLives -= lives;
+         NSLog(@"LIVES = %d", totalLives);
+         [self.delegate addLives:totalLives];
+         if (totalLives == 0) {
+             [self.delegate gameDone:points];
+         }else
+         {
+         [self createNewBall];
+         }
      }
 }
 
@@ -185,12 +197,6 @@
     NSLog(@"SCORE = %d", points);
     [self.delegate addPoints:points];
 
-    totalLives = multiball - lives;
-    NSLog(@"LIVES = %d", totalLives);
-    [self.delegate addLives:totalLives];
-     if (multiball == lives) {
-         [self.delegate gameDone:points];
-     }
 }
 
 
@@ -253,7 +259,7 @@
 -(void)createBricks
 {
     brickCols = 10;
-    brickRows = 4;
+    brickRows = 1;
     
     float brickWidth = (SCREEN_WIDTH - (brickCols + 1)) / brickCols;
     float brickHeight = 20;
@@ -281,13 +287,56 @@
     }
 }
 
+-(void)createNewBall
+{
+    
+    CGRect frame = self.paddle.frame;
+    
+    newBall = [[UIView alloc] initWithFrame:CGRectMake(frame.origin.x + 35, frame.origin.y - 12, 10, 10)];
+
+    newBall.backgroundColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+    newBall.layer.cornerRadius = 5;
+    
+    [self.view addSubview:newBall];
+    
+    //Add ball to balls array
+    [self.balls addObject:newBall];
+    
+    // Start ball off with a push
+    self.pusher = [[UIPushBehavior alloc] initWithItems:self.balls mode: UIPushBehaviorModeInstantaneous];
+    self.pusher.pushDirection = CGVectorMake(-0.009, -0.009);  // + is down, - is up. object mass makes diff
+    self.pusher.active = YES;
+    
+    [self.animator addBehavior:self.pusher];
+    
+    self.collider = [[UICollisionBehavior alloc]initWithItems:[self allItems]];
+
+    self.collider.collisionDelegate = self;
+    self.collider.collisionMode = UICollisionBehaviorModeEverything;
+    
+    
+    int w = self.view.frame.size.width;
+    int h = self.view.frame.size.height;
+    
+    [self.collider addBoundaryWithIdentifier:@"ceiling" fromPoint:CGPointMake(0, 0) toPoint:CGPointMake(w, 0)];
+    [self.collider addBoundaryWithIdentifier:@"leftWall" fromPoint:CGPointMake(0, 0) toPoint:CGPointMake(0, h)];
+    [self.collider addBoundaryWithIdentifier:@"rightWall" fromPoint:CGPointMake(w, 0) toPoint:CGPointMake(w, h)];
+    [self.collider addBoundaryWithIdentifier:@"floor" fromPoint:CGPointMake(0, h + 10) toPoint:CGPointMake(w, h + 10)];
+    
+    [self.animator addBehavior:self.collider];
+
+    
+    //////////////////////////////////////////////
+    
+    self.ballsDynamicProperties = [self createPropertiesForItems:self.balls];
+    
+    self.ballsDynamicProperties.elasticity = 1.0;
+    self.ballsDynamicProperties.resistance = 0.0;
+}
+
 
 -(void)createBall
 {
-    multiball = 1;
-    
-    for (int i = 0; i < multiball; i++) {
-    
     CGRect frame = self.paddle.frame;
     
     ball = [[UIView alloc] initWithFrame:CGRectMake(frame.origin.x + 35, frame.origin.y - 12, 10, 10)];
@@ -302,12 +351,10 @@
     
     // Start ball off with a push
     self.pusher = [[UIPushBehavior alloc] initWithItems:self.balls mode: UIPushBehaviorModeInstantaneous];
-    self.pusher.pushDirection = CGVectorMake(0.008, 0.008);  // + is down, - is up. object mass makes diff
+    self.pusher.pushDirection = CGVectorMake(-0.009, -0.009);  // + is down, - is up. object mass makes diff
     self.pusher.active = YES;
         
     [self.animator addBehavior:self.pusher];
-        
-    }
 }
 
 
