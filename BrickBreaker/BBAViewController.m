@@ -40,6 +40,9 @@
 {
     [super viewDidLoad];
     
+//    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+//    topScore = [[userDefaults objectForKey:@“topScore”] intValue];
+    
     buttonRing = [[UILabel alloc] initWithFrame:CGRectMake((240 - 125), (160 - 75), 250, 150)];
     buttonRing.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.8];
     buttonRing.layer.cornerRadius = 6;
@@ -146,6 +149,11 @@
     highScoreLabel.text = [NSString stringWithFormat:@"  HIGH SCORE: %d", highScore];
     [self.view addSubview:highScoreLabel];
     }
+//    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+//    
+//    [userDefaults setObject:@(topScore) forkey:@“topScore”];
+//    
+//    [userDefaults synchronize]; -  // Saves to local device.
 }
 
 -(void)addPoints:(int)points

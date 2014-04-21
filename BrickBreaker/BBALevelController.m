@@ -68,6 +68,9 @@
         
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapScreen:)];
         [self.view addGestureRecognizer:tap];
+        
+        UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panScreen:)];
+        [self.view addGestureRecognizer:pan];
     }
     return self;
 }
@@ -366,7 +369,12 @@
 }
 
 
-
+-(void)panScreen:(UIPanGestureRecognizer *)gr
+{
+    CGPoint location = [gr locationInView:self.view];
+    
+    self.attacher.anchorPoint = CGPointMake(location.x, self.attacher.anchorPoint.y);
+}
 
 
 @end
