@@ -41,7 +41,7 @@
     [super viewDidLoad];
     
     buttonRing = [[UILabel alloc] initWithFrame:CGRectMake((240 - 125), (160 - 75), 250, 150)];
-    buttonRing.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.6];
+    buttonRing.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.8];
     buttonRing.layer.cornerRadius = 6;
     buttonRing.alpha = 0.1;
     buttonRing.layer.masksToBounds = YES;
@@ -50,14 +50,12 @@
 
     
     startButton = [[UIButton alloc] initWithFrame:CGRectMake((240 - 100), (160 - 50), 200, 100)];
-    
     [startButton setTitle:@"START" forState:UIControlStateNormal];
     [startButton addTarget:self action:@selector(resetNewGame) forControlEvents:UIControlEventTouchUpInside];
     startButton.backgroundColor = [UIColor redColor];
     startButton.layer.cornerRadius = 6;
     
     [self.view addSubview:startButton];
-    // Do any additional setup after loading the view.
 }
 
 - (void)resetNewGame
@@ -107,7 +105,7 @@
     [livesLabel removeFromSuperview];
     
     buttonRing = [[UILabel alloc] initWithFrame:CGRectMake((240 - 125), (160 - 75), 250, 150)];
-    buttonRing.backgroundColor = [UIColor colorWithWhite:0.7 alpha:0.6];
+    buttonRing.backgroundColor = [UIColor colorWithWhite:0.8 alpha:0.8];
     buttonRing.layer.cornerRadius = 6;
     buttonRing.alpha = 0.1;
     buttonRing.layer.masksToBounds = YES;

@@ -259,7 +259,7 @@
 -(void)createBricks
 {
     brickCols = 10;
-    brickRows = 1;
+    brickRows = 4;
     
     float brickWidth = (SCREEN_WIDTH - (brickCols + 1)) / brickCols;
     float brickHeight = 20;
