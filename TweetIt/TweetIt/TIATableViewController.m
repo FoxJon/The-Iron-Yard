@@ -7,6 +7,7 @@
 //
 
 #import "TIATableViewController.h"
+#import "TIAViewController.h"
 
 @interface TIATableViewController ()
 
@@ -23,13 +24,16 @@ NSArray * tweets;
     if (self) {
         tweets = @[
                    @{@"text":@"Inspiring tweet",
-                     @"name":@"Einstein"
+                     @"name":@"Einstein",
+                     @"type":@"Quote"
                      },
                    @{@"text":@"Funny tweet",
-                     @"name":@"Heidi"
+                     @"name":@"Heidi",
+                     @"type":@"Icebreaker"
                      },
                    @{@"text":@"Serious Look tweet",
-                     @"name":@"Ali"
+                     @"name":@"Ali",
+                     @"type":@"Look"
                      }
                    ];
         
@@ -60,19 +64,80 @@ NSArray * tweets;
     return [tweets count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
+    //tweet dictionary based on row
     NSDictionary * tweet = tweets[indexPath.row];
+    
+    //array of types fro switch
+//   NSArray * types = @[@"Quote", @"Icebreaker", @"Look"];
+    
+    //cell identifier that will be changed in switch
+    NSString * reuseID = @"cell";
+    
+    //style for table cell that will be changed in switch
+    UITableViewCellStyle style = UITableViewCellStyleDefault;
+    
+//    switch ([types indexOfObject:tweet[@"type"]])
+//    {
+//        case 0: //quote
+//            reuseID = @"cell0";
+//            style = UITableViewCellStyleValue1;
+//            break;
+//            
+//        case 1: //icebreaker
+//            reuseID = @"cell1";
+//            style = UITableViewCellStyleValue2;
+//            break;
+//            
+//        case 2: //look
+//            reuseID = @"cell2";
+//            style = UITableViewCellStyleSubtitle;
+//            break;
+//            
+//        default:
+//            break;
+//    }
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseID];
+    
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc]initWithStyle:style reuseIdentifier:reuseID];
+    }
     
     
     cell.textLabel.text = tweet[@"text"];
-    cell.detailTextLabel.text = tweet[@"name"];
+    cell.detailTextLabel.text = tweet[NAME_KEY];
     
     
     return cell;
+}
+
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    
+    UITableViewCell * cell = sender;
+    
+    NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
+    
+    NSDictionary * tweet = tweets[indexPath.row];
+    
+    if ([segue.identifier isEqualToString:@"tweetDetail"])
+    {
+        TIAViewController * tweetDetailVC = segue.destinationViewController;
+        
+        tweetDetailVC.tweet = tweet;
+        
+//        tweetDetailVC.nameLabel.text = tweet[@"name"];
+//        tweetDetailVC.tweetLabel.text = tweet[@"text"];
+    }
 }
 
 -(BOOL)prefersStatusBarHidden {return YES;}
@@ -115,15 +180,8 @@ NSArray * tweets;
 }
 */
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+
+
 
 @end

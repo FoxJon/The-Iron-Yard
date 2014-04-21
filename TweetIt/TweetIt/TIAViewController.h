@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface TIAViewController : UIViewController
+
+@property (strong, nonatomic) NSDictionary *tweet;
+
 
 @end
