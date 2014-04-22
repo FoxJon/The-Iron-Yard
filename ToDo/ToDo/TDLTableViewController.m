@@ -218,9 +218,9 @@
 {
     TDLTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
-    if (cell == nil)
+    if (cell == nil){
         cell = [[TDLTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-       
+    }
     cell.profileInfo = [self getListItem:indexPath.row];
 
     return cell;
