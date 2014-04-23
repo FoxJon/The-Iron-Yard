@@ -10,4 +10,6 @@
 
 @interface SLFTableViewCell : UITableViewCell
 
+@property (nonatomic) NSDictionary * selfyInfo;
+
 @end

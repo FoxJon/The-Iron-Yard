@@ -9,6 +9,8 @@
 #import "SLFTableVC.h"
 #import "SLFTableViewCell.h"
 
+#import <Parse/Parse.h>
+
 @interface SLFTableVC ()
 
 @end
@@ -23,15 +25,22 @@ NSArray * selfies;
     self = [super initWithStyle:style];
     if (self) {
         
-        selfies = @[
-                    @{@"image":[UIImage imageNamed:@"JonFox"],
-                      @"caption":@"Howdy!"
-                      },
+        selfies = [@[
                     @{
-                      @"image":[UIImage imageNamed:@"AliHoushmand"],
-                      @"caption":@"Hey"
-                      }
-                    ];
+                        @"image" : @"http://distilleryimage7.ak.instagram.com/6756ea06a44b11e2b62722000a1fbc10_7.jpg",
+                        @"caption" : @"This is a selfy!",
+                        @"user_id" : @"3n2mb23bnm",
+                        @"avatar" : @"https://media.licdn.com/mpr/mpr/shrink_200_200/p/4/005/036/354/393842f.jpg",
+                        @"selfy_id" : @"hjk2l32bn1"
+                    }
+                   ]mutableCopy];
+        
+//        PFObject *testObject = [PFObject objectWithClassName:@"UserSelfy"];
+//        testObject[@"foo"] = @"bar";
+//        [testObject saveInBackground];
+        
+            
+        self.tableView.rowHeight = self.tableView.frame.size.width+100;
     }
     return self;
 }
@@ -84,30 +93,25 @@ NSArray * selfies;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDictionary * selfy = selfies[indexPath.row];
-        
+    
     SLFTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
 
     
-    if (cell == nil)
-    {
-        cell = [[SLFTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
-    }
-
+    if (cell == nil) cell = [[SLFTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     
-    cell.imageView.image = selfy[@"image"];
-    cell.detailTextLabel.text = selfy[@"caption"];
-
-
+    cell.selfyInfo = selfies[indexPath.row];
+    cell.backgroundColor = [UIColor redColor];
+    
+    //[cell setSelfyInfo:selfies[indexPath.row]];   //same as above
     
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     //NSDictionary * listItem = [self getListItem:indexPath.row];
     
-}
+//}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

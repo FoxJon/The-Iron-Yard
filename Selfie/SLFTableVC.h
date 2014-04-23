@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SLFTableVC : UITableViewController
+@interface SLFTableVC : UITableViewController <UITextViewDelegate>
 
 @end
