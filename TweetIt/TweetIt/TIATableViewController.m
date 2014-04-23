@@ -109,7 +109,7 @@ NSArray * tweets;
     
     
     cell.textLabel.text = tweet[@"text"];
-    cell.detailTextLabel.text = tweet[NAME_KEY];
+  //  cell.detailTextLabel.text = tweet[NAME_KEY];
     
     
     return cell;
