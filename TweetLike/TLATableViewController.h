@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TLANavController.h"
 
 @interface TLATableViewController : UITableViewController
 
-
+- (void)newTweet:(NSString *)tweet;
 
 @end

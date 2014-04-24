@@ -10,6 +10,4 @@
 
 @interface TLANavController : UINavigationController
 
-//-(void)newTweet;
-
 @end

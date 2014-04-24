@@ -40,17 +40,19 @@
         
         self.tableView.separatorColor = [UIColor blueColor];
         self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        
-//        UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-//        header.backgroundColor = [UIColor blueColor];
-//        self.tableView.tableHeaderView = header;
 
         self.tableView.rowHeight = 80;
-        
-        
-
     }
     return self;
+}
+
+- (void)newTweet:(NSString *)tweet{
+      NSLog(@"%@",tweet);
+    if(![tweet isEqualToString:@""]){
+    [tweetItems insertObject:@{@"likes" : @0, @"caption": tweet} atIndex:0];
+    }
+
+    [self.tableView reloadData];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{

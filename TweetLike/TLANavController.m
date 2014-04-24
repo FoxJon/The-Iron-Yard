@@ -7,6 +7,7 @@
 //
 
 #import "TLANavController.h"
+#import "TLATableViewController.h"
 
 @interface TLANavController () <UITextViewDelegate>
 
@@ -62,7 +63,7 @@
         submitButton = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2-125), (self.view.frame.size.height/2)+100, 100, 30)];
         submitButton.backgroundColor = [UIColor greenColor];
         submitButton.layer.cornerRadius = 15;
-   //     [submitButton addTarget:self action:@selector(newTweet:) forControlEvents:UIControlEventTouchUpInside];
+        [submitButton addTarget:self action:@selector(newTweetGrabber) forControlEvents:UIControlEventTouchUpInside];
         [submitButton setTitle:@"Submit" forState:UIControlStateNormal],
         submitButton.titleLabel.textColor = [UIColor whiteColor];
         
@@ -79,6 +80,33 @@
     }
     return self;
 }
+
+- (void)newTweetGrabber
+{
+    NSString *tweet = newCaption.text;
+    newCaption.text = @"";
+    [self.viewControllers[0] newTweet:tweet];
+    [UIView animateWithDuration:0.4 animations:^{
+    blueBox.frame = self.navigationBar.frame;
+    
+    newForm.frame = CGRectMake(0, 0, 320, self.view.frame.size.height);
+    
+    
+    [newCaption removeFromSuperview];
+    [submitButton removeFromSuperview];
+    [cancelButton removeFromSuperview];
+    [logo removeFromSuperview];
+    [blueBox addSubview:addNewButton];
+        
+    }completion:^(BOOL finished) {
+    addNewButton.alpha = 1.0;
+    [addNewButton setTitle:@"Add New" forState:UIControlStateNormal];
+    addNewButton.titleLabel.textColor = [UIColor lightGrayColor];
+        
+    }];
+
+}
+
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
     [UIView animateWithDuration:0.2 animations:^{
@@ -135,11 +163,7 @@
     }];
 }
 
-//-(void)newTweet
-//{
-//    [tweetItems insertObject:@{@"likes":@0, @"caption":@"Hello"} atIndex:0];
-//    NSLog(@"%@", tweetItems);
-//}
+
 
 - (BOOL) textView: (UITextView*) textView shouldChangeTextInRange: (NSRange) range
   replacementText: (NSString*) String
