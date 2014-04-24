@@ -55,10 +55,13 @@
         newCaption.layer.cornerRadius = 6;
         newCaption.delegate = self;
         newCaption.font = [UIFont systemFontOfSize:13];
+
         
-        logo = [[UIImageView alloc]initWithFrame:CGRectMake((self.view.frame.size.width/2)-87.5, (self.view.frame.size.height/2)-125, 175, 45)];
+        logo = [[UIImageView alloc]initWithFrame:CGRectMake(0, 12, 82.5, 17.5)];
         logo.contentMode = UIViewContentModeScaleAspectFit;
         logo.image = [UIImage imageNamed:@"logo"];
+        [blueBox addSubview:logo];
+
         
         submitButton = [[UIButton alloc] initWithFrame:CGRectMake((self.view.frame.size.width/2-125), (self.view.frame.size.height/2)+100, 100, 30)];
         submitButton.backgroundColor = [UIColor greenColor];
@@ -126,6 +129,8 @@
 {
     [UIView animateWithDuration:0.4 animations:^{
     blueBox.frame = self.navigationBar.frame;
+    logo.frame = CGRectMake(0, 12, 82.5, 17.5);
+
         
     newForm.frame = CGRectMake(0, 0, 320, self.view.frame.size.height);
     
@@ -133,7 +138,6 @@
     [newCaption removeFromSuperview];
     [submitButton removeFromSuperview];
     [cancelButton removeFromSuperview];
-    [logo removeFromSuperview];
     [blueBox addSubview:addNewButton];
 
     }completion:^(BOOL finished) {
@@ -152,6 +156,8 @@
     [UIView animateWithDuration:0.4 animations:^{
         
         blueBox.frame = self.view.frame;
+        logo.frame = CGRectMake(67, 155, 175, 45);
+        
 
         addNewButton.alpha = 0.0;
     }completion:^(BOOL finished) {

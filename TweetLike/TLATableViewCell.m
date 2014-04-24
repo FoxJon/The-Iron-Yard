@@ -38,6 +38,8 @@
         caption.font = [UIFont systemFontOfSize:13];
         caption.numberOfLines = 0;
         [self.contentView addSubview:caption];
+        
+        
 
         
         
