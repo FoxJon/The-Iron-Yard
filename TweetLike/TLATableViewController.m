@@ -15,7 +15,7 @@
 
 @implementation TLATableViewController
 {
-    NSMutableArray * tweetItems;
+//    NSMutableArray * tweetItems;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -24,17 +24,17 @@
     if (self) {
         // Custom initialization
         
-        tweetItems = [
+        self.tweetItems = [
                       // starts array
                       @[
                         //starts dictionary at index 0
-                        @{
-                            @"likes":@32,
-                            @"caption":@"No more shall I go on, without first looking ahead"},
-                        //starts dictionary at index 1
-                        @{
-                            @"likes":@75,
-                            @"caption":@"I like to eat chocolates while reading romance novels"},
+//                        @{
+//                            @"likes":@32,
+//                            @"caption":@"No more shall I go on, without first looking ahead"},
+//                        //starts dictionary at index 1
+//                        @{
+//                            @"likes":@75,
+//                            @"caption":@"I like to eat chocolates while reading romance novels"},
                         ]mutableCopy];
 
         
@@ -44,15 +44,6 @@
         self.tableView.rowHeight = 80;
     }
     return self;
-}
-
-- (void)newTweet:(NSString *)tweet{
-      NSLog(@"%@",tweet);
-    if(![tweet isEqualToString:@""]){
-    [tweetItems insertObject:@{@"likes" : @0, @"caption": tweet} atIndex:0];
-    }
-
-    [self.tableView reloadData];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
@@ -93,7 +84,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [tweetItems count];
+    return [self.tweetItems count];
 }
 
 
@@ -103,10 +94,28 @@
     
     if (cell == nil) cell = [[TLATableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     
-    cell.tweetInfo = tweetItems[indexPath.row];
+    cell.tweetInfo = self.tweetItems[indexPath.row];
     
     return cell;
 }
+
+- (void)createNewTweet:(NSString *)tweet
+{
+    if ([tweet isEqualToString:@"'"]) return;
+    
+    [self.tweetItems insertObject:@{
+                                   @"likes" : @0,
+                                   @"caption": tweet
+                                   }atIndex:0];
+    [self.tableView reloadData];
+}
+
+
+-(BOOL)isTweetItemsEmpty
+{
+    return ([self.tweetItems count] == 0);
+}
+
 
 /*
 // Override to support conditional editing of the table view.

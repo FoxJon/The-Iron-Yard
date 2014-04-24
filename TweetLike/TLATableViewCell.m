@@ -12,6 +12,7 @@
 {
     UILabel * caption;
     UILabel * likes;
+    UIImageView * heartIcon;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -20,7 +21,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
-        UIImageView * heartIcon = [[UIImageView alloc]initWithFrame:CGRectMake(20, 30, 20, 20)];
+        heartIcon = [[UIImageView alloc]initWithFrame:CGRectMake(20, 30, 20, 20)];
         heartIcon.image = [UIImage imageNamed:@"heart"];
         [self.contentView addSubview:heartIcon];
         
