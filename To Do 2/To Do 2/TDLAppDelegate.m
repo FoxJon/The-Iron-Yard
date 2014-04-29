@@ -17,7 +17,7 @@
     // Override point for customization after application launch.
     self.window.rootViewController = [[TDLTableViewController alloc] initWithStyle:UITableViewStylePlain];
 
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor colorWithRed:0.937f green:0.965f blue:0.820f alpha:1.0f];
     [self.window makeKeyAndVisible];
     return YES;
 }

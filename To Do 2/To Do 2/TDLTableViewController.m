@@ -34,18 +34,19 @@
         listItems = [@[
                        @{@"name" : @"make app", @"priority": @0, @"constant": @1},
                        @{@"name" : @"write more code", @"priority": @1, @"constant": @1},
-                       @{@"name" : @"fix bugs", @"priority": @2,  @"constant": @2},
+                       @{@"name" : @"                 fix bugs", @"priority": @2,  @"constant": @2},
                        @{@"name" : @"write even more code", @"priority": @3,  @"constant": @3}
                        
                        ]mutableCopy];
         
+        self.view.backgroundColor = [UIColor colorWithRed:0.937f green:0.965f blue:0.820f alpha:1.0f];
         
         self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 0, 0);
         self.tableView.rowHeight = 50;
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-        header.backgroundColor = [UIColor whiteColor];
+        header.backgroundColor = [UIColor colorWithRed:0.937f green:0.965f blue:0.820f alpha:1.0f];
         self.tableView.tableHeaderView = header;
         
         

@@ -26,7 +26,7 @@
     UIImageView * heartIcon;
 }
 
--(void)addTableViewController:(TLATableViewController *)viewController;
+-(void)addTableViewController:(TLATableViewController *)viewController
 {
     TVC = viewController;
     
