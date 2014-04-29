@@ -39,6 +39,7 @@
     UILabel *player2Label;
     UILabel *player1Dot;
     UILabel *player2Dot;
+    SCGSquare * currentSquare;
 
 }
 
@@ -310,11 +311,28 @@
         //if top, left, & bottom dots the same as player... thenthey own the square
         if (topDotsSame && bottomDotsSame && leftDotsSame && [tappedDots[topLeftDot] isEqual:@(player)])
         {
-            SCGSquare * currentSquare = allSquares[topLeftDot];
-            
-            currentSquare.backgroundColor = color;
+            currentSquare = allSquares[topLeftDot];
+
+            currentSquare.layer.shadowColor = [UIColor blackColor].CGColor;
+            currentSquare.layer.shadowOpacity = 0.75;
+            currentSquare.layer.shadowRadius = 15.0;
+            currentSquare.layer.shadowOffset = (CGSize){0.0,20.0};
+                
+            [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+             animations: ^(void)
+             {
+                currentSquare.transform = CGAffineTransformMakeScale(-1, 1);
+             }
+                 completion:^(BOOL b) {
+                     currentSquare.layer.shadowColor = [UIColor blackColor].CGColor;
+                     currentSquare.layer.shadowOpacity = 0.75;
+                     currentSquare.layer.shadowRadius = 15.0;
+                     currentSquare.layer.shadowOffset = (CGSize){0.0, 20.0};
+                    }];
+                [UIView animateWithDuration:0.5 animations: ^(void) {
+                    currentSquare.backgroundColor = color;
+            }];
         }
-        
     }
 }
 
@@ -325,5 +343,28 @@
 }
 
 -(BOOL)prefersStatusBarHidden {return YES;}
+
+//-(void)flipAnimation
+//{
+//     [UIView animateWithDuration:1.0 animations:^{
+//        currentSquare.backgroundColor = [UIColor blackColor];
+//        
+//        currentSquare.layer.shadowColor = [UIColor blackColor].CGColor;
+//        currentSquare.layer.shadowOpacity = 0.75;
+//        currentSquare.layer.shadowRadius = 15.0;
+//        currentSquare.layer.shadowOffset = (CGSize){0.0,20.0};
+//        
+//        [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+//                         animations: ^(void) {
+//                             currentSquare.transform = CGAffineTransformMakeScale(-1, 1);
+//                         }
+//                         completion:^(BOOL b) {
+//                             currentSquare.layer.shadowColor = [UIColor blackColor].CGColor;
+//                             currentSquare.layer.shadowOpacity = 0.75;
+//                             currentSquare.layer.shadowRadius = 15.0;
+//                             currentSquare.layer.shadowOffset = (CGSize){0.0, 20.0};
+//                         }];
+//    }];
+//}
 
 @end
