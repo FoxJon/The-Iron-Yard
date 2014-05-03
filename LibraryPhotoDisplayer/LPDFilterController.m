@@ -57,15 +57,20 @@
         
         scrollView = [[UIScrollView alloc]init];
         [self.view addSubview:scrollView];
+  
         
-        CIFilter *myFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
-        NSDictionary *myFilterAttributes = [myFilter attributes];
-        
-        NSLog(@"%@", myFilterAttributes);
+        // Use this to log the attributes of a filter
+//        CIFilter *myFilter = [CIFilter filterWithName:@"CIGaussianBlur"];
+//        NSDictionary *myFilterAttributes = [myFilter attributes];
+//        
+//        NSLog(@"%@", myFilterAttributes);
     
     }
     return self;
 }
+
+
+// make the filter buttons
 
 - (void)viewWillLayoutSubviews
 {

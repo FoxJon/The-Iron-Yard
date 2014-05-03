@@ -21,6 +21,7 @@
 {
     UIImageView * imageView;
     LPDFilterController * filterVC;
+    UIImagePickerController * imagePicker;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -52,17 +53,13 @@
         [self.view addSubview:frame];
         
         filterVC = [[LPDFilterController alloc]initWithNibName:nil bundle:nil];
+        
         filterVC.delegate =self;
         filterVC.view.frame = CGRectMake(0, SCREEN_HEIGHT-100, SCREEN_WIDTH, 100);
         [self.view addSubview:filterVC.view];
     }
     return self;
 
-}
-
--(void)updateCurrentImageWithFilteredImage:(UIImage *)image
-{
-    imageView.image = image;
 }
 
 
@@ -82,13 +79,14 @@
 
 -(void)addPhoto
 {
-    self.imagePicker = [[UIImagePickerController alloc]init];
-    self.imagePicker.delegate = self;
-    self.imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker = [[UIImagePickerController alloc]init];
+    imagePicker.delegate = self;
+ //   imagePicker.allowsEditing = YES;
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     
-    self.imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:self.imagePicker.sourceType];
+    imagePicker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:imagePicker.sourceType];
     
-    [self presentViewController:self.imagePicker animated:NO completion:nil];
+    [self presentViewController:imagePicker animated:NO completion:nil];
 }
 
 
@@ -106,6 +104,11 @@
     filterVC.imageToFilter = originalImage;
     imageView.image = originalImage;
     
+}
+
+-(void)updateCurrentImageWithFilteredImage:(UIImage *)image
+{
+    imageView.image = image;
 }
 
 -(BOOL)prefersStatusBarHidden {return YES;}

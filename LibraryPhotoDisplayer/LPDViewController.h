@@ -12,6 +12,4 @@
 
 @interface LPDViewController : UIViewController
 
-@property(nonatomic, strong)UIImagePickerController *imagePicker;
-
 @end
