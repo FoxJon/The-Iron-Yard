@@ -31,7 +31,6 @@
     headerLayer.locations = locations;
     
     return headerLayer;
-    
 }
 
 //Blue gradient background

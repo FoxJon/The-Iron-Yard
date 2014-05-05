@@ -48,7 +48,7 @@
     //redraws layer with the -drawRect method above
     [self setNeedsDisplay];
     
-    NSLog(@"My position is row %d, col %d", (int)self.position.x, (int)self.position.y);
+   // NSLog(@"My position is col %d, row %d", (int)self.position.x, (int)self.position.y);
 }
 
 @end

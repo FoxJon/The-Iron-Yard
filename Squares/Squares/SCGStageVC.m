@@ -32,13 +32,14 @@
     NSString * bottomRightDot;
     UIButton * startButton;
     UIButton * homeButton;
-    UILabel * titleLabel;
+    UILabel * titleFrame;
     UIButton *playerButton;
     UIButton * gridSize;
     UILabel *player1Label;
     UILabel *player2Label;
     UILabel *player1Dot;
     UILabel *player2Dot;
+    UIColor * currentColor;
     SCGSquare * currentSquare;
 
 }
@@ -86,7 +87,7 @@
 
     CAGradientLayer *bgLayer = [SCGBackgroundLayer blueGradient];
     bgLayer.frame = gameBoard.bounds;
-    [gameBoard.layer insertSublayer:bgLayer atIndex:0];
+    [self.view.layer insertSublayer:bgLayer atIndex:0];
     
     [self.view addSubview:gameBoard];
     
@@ -100,9 +101,53 @@
 //    [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"duration" : @.8}];
     [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"alpha":@1.0, @"duration":@1.0}];
     
-    titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 50, 200, 200)];
-    titleLabel.backgroundColor = [UIColor lightGrayColor];
-    [gameBoard addSubview:titleLabel];
+    titleFrame = [[UILabel alloc] initWithFrame:CGRectMake(60, 50, 200, 200)];
+    titleFrame.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
+    titleFrame.layer.shadowColor = [UIColor blackColor].CGColor;
+    titleFrame.layer.shadowOpacity = 0.75;
+    titleFrame.layer.shadowRadius = 15.0;
+    titleFrame.layer.shadowOffset = (CGSize){0.0,20.0};
+    
+    [UIView animateWithDuration:0.5 delay:1.0 options:UIViewAnimationOptionCurveEaseInOut
+                     animations: ^(void)
+     {
+         titleFrame.transform = CGAffineTransformMakeScale(1, -1);
+     }
+                     completion:^(BOOL b) {
+                         titleFrame.layer.shadowColor = [UIColor blackColor].CGColor;
+                         titleFrame.layer.shadowOpacity = 0.75;
+                         titleFrame.layer.shadowRadius = 15.0;
+                         titleFrame.layer.shadowOffset = (CGSize){0.0, 20.0};
+                     }];
+    [UIView animateWithDuration:0.5 animations: ^(void) {
+        titleFrame.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
+    }];
+
+    [gameBoard addSubview:titleFrame];
+    
+//    UILabel *sletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(43.5, 100, 35, 35)];
+//    sletterFrame.backgroundColor = [UIColor darkGrayColor];
+//    [self.view addSubview:sletterFrame];
+//    
+//    UILabel *qletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(82.5, 100, 35, 35)];
+//    qletterFrame.backgroundColor = [UIColor darkGrayColor];
+//    [self.view addSubview:qletterFrame];
+//    
+//    UILabel *uletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(121.5, 100, 35, 35)];
+//    uletterFrame.backgroundColor = [UIColor darkGrayColor];
+//    [self.view addSubview:uletterFrame];
+//    
+//    UILabel *aletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(160.5, 100, 35, 35)];
+//    aletterFrame.backgroundColor = [UIColor darkGrayColor];
+//    [self.view addSubview:aletterFrame];
+//    
+//    UILabel *rletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(199.5, 100, 35, 35)];
+//    rletterFrame.backgroundColor = [UIColor darkGrayColor];
+//    [self.view addSubview:rletterFrame];
+//    
+//    UILabel *eletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(238.5, 100, 35, 35)];
+//    eletterFrame.backgroundColor = [UIColor darkGrayColor];
+//    [self.view addSubview:eletterFrame];
 
     playerButton = [[UIButton alloc] initWithFrame:CGRectMake(60, (SCREEN_HEIGHT * 0.99), 200, 30)];
     [playerButton setTitle:@"1 PLAYER | 2 PLAYERS" forState:UIControlStateNormal];
@@ -135,7 +180,7 @@
 -(void)loadGameElements{
     
     [startButton removeFromSuperview];
-    [titleLabel removeFromSuperview];
+    [titleFrame removeFromSuperview];
     [playerButton removeFromSuperview];
     [gridSize removeFromSuperview];
 
@@ -148,7 +193,7 @@
     player1Label = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.03), 90, 18)];
     player1Label.text = @" PLAYER 1";
     player1Label.textColor = [UIColor whiteColor];
-    player1Label.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
+    player1Label.backgroundColor = [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:0.5f];
     player1Label.layer.cornerRadius = 6;
     player1Label.layer.masksToBounds = YES;
     [gameBoard addSubview:player1Label];
@@ -207,8 +252,9 @@
             
             allSquares[key] = square;
             
-            [MOVE animateView:square properties:@{@"alpha":@1.0, @"duration":@2.0,@"delay":@.5}];
             [self.view addSubview:square];
+            [MOVE animateView:square properties:@{@"alpha":@1.0, @"duration":@2.0,@"delay":@.5}];
+
             
         }
     }
@@ -229,8 +275,9 @@
             
             tappedDots[key] = @2;
             
-            [MOVE animateView:circle properties:@{@"alpha":@1, @"duration":@0.2,@"delay":@0.3}];
             [self.view addSubview:circle];
+            [MOVE animateView:circle properties:@{@"alpha":@1, @"duration":@0.2,@"delay":@0.3}];
+
         }
     }
     
@@ -242,19 +289,82 @@
     NSString * key = [NSString stringWithFormat:@"c%dr%d", (int)position.x, (int)position.y];
     
     //set player num to value in tapped dots
-//    if (tappedDots[key] == (tappedDots[key])) {
-//        NSLog(@"change to grey");
-//    }else{
-        tappedDots[key] = @(playerTurn);
+    //if ([tappedDots[key]  isEqual: @(0)] || [tappedDots[key]  isEqual: @(1)]) {
+//    if ([tappedDots[key]  isEqual: @(playerTurn)])
+//    {
+//        NSLog(@"IF");
+//        tappedDots[key] = @(playerTurn);
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"You selected your own color. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//        [self highlightPlayerLabel];
+//        return playerColors[playerTurn];
 //    }
+//    else if (![tappedDots[key] isEqual: @(0)] && ![tappedDots[key] isEqual: @(2)])
+//    {
+//      //  tappedDots[key] = @(playerTurn);
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"That color has already been taken. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//        NSLog(@"ELSE IF");
+//     //   currentColor = playerColors[playerTurn];
+//        [self highlightPlayerLabel];
+//        return playerColors[1];
+//    }
+//    else if (![tappedDots[key] isEqual: @(1)] && ![tappedDots[key] isEqual: @(2)])
+//    {
+//        //  tappedDots[key] = @(playerTurn);
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"That color has already been taken. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+//        NSLog(@"ELSE IF");
+//        //   currentColor = playerColors[playerTurn];
+//        [self highlightPlayerLabel];
+//        return playerColors[0];
+//    }
+//    else
+//    {
+        NSLog(@"ELSE");
+        tappedDots[key] = @(playerTurn);
     
-    // set player num to value in tappedDots
-    [self checkForSquareAroundPosition:position];
+        // set player num to value in tappedDots
+        [self checkForSquareAroundPosition:position];
+        
+        // check for square
+        currentColor = playerColors[playerTurn];
+        playerTurn = (playerTurn) ? 0 : 1;
+        [self highlightPlayerLabel];
+        return currentColor;
+//    }
+}
+
+-(void)circleFlip
+{
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations: ^(void)
+     {
+         currentSquare.transform = CGAffineTransformMakeScale(1, -1);
+     }
+                     completion:^(BOOL b) {
+                         currentSquare.layer.shadowColor = [UIColor blackColor].CGColor;
+                         currentSquare.layer.shadowOpacity = 0.75;
+                         currentSquare.layer.shadowRadius = 15.0;
+                         currentSquare.layer.shadowOffset = (CGSize){0.0, 20.0};
+                     }];
+}
+
+- (void)highlightPlayerLabel{
+    if (playerTurn == 1) {
+        //NSLog(@"two");
+        player1Label.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
+        [gameBoard addSubview:player1Label];
+        player2Label.backgroundColor = [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:0.5f];
+        [gameBoard addSubview:player2Label];
     
-    // check for square
-    UIColor * currentColor = playerColors[playerTurn];
-    playerTurn = (playerTurn) ? 0 : 1;
-    return currentColor;
+    }else if (playerTurn == 0) {
+        //NSLog(@"one");
+        player2Label.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
+        [gameBoard addSubview:player2Label];
+        player1Label.backgroundColor = [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:0.5f];
+        [gameBoard addSubview:player1Label];
+    }
 }
 
 - (void)checkForSquareAroundPosition:(CGPoint)position
@@ -311,6 +421,18 @@
         //if top, left, & bottom dots the same as player... thenthey own the square
         if (topDotsSame && bottomDotsSame && leftDotsSame && [tappedDots[topLeftDot] isEqual:@(player)])
         {
+            static int player1SquareCount = 0;
+            static int player2SquareCount = 0;
+
+            if (player == 0) {
+                player1SquareCount += 1;
+                NSLog(@"player1 Square Count = %d", player1SquareCount);
+            }
+            else if (player == 1) {
+                player2SquareCount += 1;
+                NSLog(@"player2 Square Count = %d", player2SquareCount);
+            }
+            
             currentSquare = allSquares[topLeftDot];
 
             currentSquare.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -321,7 +443,7 @@
             [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
              animations: ^(void)
              {
-                currentSquare.transform = CGAffineTransformMakeScale(-1, 1);
+                currentSquare.transform = CGAffineTransformMakeScale(1, -1);
              }
                  completion:^(BOOL b) {
                      currentSquare.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -332,9 +454,11 @@
                 [UIView animateWithDuration:0.5 animations: ^(void) {
                     currentSquare.backgroundColor = color;
             }];
+            
         }
     }
 }
+
 
 - (void)didReceiveMemoryWarning
 {

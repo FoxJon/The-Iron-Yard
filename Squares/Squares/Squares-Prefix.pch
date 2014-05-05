@@ -17,6 +17,7 @@
 
 #define LIGHTBLUE_COLOR [UIColor colorWithRed:76/255.0f green:171/255.0f blue:255/255.0f alpha:0.9f]
 #define DARKBLUE_COLOR [UIColor colorWithRed:38/255.0f green:85/255.0f blue:127/255.0f alpha:0.9f]
+#define WHITE_COLOR [UIColor colorWithWhite:0.95 alpha:1.0]
 
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
