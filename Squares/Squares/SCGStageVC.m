@@ -36,7 +36,9 @@
     UIButton *playerButton;
     UIButton * gridSize;
     UILabel *player1Label;
+    UILabel *player1Score;
     UILabel *player2Label;
+    UILabel *player2Score;
     UILabel *player1Dot;
     UILabel *player2Dot;
     UIColor * currentColor;
@@ -84,6 +86,8 @@
     [player2Label removeFromSuperview];
     [player1Dot removeFromSuperview];
     [player2Dot removeFromSuperview];
+    [player1Score removeFromSuperview];
+    [player2Score removeFromSuperview];
 
     CAGradientLayer *bgLayer = [SCGBackgroundLayer blueGradient];
     bgLayer.frame = gameBoard.bounds;
@@ -199,12 +203,21 @@
     [gameBoard addSubview:player1Label];
     [MOVE animateView:player1Label properties:@{@"x": @20,@"duration" : @1.0}];
     
-    player1Dot = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.03), 18, 18)];
+    player1Dot = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.03), 20, 20)];
     player1Dot.backgroundColor = LIGHTBLUE_COLOR;
-    player1Dot.layer.cornerRadius = 9;
+  //  player1Dot.layer.cornerRadius = 9;
     player1Dot.layer.masksToBounds = YES;
+    
     [gameBoard addSubview:player1Dot];
     [MOVE animateView:player1Dot properties:@{@"x": @120,@"duration" : @1.0}];
+    
+    player1Score = [[UILabel alloc] initWithFrame:CGRectMake(120, (SCREEN_HEIGHT * 0.03), 20, 20)];
+    player1Score.text = @"0";
+    player1Score.textAlignment = 1;
+    player1Score.textColor = [UIColor whiteColor];
+    player1Score.layer.cornerRadius = 6;
+    player1Score.layer.masksToBounds = YES;
+    [gameBoard addSubview:player1Score];
     
     player2Label = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.08), 90, 18)];
     player2Label.text = @" PLAYER 2";
@@ -215,12 +228,21 @@
     [gameBoard addSubview:player2Label];
     [MOVE animateView:player2Label properties:@{@"x": @20,@"duration" : @1.0}];
     
-    player2Dot = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.08), 18, 18)];
+    player2Dot = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.08), 20, 20)];
     player2Dot.backgroundColor = DARKBLUE_COLOR;
-    player2Dot.layer.cornerRadius = 9;
+   // player2Dot.layer.cornerRadius = 9;
     player2Dot.layer.masksToBounds = YES;
+  
     [gameBoard addSubview:player2Dot];
     [MOVE animateView:player2Dot properties:@{@"x": @120,@"duration" : @1.0}];
+
+    player2Score = [[UILabel alloc] initWithFrame:CGRectMake(120, (SCREEN_HEIGHT * 0.08), 20, 20)];
+    player2Score.text = @"0";
+    player2Score.textAlignment = 1;
+    player2Score.textColor = [UIColor whiteColor];
+    player2Score.layer.cornerRadius = 6;
+    player2Score.layer.masksToBounds = YES;
+    [gameBoard addSubview:player2Score];
 
 
 
@@ -426,10 +448,38 @@
 
             if (player == 0) {
                 player1SquareCount += 1;
+                [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionBeginFromCurrentState
+                                 animations: ^(void)
+                 {
+                     player1Dot.transform = CGAffineTransformMakeScale(1, -1);
+                 }
+                                 completion:^(BOOL b) {
+                                 }];
+                [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^(void)
+                 {
+                     player1Score.text = @"1";
+                     
+                 }completion:^(BOOL b) {
+                     
+                 }];
                 NSLog(@"player1 Square Count = %d", player1SquareCount);
             }
             else if (player == 1) {
                 player2SquareCount += 1;
+                [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionBeginFromCurrentState
+                                 animations: ^(void)
+                 {
+                     player2Dot.transform = CGAffineTransformMakeScale(1, -1);
+                 }
+                                 completion:^(BOOL b) {
+                                 }];
+                                [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^(void)
+                                 {
+                                     player2Score.text = @"1";
+
+                                 }completion:^(BOOL b) {
+                                 
+                                }];
                 NSLog(@"player2 Square Count = %d", player2SquareCount);
             }
             
