@@ -8,6 +8,7 @@
 
 #import "PNAAppDelegate.h"
 #import "PNAViewController.h"
+#import "PNAWorldController.h"
 
 
 @implementation PNAAppDelegate
@@ -16,8 +17,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.rootViewController = [[PNAViewController alloc]initWithNibName:nil bundle:nil];
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = [[PNAWorldController alloc]initWithNibName:nil bundle:nil];
+    self.window.backgroundColor = [UIColor blackColor];
     [self.window makeKeyAndVisible];
     return YES;
 }

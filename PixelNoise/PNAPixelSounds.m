@@ -17,6 +17,9 @@
     //PLAYER MUST BE A PROPERTY!!  if not, the pointer gets closed out at end of method before the sound even gets to play. Now the property stays alive as long as pixelSounds stays alive.
     self.player = [[AVAudioPlayer alloc]initWithData:fileData error:nil];
     
+    //make it -1 to make it infinite loop!
+    self.player.numberOfLoops = 0;
+    
     [self.player play];
 }
 
