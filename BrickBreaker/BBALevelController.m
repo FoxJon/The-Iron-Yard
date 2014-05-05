@@ -9,7 +9,10 @@
 #import "BBALevelController.h"
 #import "move.h"
 
+
 @interface BBALevelController () <UICollisionBehaviorDelegate>
+
+@property (nonatomic) AVAudioPlayer * player;
 
 @property (nonatomic) UIView * paddle;
 @property (nonatomic) NSMutableArray * balls;
@@ -43,7 +46,6 @@
 {
     float paddleWidth;
     int points;
-    UIView * tempBrick;
     int brickCount;
     int brickCols;
     int brickRows;
@@ -71,8 +73,19 @@
         
         UIPanGestureRecognizer * pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panScreen:)];
         [self.view addGestureRecognizer:pan];
+        
     }
     return self;
+}
+
+-(void)playSoundWithName:(NSString *)soundName
+{
+    NSString * file = [[NSBundle mainBundle] pathForResource:soundName ofType:@"wav"];
+    
+    NSURL * url = [[NSURL alloc]initFileURLWithPath:file];
+    self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+    
+    [self.player play];
 }
 
 - (void)viewDidLoad
@@ -94,7 +107,7 @@
     self.collider.collisionDelegate = self;
     self.collider.collisionMode = UICollisionBehaviorModeEverything;
    
-    //self.collider.translatesReferenceBoundsIntoBoundary = YES;
+    self.collider.translatesReferenceBoundsIntoBoundary = YES;
     
     int w = self.view.frame.size.width;
     int h = self.view.frame.size.height;
@@ -123,9 +136,14 @@
 
 -(void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item1 withItem:(id<UIDynamicItem>)item2 atPoint:(CGPoint)p
 {
+    if([item1 isEqual:self.paddle] || [item2 isEqual:self.paddle])
+    {
+        [self playSoundWithName:@"retro_click"];
+        
+    }
     
-    
-        for (UIView * brick in self.bricks)
+    UIView * tempBrick;
+    for (UIView * brick in self.bricks)
     {
         if([item1 isEqual:brick] || [item2 isEqual:brick])
         {
@@ -149,7 +167,11 @@
         }
     }
     
-    if(tempBrick != nil) [self.bricks removeObjectIdenticalTo:tempBrick];
+    if(tempBrick != nil)
+    {
+        [self playSoundWithName:@"electric_alert"];
+        [self.bricks removeObjectIdenticalTo:tempBrick];
+    }
     
 }
 
@@ -162,8 +184,6 @@
          ball = (UIView *)item;
          newBall = (UIView *)item;
 
-         
-     
          [ball removeFromSuperview];
          [self.collider removeItem:ball];
          [self.balls removeObject:ball];
@@ -307,7 +327,7 @@
     
     // Start ball off with a push
     self.pusher = [[UIPushBehavior alloc] initWithItems:self.balls mode: UIPushBehaviorModeInstantaneous];
-    self.pusher.pushDirection = CGVectorMake(-0.009, -0.009);  // + is down, - is up. object mass makes diff
+    self.pusher.pushDirection = CGVectorMake(-0.09, -0.09);  // + is down, - is up. object mass makes diff
     self.pusher.active = YES;
     
     [self.animator addBehavior:self.pusher];

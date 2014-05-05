@@ -22,6 +22,9 @@
 		B03CC38A19001BC1006C9EEA /* BBAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03CC38919001BC1006C9EEA /* BBAViewController.m */; };
 		B03CC38D19001D45006C9EEA /* BBALevelController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03CC38C19001D45006C9EEA /* BBALevelController.m */; };
 		B03CC39119007987006C9EEA /* MOVE.m in Sources */ = {isa = PBXBuildFile; fileRef = B03CC39019007987006C9EEA /* MOVE.m */; };
+		B04A2E381917D6150071F0DA /* retro_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = B04A2E371917D6150071F0DA /* retro_click.wav */; };
+		B04A2E3A1917D6290071F0DA /* electric_alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = B04A2E391917D6290071F0DA /* electric_alert.wav */; };
+		B04A2E3C1917DE9F0071F0DA /* Zoom Down FX 001.wav in Resources */ = {isa = PBXBuildFile; fileRef = B04A2E3B1917DE9F0071F0DA /* Zoom Down FX 001.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		B03CC38C19001D45006C9EEA /* BBALevelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBALevelController.m; sourceTree = "<group>"; };
 		B03CC38F19007987006C9EEA /* MOVE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOVE.h; sourceTree = "<group>"; };
 		B03CC39019007987006C9EEA /* MOVE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MOVE.m; sourceTree = "<group>"; };
+		B04A2E371917D6150071F0DA /* retro_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = retro_click.wav; sourceTree = "<group>"; };
+		B04A2E391917D6290071F0DA /* electric_alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = electric_alert.wav; sourceTree = "<group>"; };
+		B04A2E3B1917DE9F0071F0DA /* Zoom Down FX 001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Zoom Down FX 001.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +135,10 @@
 		B03CC35F190019CD006C9EEA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B04A2E3B1917DE9F0071F0DA /* Zoom Down FX 001.wav */,
+				B04A2E391917D6290071F0DA /* electric_alert.wav */,
 				B03CC360190019CD006C9EEA /* BrickBreaker-Info.plist */,
+				B04A2E371917D6150071F0DA /* retro_click.wav */,
 				B03CC361190019CD006C9EEA /* InfoPlist.strings */,
 				B03CC364190019CD006C9EEA /* main.m */,
 				B03CC366190019CD006C9EEA /* BrickBreaker-Prefix.pch */,
@@ -251,7 +260,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B04A2E3C1917DE9F0071F0DA /* Zoom Down FX 001.wav in Resources */,
+				B04A2E3A1917D6290071F0DA /* electric_alert.wav in Resources */,
 				B03CC363190019CD006C9EEA /* InfoPlist.strings in Resources */,
+				B04A2E381917D6150071F0DA /* retro_click.wav in Resources */,
 				B03CC36B190019CD006C9EEA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -472,6 +484,7 @@
 				B03CC383190019CD006C9EEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B03CC384190019CD006C9EEA /* Build configuration list for PBXNativeTarget "BrickBreakerTests" */ = {
 			isa = XCConfigurationList;
@@ -480,6 +493,7 @@
 				B03CC386190019CD006C9EEA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
