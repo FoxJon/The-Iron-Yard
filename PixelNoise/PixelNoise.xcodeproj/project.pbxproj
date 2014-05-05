@@ -19,6 +19,9 @@
 		B04A2E1B1917C6E10071F0DA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B04A2E031917C6E10071F0DA /* UIKit.framework */; };
 		B04A2E231917C6E10071F0DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B04A2E211917C6E10071F0DA /* InfoPlist.strings */; };
 		B04A2E251917C6E10071F0DA /* PixelNoiseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A2E241917C6E10071F0DA /* PixelNoiseTests.m */; };
+		B04A2E301917C7920071F0DA /* PNAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A2E2F1917C7920071F0DA /* PNAViewController.m */; };
+		B04A2E331917C8930071F0DA /* PNAPixelSounds.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A2E321917C8930071F0DA /* PNAPixelSounds.m */; };
+		B04A2E361917CD540071F0DA /* click_alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = B04A2E351917CD540071F0DA /* click_alert.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,11 @@
 		B04A2E201917C6E10071F0DA /* PixelNoiseTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PixelNoiseTests-Info.plist"; sourceTree = "<group>"; };
 		B04A2E221917C6E10071F0DA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B04A2E241917C6E10071F0DA /* PixelNoiseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PixelNoiseTests.m; sourceTree = "<group>"; };
+		B04A2E2E1917C7920071F0DA /* PNAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PNAViewController.h; path = PixelNoise/PNAViewController.h; sourceTree = "<group>"; };
+		B04A2E2F1917C7920071F0DA /* PNAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PNAViewController.m; path = PixelNoise/PNAViewController.m; sourceTree = "<group>"; };
+		B04A2E311917C8930071F0DA /* PNAPixelSounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNAPixelSounds.h; sourceTree = "<group>"; };
+		B04A2E321917C8930071F0DA /* PNAPixelSounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNAPixelSounds.m; sourceTree = "<group>"; };
+		B04A2E351917CD540071F0DA /* click_alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click_alert.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,10 @@
 		B04A2DF31917C6E10071F0DA = {
 			isa = PBXGroup;
 			children = (
+				B04A2E311917C8930071F0DA /* PNAPixelSounds.h */,
+				B04A2E321917C8930071F0DA /* PNAPixelSounds.m */,
+				B04A2E2E1917C7920071F0DA /* PNAViewController.h */,
+				B04A2E2F1917C7920071F0DA /* PNAViewController.m */,
 				B04A2E051917C6E10071F0DA /* PixelNoise */,
 				B04A2E1E1917C6E10071F0DA /* PixelNoiseTests */,
 				B04A2DFE1917C6E10071F0DA /* Frameworks */,
@@ -107,6 +119,7 @@
 		B04A2E051917C6E10071F0DA /* PixelNoise */ = {
 			isa = PBXGroup;
 			children = (
+				B04A2E341917CCEE0071F0DA /* Sounds */,
 				B04A2E0E1917C6E10071F0DA /* PNAAppDelegate.h */,
 				B04A2E0F1917C6E10071F0DA /* PNAAppDelegate.m */,
 				B04A2E111917C6E10071F0DA /* Images.xcassets */,
@@ -142,6 +155,14 @@
 				B04A2E211917C6E10071F0DA /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B04A2E341917CCEE0071F0DA /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				B04A2E351917CD540071F0DA /* click_alert.wav */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,6 +241,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B04A2E361917CD540071F0DA /* click_alert.wav in Resources */,
 				B04A2E0A1917C6E10071F0DA /* InfoPlist.strings in Resources */,
 				B04A2E121917C6E10071F0DA /* Images.xcassets in Resources */,
 			);
@@ -240,7 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B04A2E331917C8930071F0DA /* PNAPixelSounds.m in Sources */,
 				B04A2E101917C6E10071F0DA /* PNAAppDelegate.m in Sources */,
+				B04A2E301917C7920071F0DA /* PNAViewController.m in Sources */,
 				B04A2E0C1917C6E10071F0DA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
