@@ -7,6 +7,7 @@
 //
 
 #import "TDLTableViewCell.h"
+#import "TDLSingleton.h"
 
 @implementation TDLTableViewCell
 
@@ -72,37 +73,31 @@
     
     [self.contentView addSubview:profileLocation];
 
-
 }
 
-
-- (void) setProfileInfo:(NSDictionary *)profileInfo  // Setter
+-(void)setIndex:(NSInteger)index
 {
+    _index = index;
+    
+    NSDictionary * profileInfo = [[TDLSingleton sharedCollection] allListItems][index];
+    
     NSURL * imageURL = [NSURL URLWithString:profileInfo[@"avatar_url"]];
     
     NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
-
+    
     UIImage * image = [UIImage imageWithData:imageData];
-   
+    
     profileImage.image = image;
     
     profileName.text = profileInfo[@"name"];
     
-//  profileURL.text = [profileInfo objectForKey:@"github"];
+    //  profileURL.text = [profileInfo objectForKey:@"github"];
     profileURL.text = profileInfo[@"html_url"];
-
+    
     if([profileInfo[@"location"] isEqualToString:@""])
         profileLocation.text = @"Somewhere Unknown";
     else
         profileLocation.text = profileInfo[@"location"];
-    
-    _profileInfo = profileInfo;
-}
-
-
-- (void)awakeFromNib
-{
-    // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -10,6 +10,12 @@
 
 @interface TDLSingleton : NSObject
 
-+ (TDLSingleton *)sharedSingleton;
++ (TDLSingleton *)sharedCollection;
+
+-(void)addListItem:(NSDictionary *)listItem;
+-(void)removeListItem:(NSDictionary *)listItem;
+-(void)removeListItemAtIndex:(NSInteger)index;
+
+-(NSArray *)allListItems;
 
 @end

@@ -9,27 +9,24 @@
 #import "TDLTableViewController.h"
 #import "TDLTableViewCell.h"
 #import "TDLGitHubRequest.h"
+#import "TDLSingleton.h"
+
 
 @implementation TDLTableViewController
 
 {
-    NSMutableArray * listItems;    // This is a declaration
     UITextField * nameField;
     UINavigationController * navController;
 }
-
-//- (void)toggleEdit{
-//
-//    [self.tableView setEditing:!self.tableView.editing animated:YES];
-//}
 
 - (id)initWithStyle:(UITableViewStyle)style{
     self = [super initWithStyle:style];
     if (self)
     {
-//        UIBarButtonItem * editButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(toggleEdit)];
-//        
-//        self.navigationItem.rightBarButtonItem = editButton;
+        UIBarButtonItem * addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newUser)];
+        self.navigationItem.leftBarButtonItem = addButton;
+        
+        self.navigationItem.rightBarButtonItem = self.editButtonItem;
     }
     return self;
 }
@@ -43,9 +40,6 @@
 - (void)textFieldDidEndEditing:(UITextField *)textField{
     textField.placeholder = @"Enter here";
 }
-
-
-
 
 - (void) newUser{
     
@@ -64,7 +58,7 @@
     
     if ([[userInfo allKeys] count] > 4)
     {
-        [listItems addObject:userInfo];
+        [[TDLSingleton sharedCollection] addListItem:userInfo];
     } else {
         NSLog(@"not enough data");
     
@@ -74,10 +68,6 @@
     }
     [nameField resignFirstResponder];
     [self.tableView reloadData];
-    
-    NSLog(@"listItems Count : %d", [listItems count]);
-    
-    [self saveData];
 
 }
 
@@ -90,7 +80,43 @@
 {
     [super viewDidLoad];
     
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
+    nameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 170, 35)];
+    self.navigationItem.titleView = nameField;
+    
+    nameField.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
+    nameField.layer.cornerRadius = 6;
+    nameField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 30)];
+    nameField.leftViewMode = UITextFieldViewModeAlways;
+    nameField.placeholder = @"Enter here";
+    nameField.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
+    
+    nameField.delegate = self;
+    
+    self.tableView.rowHeight = 100;
+    self.tableView.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20);
+    
+    UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
+    header.backgroundColor = [UIColor whiteColor];
+    self.tableView.tableHeaderView = header;
+    //[self.tableView setTableHeaderView:header]  is the same thing
+    
+    UIView * footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    footer.backgroundColor = [UIColor whiteColor];
+    self.tableView.tableFooterView = footer;
+    
+    
+    UILabel * titleHeader = [[UILabel alloc] initWithFrame:CGRectMake(20, 70, 280, 30)];
+    
+    titleHeader.text = @"Github Users";
+    titleHeader.textColor = [UIColor lightGrayColor];
+    titleHeader.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:30];
+    titleHeader.layer.cornerRadius = 6;
+    titleHeader.layer.masksToBounds = YES;
+    
+    [header addSubview:titleHeader];
+
     
     
 //    listItems = [@[
@@ -112,7 +138,7 @@
 //                   @{@"name" : @"Jo_Albright", @"avatar_url" : [UIImage imageNamed:@"JoAlbright"], @"html_url" : @"https://github.com/joalbright"},
 //                   ]mutableCopy];
     
-    listItems = [@[
+//    listItems = [@[
 //                   @{
 //                       @"name" : @"Jon Fox",
 //                       @"avatar_url" : @"https://avatars1.githubusercontent.com/u/7116114?s=460",
@@ -132,63 +158,12 @@
 //                       @"location" : @"Atlanta, GA"
 //                       }
                    
-                   ] mutableCopy];
+//                   ] mutableCopy];
     
 //    [self loadListItems];
 
-    NSLog(@"%@",NULL);
     
     //self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    self.tableView.rowHeight = 100;
-    self.tableView.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20);
-    
-    UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-    header.backgroundColor = [UIColor whiteColor];
-    self.tableView.tableHeaderView = header;
-    //[self.tableView setTableHeaderView:header]  is the same thing
-    
-    UIView * footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-    footer.backgroundColor = [UIColor whiteColor];
-    self.tableView.tableFooterView = footer;
-    
-    
-    nameField = [[UITextField alloc] initWithFrame:CGRectMake(20, 20, 160, 30)];
-    
-    nameField.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.05];
-    nameField.layer.cornerRadius = 6;
-    nameField.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 30)];
-    nameField.leftViewMode = UITextFieldViewModeAlways;
-    nameField.placeholder = @"Enter here";
-    nameField.textColor = [UIColor colorWithWhite:0.0 alpha:0.2];
-    
-    nameField.delegate = self;
-    
-    
-    [header addSubview:nameField];
-    
-    UIButton * submitButton = [[UIButton alloc] initWithFrame:CGRectMake(200, 20, 100, 30)];
-    
-    [submitButton setTitle:@"New User" forState:UIControlStateNormal];
-    [submitButton addTarget:self action:@selector(newUser) forControlEvents:UIControlEventTouchUpInside];
-    submitButton.backgroundColor = [UIColor darkGrayColor];
-    submitButton.layer.cornerRadius = 6;
-    
-    [header addSubview:submitButton];
-    
-    UILabel * titleHeader = [[UILabel alloc] initWithFrame:CGRectMake(20, 70, 280, 30)];
-    
-    titleHeader.text = @"Github Users";
-    titleHeader.textColor = [UIColor lightGrayColor];
-    titleHeader.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:30];
-    titleHeader.layer.cornerRadius = 6;
-    titleHeader.layer.masksToBounds = YES;
-    
-    
-    
-    
-    [header addSubview:titleHeader];
-    
-    
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -209,7 +184,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [listItems count];
+ //   return [listItems count];
+    return [[[TDLSingleton sharedCollection] allListItems] count];
 }
 
 
@@ -221,7 +197,9 @@
     if (cell == nil){
         cell = [[TDLTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
     }
-    cell.profileInfo = [self getListItem:indexPath.row];
+    
+    cell.index = indexPath.row;
+//    cell.profileInfo = [self getListItem:indexPath.row];
 
     return cell;
 }
@@ -230,7 +208,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    NSDictionary * listItem = [self getListItem:indexPath.row];
+    NSDictionary * listItem = [[TDLSingleton sharedCollection] allListItems][indexPath.row];
     
     NSLog(@"%@", [listItem objectForKey:@"html_url"]);
     
@@ -263,9 +241,10 @@
 
 //    [listItems removeObjectAtIndex:indexPath.row];
     
-    NSDictionary * listItem = [self getListItem:indexPath.row];
+//    NSDictionary * listItem = [self getListItem:indexPath.row];
     
-    [listItems removeObjectIdenticalTo:listItem];
+    [[TDLSingleton sharedCollection] removeListItemAtIndex:indexPath.row];
+//    [listItems removeObjectIdenticalTo:listItem];
     
 //    [self.tableView reloadData];
     
@@ -274,7 +253,7 @@
     
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     
-    [self saveData];
+//    [self saveData];
 }
 
 
@@ -284,50 +263,28 @@
     return YES;
 }
 
--(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-    
-    if (sourceIndexPath == destinationIndexPath) return;  //  return stops the method from running
-    
-    NSDictionary * sourceItem = [self getListItem:sourceIndexPath.row];
-    
-    NSDictionary * toItem = [self getListItem:destinationIndexPath.row];
-    
-    [listItems removeObjectIdenticalTo:sourceItem];
-    [listItems insertObject:sourceItem atIndex:[listItems indexOfObject:toItem]];
-    
-    [self saveData];
-
-}
-
-
-- (NSDictionary *)getListItem:(NSInteger)row
-{
-    NSArray * reverseArray = [[listItems reverseObjectEnumerator] allObjects];
-    return reverseArray[row];
-    
-}
-
-#pragma mark - Save data
+//-(void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+//    
+//    if (sourceIndexPath == destinationIndexPath) return;  //  return stops the method from running
+//    
+//    NSDictionary * sourceItem = [self getListItem:sourceIndexPath.row];
+//    
+//    NSDictionary * toItem = [self getListItem:destinationIndexPath.row];
+//    
+//    [listItems removeObjectIdenticalTo:sourceItem];
+//    [listItems insertObject:sourceItem atIndex:[listItems indexOfObject:toItem]];
+//    
+//    [self saveData];
+//
+//}
 
 
-- (void)saveData{
-    NSString * path = [self listArchivePath];
-    NSData * data = [NSKeyedArchiver archivedDataWithRootObject:listItems];
-    [data writeToFile:path options:NSDataWritingAtomic error:nil];
-}
-
--(NSString *)listArchivePath{
-    NSArray *documentDirectories = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentDirectory = documentDirectories[0];
-    return [documentDirectory stringByAppendingPathComponent:@"listdata.data"];
-}
-
-- (void) loadListItems{
-    NSString * path = [self listArchivePath];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        listItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
-    }
-}
+//- (NSDictionary *)getListItem:(NSInteger)row
+//{
+//    NSArray * reverseArray = [[listItems reverseObjectEnumerator] allObjects];
+//    return reverseArray[row];
+//    
+//}
 
 
 #pragma mark - Navigation
