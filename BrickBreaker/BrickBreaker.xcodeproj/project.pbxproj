@@ -25,6 +25,7 @@
 		B04A2E381917D6150071F0DA /* retro_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = B04A2E371917D6150071F0DA /* retro_click.wav */; };
 		B04A2E3A1917D6290071F0DA /* electric_alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = B04A2E391917D6290071F0DA /* electric_alert.wav */; };
 		B04A2E3C1917DE9F0071F0DA /* Zoom Down FX 001.wav in Resources */ = {isa = PBXBuildFile; fileRef = B04A2E3B1917DE9F0071F0DA /* Zoom Down FX 001.wav */; };
+		B0D932AC191958F000B459EA /* BBASingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D932AB191958F000B459EA /* BBASingleton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		B04A2E371917D6150071F0DA /* retro_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = retro_click.wav; sourceTree = "<group>"; };
 		B04A2E391917D6290071F0DA /* electric_alert.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = electric_alert.wav; sourceTree = "<group>"; };
 		B04A2E3B1917DE9F0071F0DA /* Zoom Down FX 001.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "Zoom Down FX 001.wav"; sourceTree = "<group>"; };
+		B0D932AA191958F000B459EA /* BBASingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBASingleton.h; sourceTree = "<group>"; };
+		B0D932AB191958F000B459EA /* BBASingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBASingleton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +95,8 @@
 		B03CC34C190019CD006C9EEA = {
 			isa = PBXGroup;
 			children = (
+				B0D932AA191958F000B459EA /* BBASingleton.h */,
+				B0D932AB191958F000B459EA /* BBASingleton.m */,
 				B03CC38E19007968006C9EEA /* Animations */,
 				B03CC38719001AE6006C9EEA /* Controllers */,
 				B03CC35E190019CD006C9EEA /* BrickBreaker */,
@@ -284,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B03CC39119007987006C9EEA /* MOVE.m in Sources */,
+				B0D932AC191958F000B459EA /* BBASingleton.m in Sources */,
 				B03CC38D19001D45006C9EEA /* BBALevelController.m in Sources */,
 				B03CC38A19001BC1006C9EEA /* BBAViewController.m in Sources */,
 				B03CC369190019CD006C9EEA /* BBAAppDelegate.m in Sources */,

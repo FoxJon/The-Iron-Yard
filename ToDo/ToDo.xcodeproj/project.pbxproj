@@ -39,6 +39,7 @@
 		B0BCB0AE18EC8AE10065D4DD /* TJMercer.png in Resources */ = {isa = PBXBuildFile; fileRef = B0BCB09F18EC8AE10065D4DD /* TJMercer.png */; };
 		B0BCB0AF18EC8AE10065D4DD /* TeddyConyers.png in Resources */ = {isa = PBXBuildFile; fileRef = B0BCB0A018EC8AE10065D4DD /* TeddyConyers.png */; };
 		B0C0F13618F2F4630089E3B9 /* TDLGitHubRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C0F13518F2F4630089E3B9 /* TDLGitHubRequest.m */; };
+		B0D932AF1919599800B459EA /* TDLSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D932AE1919599800B459EA /* TDLSingleton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,8 @@
 		B0BCB0A018EC8AE10065D4DD /* TeddyConyers.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TeddyConyers.png; sourceTree = "<group>"; };
 		B0C0F13418F2F4630089E3B9 /* TDLGitHubRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLGitHubRequest.h; sourceTree = "<group>"; };
 		B0C0F13518F2F4630089E3B9 /* TDLGitHubRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLGitHubRequest.m; sourceTree = "<group>"; };
+		B0D932AD1919599800B459EA /* TDLSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TDLSingleton.h; sourceTree = "<group>"; };
+		B0D932AE1919599800B459EA /* TDLSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TDLSingleton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 		B0BCB05418EC4B4E0065D4DD = {
 			isa = PBXGroup;
 			children = (
+				B0D932AD1919599800B459EA /* TDLSingleton.h */,
+				B0D932AE1919599800B459EA /* TDLSingleton.m */,
 				B0C0F13318F2F4260089E3B9 /* Random */,
 				B01FF7E218EDA7D500632809 /* Controllers */,
 				B0BCB06618EC4B4E0065D4DD /* ToDo */,
@@ -358,6 +363,7 @@
 			files = (
 				B01FF7E118EDA6D300632809 /* TDLTableViewCell.m in Sources */,
 				B0BCB09118EC4C760065D4DD /* TDLTableViewController.m in Sources */,
+				B0D932AF1919599800B459EA /* TDLSingleton.m in Sources */,
 				B0C0F13618F2F4630089E3B9 /* TDLGitHubRequest.m in Sources */,
 				B0BCB06D18EC4B4E0065D4DD /* main.m in Sources */,
 				B0BCB07118EC4B4E0065D4DD /* TDLAppDelegate.m in Sources */,
