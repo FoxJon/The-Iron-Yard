@@ -25,6 +25,8 @@
     PNAPixelSounds * sounds;
     
     NSArray * splatterDirections;
+    
+    int waterLevel;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,9 +34,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        UIView *water = [[UIView alloc] initWithFrame:CGRectMake(0, 470, 320, 200)];
-        water.backgroundColor = [UIColor blueColor];
-        [self.view addSubview:water];
         
         sounds = [[PNAPixelSounds alloc]init];
         
@@ -45,6 +44,8 @@
                               [NSValue valueWithCGPoint:CGPointMake(0.05, -0.1)],
                               [NSValue valueWithCGPoint:CGPointMake(0.1, -0.1)]
                               ];
+        
+        waterLevel = 470;
 
         self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
         
@@ -64,6 +65,8 @@
         self.shardCollision.translatesReferenceBoundsIntoBoundary = YES;
         self.shardCollision.collisionDelegate = self;
         [self.animator addBehavior:self.collision];
+        
+        [self.collision addBoundaryWithIdentifier:@"floor"fromPoint:CGPointMake(0, waterLevel+10) toPoint:CGPointMake(320, waterLevel+10)];
         
     }
     return self;
@@ -87,7 +90,7 @@
     
     UIView *block = [[UIView alloc] initWithFrame:CGRectMake(location.x, location.y, 10, 10)];
     block.backgroundColor = [UIColor blueColor];
-    
+    block.layer.cornerRadius = 5;
     [self.view addSubview:block]; // must add to subview before gravity and collision
     
     [self.gravity addItem:block];
@@ -109,7 +112,17 @@
 
 -(void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p
 {
-
+    if ([(NSString *)identifier isEqualToString:@"floor"])
+        
+    waterLevel -= 1;
+    
+    [self.collision addBoundaryWithIdentifier:@"floor"fromPoint:CGPointMake(0, waterLevel+10) toPoint:CGPointMake(320, waterLevel+10)];
+    
+    UIView *water = [[UIView alloc] initWithFrame:CGRectMake(0, waterLevel, 320, 200)];
+    water.backgroundColor = [UIColor blueColor];
+    
+    [self.view addSubview:water];
+    
     if ([behavior isEqual:self.collision])
     {
     [sounds playSoundWithName:@"drip"];
@@ -143,6 +156,7 @@
         CGPoint direction = [pointValue CGPointValue];
         
         UIView *shard = [[UIView alloc] initWithFrame:CGRectMake(location.x + (direction.x * 200), location.y - 50, 7, 7)];
+        shard.layer.cornerRadius = 3.5;
        
         shard.backgroundColor = [UIColor blueColor];
         
