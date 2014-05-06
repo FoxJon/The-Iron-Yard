@@ -24,6 +24,7 @@
 		B04A2E361917CD540071F0DA /* click_alert.wav in Resources */ = {isa = PBXBuildFile; fileRef = B04A2E351917CD540071F0DA /* click_alert.wav */; };
 		B04A2E3F1917E4DD0071F0DA /* PNAWorldController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A2E3E1917E4DD0071F0DA /* PNAWorldController.m */; };
 		B0D9325F1918323100B459EA /* blip_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0D9325E1918323100B459EA /* blip_click.wav */; };
+		B0D932651918977C00B459EA /* drip.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0D932641918977C00B459EA /* drip.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		B04A2E3D1917E4DD0071F0DA /* PNAWorldController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNAWorldController.h; sourceTree = "<group>"; };
 		B04A2E3E1917E4DD0071F0DA /* PNAWorldController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNAWorldController.m; sourceTree = "<group>"; };
 		B0D9325E1918323100B459EA /* blip_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blip_click.wav; sourceTree = "<group>"; };
+		B0D932641918977C00B459EA /* drip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drip.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 		B04A2E341917CCEE0071F0DA /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				B0D932641918977C00B459EA /* drip.wav */,
 				B0D9325E1918323100B459EA /* blip_click.wav */,
 				B04A2E351917CD540071F0DA /* click_alert.wav */,
 			);
@@ -249,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0D932651918977C00B459EA /* drip.wav in Resources */,
 				B04A2E361917CD540071F0DA /* click_alert.wav in Resources */,
 				B04A2E0A1917C6E10071F0DA /* InfoPlist.strings in Resources */,
 				B0D9325F1918323100B459EA /* blip_click.wav in Resources */,
