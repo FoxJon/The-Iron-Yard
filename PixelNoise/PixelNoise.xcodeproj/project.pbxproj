@@ -25,6 +25,7 @@
 		B04A2E3F1917E4DD0071F0DA /* PNAWorldController.m in Sources */ = {isa = PBXBuildFile; fileRef = B04A2E3E1917E4DD0071F0DA /* PNAWorldController.m */; };
 		B0D9325F1918323100B459EA /* blip_click.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0D9325E1918323100B459EA /* blip_click.wav */; };
 		B0D932651918977C00B459EA /* drip.wav in Resources */ = {isa = PBXBuildFile; fileRef = B0D932641918977C00B459EA /* drip.wav */; };
+		B0D932681919157C00B459EA /* PNAPixelWorld2Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D932671919157C00B459EA /* PNAPixelWorld2Controller.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		B04A2E3E1917E4DD0071F0DA /* PNAWorldController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNAWorldController.m; sourceTree = "<group>"; };
 		B0D9325E1918323100B459EA /* blip_click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blip_click.wav; sourceTree = "<group>"; };
 		B0D932641918977C00B459EA /* drip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = drip.wav; sourceTree = "<group>"; };
+		B0D932661919157C00B459EA /* PNAPixelWorld2Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PNAPixelWorld2Controller.h; sourceTree = "<group>"; };
+		B0D932671919157C00B459EA /* PNAPixelWorld2Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PNAPixelWorld2Controller.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 			children = (
 				B04A2E3D1917E4DD0071F0DA /* PNAWorldController.h */,
 				B04A2E3E1917E4DD0071F0DA /* PNAWorldController.m */,
+				B0D932661919157C00B459EA /* PNAPixelWorld2Controller.h */,
+				B0D932671919157C00B459EA /* PNAPixelWorld2Controller.m */,
 				B04A2E311917C8930071F0DA /* PNAPixelSounds.h */,
 				B04A2E321917C8930071F0DA /* PNAPixelSounds.m */,
 				B04A2E2E1917C7920071F0DA /* PNAViewController.h */,
@@ -275,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0D932681919157C00B459EA /* PNAPixelWorld2Controller.m in Sources */,
 				B04A2E331917C8930071F0DA /* PNAPixelSounds.m in Sources */,
 				B04A2E101917C6E10071F0DA /* PNAAppDelegate.m in Sources */,
 				B04A2E3F1917E4DD0071F0DA /* PNAWorldController.m in Sources */,
