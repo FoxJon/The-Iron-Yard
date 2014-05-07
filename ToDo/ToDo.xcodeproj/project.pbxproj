@@ -126,11 +126,11 @@
 		B01FF7E218EDA7D500632809 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B0C5EE241919981D004D3882 /* TDLNewUserVC.h */,
+				B0C5EE251919981D004D3882 /* TDLNewUserVC.m */,
 				B0BCB08F18EC4C760065D4DD /* TDLTableViewController.h */,
 				B0BCB09018EC4C760065D4DD /* TDLTableViewController.m */,
 				B01FF7E318EDA7E400632809 /* Tableview */,
-				B0C5EE241919981D004D3882 /* TDLNewUserVC.h */,
-				B0C5EE251919981D004D3882 /* TDLNewUserVC.m */,
 			);
 			name = Controllers;
 			path = ToDo;
