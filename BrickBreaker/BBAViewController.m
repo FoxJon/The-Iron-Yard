@@ -8,6 +8,7 @@
 
 #import "BBAViewController.h"
 #import "BBALevelController.h"
+#import "BBAGameData.h"
 
 @interface BBAViewController () <BBALevelDelegate>
 
@@ -100,7 +101,7 @@
 - (void) gameDone:(int)points
 {
     
-    NSLog(@"Game Done");
+  //  NSLog(@"Game Done");
         
     [level.view removeFromSuperview];
 
@@ -138,6 +139,8 @@
     
    static int highScore = 0;
 
+    highScore = [BBAGameData mainData].currentScore;
+    
     if (points > highScore)
     {
         highScore = points;
@@ -163,7 +166,7 @@
 
 -(void)addLives:(int)totalLives
 {
-    NSLog(@"LIVES");
+ //   NSLog(@"LIVES");
     livesLabel.text = [NSString stringWithFormat:@"LIVES: %d", totalLives];
 }
 

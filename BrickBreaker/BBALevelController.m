@@ -8,11 +8,14 @@
 
 #import "BBALevelController.h"
 #import "move.h"
+#import "BBAGameData.h"
 
 
-@interface BBALevelController () <UICollisionBehaviorDelegate>
+@interface BBALevelController () <UICollisionBehaviorDelegate, AVAudioPlayerDelegate>
 
-@property (nonatomic) AVAudioPlayer * player;
+//@property (nonatomic) AVAudioPlayer * player;
+@property (nonatomic) NSMutableArray * players;
+
 
 @property (nonatomic) UIView * paddle;
 @property (nonatomic) NSMutableArray * balls;
@@ -63,6 +66,8 @@
     {
         self.bricks = [@[]mutableCopy];
         self.balls = [@[]mutableCopy];
+        self.players = [@[]mutableCopy];
+
         
         paddleWidth = 80;
         
@@ -83,9 +88,19 @@
     NSString * file = [[NSBundle mainBundle] pathForResource:soundName ofType:@"wav"];
     
     NSURL * url = [[NSURL alloc]initFileURLWithPath:file];
-    self.player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
     
-    [self.player play];
+    AVAudioPlayer * player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+    
+    player.delegate = self;
+    
+    [self.players addObject:player];
+    
+    [player play];
+}
+
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag
+{
+    [self.players removeObjectIdenticalTo:player];
 }
 
 - (void)viewDidLoad
@@ -96,6 +111,8 @@
 
 -(void) resetLevel
 {
+    [BBAGameData mainData].currentScore = 0;
+    
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     
     [self createPaddle];
@@ -107,7 +124,7 @@
     self.collider.collisionDelegate = self;
     self.collider.collisionMode = UICollisionBehaviorModeEverything;
    
-    self.collider.translatesReferenceBoundsIntoBoundary = YES;
+//    self.collider.translatesReferenceBoundsIntoBoundary = YES;
     
     int w = self.view.frame.size.width;
     int h = self.view.frame.size.height;
@@ -159,6 +176,9 @@
                 points += brick.tag;
                 [self statsLogger];
                 [self pointLabelWithBrick:brick];
+                
+                NSInteger currentScore = [BBAGameData mainData].currentScore;
+                [BBAGameData mainData].currentScore = currentScore + brick.tag;
             }
             else
             {
@@ -179,7 +199,7 @@
 {
     if ([(NSString *)identifier isEqualToString:@"floor"])
      {
-         NSLog(@"FLOOR");
+        // NSLog(@"FLOOR");
 
          ball = (UIView *)item;
          newBall = (UIView *)item;
@@ -197,7 +217,7 @@
          
          int totalLives = 3;
          totalLives -= lives;
-         NSLog(@"LIVES = %d", totalLives);
+    //     NSLog(@"LIVES = %d", totalLives);
          [self.delegate addLives:totalLives];
          if (totalLives == 0) {
              [self.delegate gameDone:points];
@@ -211,13 +231,13 @@
 -(void) statsLogger
 
 {
-    NSLog(@"Total bricks = %d", brickCount);
+  //  NSLog(@"Total bricks = %d", brickCount);
 
     if (brickCount == brickCols * brickRows) {
         [self.delegate gameDone:points];
     }
 
-    NSLog(@"SCORE = %d", points);
+ //   NSLog(@"SCORE = %d", points);
     [self.delegate addPoints:points];
 
 }
@@ -327,7 +347,7 @@
     
     // Start ball off with a push
     self.pusher = [[UIPushBehavior alloc] initWithItems:self.balls mode: UIPushBehaviorModeInstantaneous];
-    self.pusher.pushDirection = CGVectorMake(-0.09, -0.09);  // + is down, - is up. object mass makes diff
+    self.pusher.pushDirection = CGVectorMake(-0.02, -0.02);  // + is down, - is up. object mass makes diff
     self.pusher.active = YES;
     
     [self.animator addBehavior:self.pusher];
@@ -374,7 +394,7 @@
     
     // Start ball off with a push
     self.pusher = [[UIPushBehavior alloc] initWithItems:self.balls mode: UIPushBehaviorModeInstantaneous];
-    self.pusher.pushDirection = CGVectorMake(-0.009, -0.009);  // + is down, - is up. object mass makes diff
+    self.pusher.pushDirection = CGVectorMake(-0.02, -0.02);  // + is down, - is up. object mass makes diff
     self.pusher.active = YES;
         
     [self.animator addBehavior:self.pusher];
