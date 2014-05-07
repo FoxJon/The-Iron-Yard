@@ -211,13 +211,13 @@
     [gameBoard addSubview:player1Dot];
     [MOVE animateView:player1Dot properties:@{@"x": @120,@"duration" : @1.0}];
     
-    player1Score = [[UILabel alloc] initWithFrame:CGRectMake(120, (SCREEN_HEIGHT * 0.03), 20, 20)];
+    player1Score = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     player1Score.text = @"0";
     player1Score.textAlignment = 1;
     player1Score.textColor = [UIColor whiteColor];
     player1Score.layer.cornerRadius = 6;
     player1Score.layer.masksToBounds = YES;
-    [gameBoard addSubview:player1Score];
+    [player1Dot addSubview:player1Score];
     
     player2Label = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.08), 90, 18)];
     player2Label.text = @" PLAYER 2";
@@ -236,13 +236,13 @@
     [gameBoard addSubview:player2Dot];
     [MOVE animateView:player2Dot properties:@{@"x": @120,@"duration" : @1.0}];
 
-    player2Score = [[UILabel alloc] initWithFrame:CGRectMake(120, (SCREEN_HEIGHT * 0.08), 20, 20)];
+    player2Score = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     player2Score.text = @"0";
     player2Score.textAlignment = 1;
     player2Score.textColor = [UIColor whiteColor];
     player2Score.layer.cornerRadius = 6;
     player2Score.layer.masksToBounds = YES;
-    [gameBoard addSubview:player2Score];
+    [player2Dot addSubview:player2Score];
 
 
 

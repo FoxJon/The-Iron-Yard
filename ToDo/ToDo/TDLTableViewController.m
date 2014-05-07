@@ -143,6 +143,35 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (void) newUser{
+    
+    NSString * userName = nameField.text;
+    
+    nameField.text = @"";
+    
+    NSLog(@"%@", userName);
+    
+    NSLog(@"clicking");
+    
+    //[listItems addObject:@{@"name" : userName,@"avatar_url" : [UIImage imageNamed:@"unknown"],@"html_url" : [NSString stringWithFormat:@"https://github.com/%@", userName]}];
+    
+    NSDictionary * userInfo = [TDLGitHubRequest getUserWithUserName:userName];
+    
+    if ([[userInfo allKeys] count] > 4)
+    {
+        [[TDLSingleton sharedCollection] addListItem:userInfo];
+    } else {
+        NSLog(@"not enough data");
+        
+        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Bad Information" message:@"Unable to add user." delegate:self cancelButtonTitle:@"Try Again" otherButtonTitles:nil];
+        
+        [alertView show];
+    }
+    [nameField resignFirstResponder];
+    [self.tableView reloadData];
+    
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
