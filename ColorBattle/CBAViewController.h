@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CBABlueViewController.h"
+#import "CBARedViewController.h"
 
-@interface CBAViewController : UIViewController
+@interface CBAViewController : UIViewController <CBABlueViewControllerDelegate, CBARedViewControllerDelegate>
 
 @end

@@ -35,8 +35,6 @@
         blueLabel.font = [UIFont fontWithName:@"Helvetica" size:80.0];
         blueLabel.layer.masksToBounds = YES;
         [self.view addSubview:blueLabel];
-        
-        
     }
     return self;
 }
@@ -45,9 +43,11 @@
 -(void)tapScreen
 {
     NSLog(@"TAP");
-    [CBAData mainData].blueScore += 1;
-    int total = [CBAData mainData].blueScore;
-    blueLabel.text = [NSString stringWithFormat:@"%d", total];
+//    [CBAData mainData].blueScore += 1;
+//    int total = [CBAData mainData].blueScore;
+//    blueLabel.text = [NSString stringWithFormat:@"%d", total];
+    [self.delegate tapScreen];
+
 }
 
 - (void)viewDidLoad

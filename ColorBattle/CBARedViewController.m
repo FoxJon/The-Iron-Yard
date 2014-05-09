@@ -32,8 +32,6 @@
         redLabel.font = [UIFont fontWithName:@"Helvetica" size:80.0];
         redLabel.layer.masksToBounds = YES;
         [self.view addSubview:redLabel];
-        
-        
     }
     return self;
 }
@@ -41,7 +39,8 @@
 -(void)tapScreen
 {
     NSLog(@"TAP");
-    [CBAData mainData].redScore += 1;
+    //[CBAData mainData].redScore += 1;
+    [self.delegate tapScreen];
 }
 
 - (void)viewDidLoad

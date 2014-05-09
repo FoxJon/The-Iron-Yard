@@ -9,6 +9,7 @@
 #import "CBAViewController.h"
 #import "CBARedViewController.h"
 #import "CBABlueViewController.h"
+#import "CBAData.h"
 
 @interface CBAViewController ()
 
@@ -35,6 +36,8 @@
         blueVC.view.backgroundColor = [UIColor blueColor];
         [self.view addSubview:blueVC.view];
         
+        CBARedViewController.delegate = self;
+        CBABlueViewController.delegate = self;
     }
     return self;
 }
@@ -49,6 +52,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)tapScreen
+{
+    NSLog(@"TAP");
+    [CBAData mainData].blueScore += 1;
+    [CBAData mainData].redScore += 1;
 }
 
 -(BOOL)prefersStatusBarHidden {return YES;}

@@ -10,6 +10,7 @@
 
 #import "SCGCircle.h"
 
+
 @interface SCGStageVC : UIViewController <SCGCircleDelegate>
 
 @end

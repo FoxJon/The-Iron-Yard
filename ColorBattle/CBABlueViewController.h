@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+//Forward declaration of ChildViewControllerDelegate
+@protocol CBABlueViewControllerDelegate;
+
+//Declaration of the view controller class, as usual
 @interface CBABlueViewController : UIViewController
+
+// Delegate properties should always be weak references
+@property (nonatomic, weak) id<CBABlueViewControllerDelegate> delegate;
+
+@end
+
+// 3. Definition of the delegate's interface and required method
+@protocol CBABlueViewControllerDelegate <NSObject>
+
+-(void)tapScreen;
+
 
 @end

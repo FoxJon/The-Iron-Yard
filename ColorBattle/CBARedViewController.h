@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CBARedViewControllerDelegate;
+
 @interface CBARedViewController : UIViewController
+
+@property (nonatomic, assign) id<CBARedViewControllerDelegate> delegate;
+
+@end
+
+@protocol CBARedViewControllerDelegate <NSObject>
+
+-(void)tapScreen;
+
 
 @end

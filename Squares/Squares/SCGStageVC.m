@@ -32,7 +32,7 @@
     NSString * bottomRightDot;
     UIButton * startButton;
     UIButton * homeButton;
-    UILabel * titleFrame;
+    UIView * titleFrame;
     UIButton *playerButton;
     UIButton * gridSize;
     UILabel *player1Label;
@@ -43,6 +43,8 @@
     UILabel *player2Dot;
     UIColor * currentColor;
     SCGSquare * currentSquare;
+    int tempPlayer1SquareCount;
+    int tempPlayer2SquareCount;
 
 }
 
@@ -68,7 +70,7 @@
     [super viewDidLoad]; //when the view controller loads on the screen
     
     gameBoard = [[UIView alloc]initWithFrame:CGRectMake(0,0,SCREEN_WIDTH, SCREEN_HEIGHT)];
-    homeButton = [[UIButton alloc] initWithFrame:CGRectMake(280, (SCREEN_HEIGHT * 0.03), 18, 18)];
+    homeButton = [[UIButton alloc] initWithFrame:CGRectMake(280, (SCREEN_HEIGHT * 0.03), 17, 18)];
 
     
 }
@@ -105,51 +107,41 @@
 //    [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"duration" : @.8}];
     [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"alpha":@1.0, @"duration":@1.0}];
     
-    titleFrame = [[UILabel alloc] initWithFrame:CGRectMake(60, 50, 200, 200)];
-    titleFrame.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
-    titleFrame.layer.shadowColor = [UIColor blackColor].CGColor;
-    titleFrame.layer.shadowOpacity = 0.75;
-    titleFrame.layer.shadowRadius = 15.0;
-    titleFrame.layer.shadowOffset = (CGSize){0.0,20.0};
+    titleFrame = [[UIView alloc]initWithFrame:CGRectMake(60, 50, 200, 200)];
+    titleFrame.backgroundColor = DARKBLUE_COLOR;
+    [self.view addSubview:titleFrame];
     
-    [UIView animateWithDuration:0.5 delay:1.0 options:UIViewAnimationOptionCurveEaseInOut
-                     animations: ^(void)
-     {
-         titleFrame.transform = CGAffineTransformMakeScale(1, -1);
-     }
-                     completion:^(BOOL b) {
-                         titleFrame.layer.shadowColor = [UIColor blackColor].CGColor;
-                         titleFrame.layer.shadowOpacity = 0.75;
-                         titleFrame.layer.shadowRadius = 15.0;
-                         titleFrame.layer.shadowOffset = (CGSize){0.0, 20.0};
-                     }];
-    [UIView animateWithDuration:0.5 animations: ^(void) {
-        titleFrame.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
+    [UIView animateWithDuration:0.8 animations:^{
+        [UIView animateWithDuration:0.0 delay:1.0 options:UIViewAnimationOptionCurveEaseInOut
+                         animations: ^(void) {
+                             titleFrame.backgroundColor = LIGHTBLUE_COLOR;
+                             titleFrame.transform = CGAffineTransformMakeScale(1, -1);
+                         }
+                         completion:^(BOOL b) {
+                                                      }];
     }];
-
-    [gameBoard addSubview:titleFrame];
     
-//    UILabel *sletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(43.5, 100, 35, 35)];
+//    UILabel *sletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(43.5, 125, 35, 35)];
 //    sletterFrame.backgroundColor = [UIColor darkGrayColor];
 //    [self.view addSubview:sletterFrame];
 //    
-//    UILabel *qletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(82.5, 100, 35, 35)];
+//    UILabel *qletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(82.5, 125, 35, 35)];
 //    qletterFrame.backgroundColor = [UIColor darkGrayColor];
 //    [self.view addSubview:qletterFrame];
 //    
-//    UILabel *uletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(121.5, 100, 35, 35)];
+//    UILabel *uletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(121.5, 125, 35, 35)];
 //    uletterFrame.backgroundColor = [UIColor darkGrayColor];
 //    [self.view addSubview:uletterFrame];
 //    
-//    UILabel *aletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(160.5, 100, 35, 35)];
+//    UILabel *aletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(160.5, 125, 35, 35)];
 //    aletterFrame.backgroundColor = [UIColor darkGrayColor];
 //    [self.view addSubview:aletterFrame];
 //    
-//    UILabel *rletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(199.5, 100, 35, 35)];
+//    UILabel *rletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(199.5, 125, 35, 35)];
 //    rletterFrame.backgroundColor = [UIColor darkGrayColor];
 //    [self.view addSubview:rletterFrame];
 //    
-//    UILabel *eletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(238.5, 100, 35, 35)];
+//    UILabel *eletterFrame = [[UILabel alloc] initWithFrame:CGRectMake(238.5, 125, 35, 35)];
 //    eletterFrame.backgroundColor = [UIColor darkGrayColor];
 //    [self.view addSubview:eletterFrame];
 
@@ -243,9 +235,6 @@
     player2Score.layer.cornerRadius = 6;
     player2Score.layer.masksToBounds = YES;
     [player2Dot addSubview:player2Score];
-
-
-
 
     [self checkGameSize];
     
@@ -343,7 +332,7 @@
 //    }
 //    else
 //    {
-        NSLog(@"ELSE");
+       // NSLog(@"ELSE");
         tappedDots[key] = @(playerTurn);
     
         // set player num to value in tappedDots
@@ -379,6 +368,7 @@
         [gameBoard addSubview:player1Label];
         player2Label.backgroundColor = [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:0.5f];
         [gameBoard addSubview:player2Label];
+        
     
     }else if (playerTurn == 0) {
         //NSLog(@"one");
@@ -419,6 +409,30 @@
     }
 }
 
+-(void)updateP1Score
+{
+    player1Score.text = [NSString stringWithFormat:@"%d", tempPlayer1SquareCount];
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations: ^(void)
+     {
+         player1Dot.transform = CGAffineTransformMakeScale(1, 1);
+     }
+                     completion:^(BOOL b) {
+                     }];
+}
+
+-(void)updateP2Score
+{
+    player2Score.text = [NSString stringWithFormat:@"%d", tempPlayer2SquareCount];
+    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+                     animations: ^(void)
+     {
+         player2Dot.transform = CGAffineTransformMakeScale(1, 1);
+     }
+                     completion:^(BOOL b) {
+                     }];
+}
+
 - (void)checkSquareForQuadrantAtPosition:(CGPoint)position
 {
     int pX = position.x;
@@ -448,39 +462,31 @@
 
             if (player == 0) {
                 player1SquareCount += 1;
-                [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionBeginFromCurrentState
+                tempPlayer1SquareCount = player1SquareCount;
+                
+                [UIView animateWithDuration:1.0 delay:0.5 options:UIViewAnimationOptionBeginFromCurrentState
                                  animations: ^(void)
                  {
                      player1Dot.transform = CGAffineTransformMakeScale(1, -1);
                  }
                                  completion:^(BOOL b) {
                                  }];
-                [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^(void)
-                 {
-                     player1Score.text = @"1";
-                     
-                 }completion:^(BOOL b) {
-                     
-                 }];
-                NSLog(@"player1 Square Count = %d", player1SquareCount);
+                [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateP1Score)userInfo:nil repeats:NO];
             }
+            
             else if (player == 1) {
                 player2SquareCount += 1;
-                [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionBeginFromCurrentState
+                
+                tempPlayer2SquareCount = player2SquareCount;
+                
+                [UIView animateWithDuration:1.0 delay:0.5 options:UIViewAnimationOptionBeginFromCurrentState
                                  animations: ^(void)
                  {
                      player2Dot.transform = CGAffineTransformMakeScale(1, -1);
                  }
                                  completion:^(BOOL b) {
                                  }];
-                                [UIView animateWithDuration:0.5 delay:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^(void)
-                                 {
-                                     player2Score.text = @"1";
-
-                                 }completion:^(BOOL b) {
-                                 
-                                }];
-                NSLog(@"player2 Square Count = %d", player2SquareCount);
+                [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateP2Score)userInfo:nil repeats:NO];
             }
             
             currentSquare = allSquares[topLeftDot];
@@ -490,7 +496,7 @@
             currentSquare.layer.shadowRadius = 15.0;
             currentSquare.layer.shadowOffset = (CGSize){0.0,20.0};
                 
-            [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
+            [UIView animateWithDuration:0.8 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
              animations: ^(void)
              {
                 currentSquare.transform = CGAffineTransformMakeScale(1, -1);
@@ -501,7 +507,7 @@
                      currentSquare.layer.shadowRadius = 15.0;
                      currentSquare.layer.shadowOffset = (CGSize){0.0, 20.0};
                     }];
-                [UIView animateWithDuration:0.5 animations: ^(void) {
+                [UIView animateWithDuration:0.8 animations: ^(void) {
                     currentSquare.backgroundColor = color;
             }];
             
