@@ -118,7 +118,7 @@
     
     [self.collision addBoundaryWithIdentifier:@"floor"fromPoint:CGPointMake(0, waterLevel+10) toPoint:CGPointMake(320, waterLevel+10)];
     
-    UIView *water = [[UIView alloc] initWithFrame:CGRectMake(0, waterLevel, 320, 200)];
+    UIView *water = [[UIView alloc] initWithFrame:CGRectMake(0, waterLevel, 320, self.view.frame.size.width)];
     water.backgroundColor = [UIColor blueColor];
     
     [self.view addSubview:water];
@@ -174,6 +174,9 @@
     }
 }
 
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+    
+}
 
 /*
 #pragma mark - Navigation

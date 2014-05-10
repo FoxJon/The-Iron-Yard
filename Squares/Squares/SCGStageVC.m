@@ -32,7 +32,7 @@
     NSString * bottomRightDot;
     UIButton * startButton;
     UIButton * homeButton;
-    UIView * titleFrame;
+    UIView * titleFrameF;
     UIButton *playerButton;
     UIButton * gridSize;
     UILabel *player1Label;
@@ -107,15 +107,15 @@
 //    [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"duration" : @.8}];
     [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"alpha":@1.0, @"duration":@1.0}];
     
-    titleFrame = [[UIView alloc]initWithFrame:CGRectMake(60, 50, 200, 200)];
-    titleFrame.backgroundColor = DARKBLUE_COLOR;
-    [self.view addSubview:titleFrame];
+    titleFrameF = [[UIView alloc]initWithFrame:CGRectMake(60, 50, 200, 200)];
+    titleFrameF.backgroundColor = DARKBLUE_COLOR;
+    [self.view addSubview:titleFrameF];
     
     [UIView animateWithDuration:0.8 animations:^{
         [UIView animateWithDuration:0.0 delay:1.0 options:UIViewAnimationOptionCurveEaseInOut
                          animations: ^(void) {
-                             titleFrame.backgroundColor = LIGHTBLUE_COLOR;
-                             titleFrame.transform = CGAffineTransformMakeScale(1, -1);
+                             titleFrameF.backgroundColor = LIGHTBLUE_COLOR;
+                             titleFrameF.transform = CGAffineTransformMakeScale(1, -1);
                          }
                          completion:^(BOOL b) {
                                                       }];
@@ -176,7 +176,7 @@
 -(void)loadGameElements{
     
     [startButton removeFromSuperview];
-    [titleFrame removeFromSuperview];
+    [titleFrameF removeFromSuperview];
     [playerButton removeFromSuperview];
     [gridSize removeFromSuperview];
 
