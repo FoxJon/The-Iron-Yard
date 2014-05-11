@@ -42,13 +42,15 @@
 }
 
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+
     //asks for color from VC while giving position of tapped circle
     dotColor = [self.delegate circleTappedWithPosition:self.position];
     
     //redraws layer with the -drawRect method above
     [self setNeedsDisplay];
     
-   // NSLog(@"My position is col %d, row %d", (int)self.position.x, (int)self.position.y);
+    
+  //  NSLog(@"My touched position is col %d, row %d", (int)self.position.x, (int)self.position.y);
 }
 
 @end
