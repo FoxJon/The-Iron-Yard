@@ -21,7 +21,7 @@
         
         self.backgroundColor = [UIColor clearColor];
         
-        dotColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+        dotColor = WHITE_COLOR;
         
         dotWidth = frame.size.width/3;
     }

@@ -24,7 +24,7 @@
     int playerTurn;
     
     NSMutableDictionary * tappedDots;
-    
+    NSMutableDictionary * countDownNumbers;
     NSMutableDictionary * allSquares;
     
     NSString * topLeftDot;
@@ -61,6 +61,7 @@
     UILabel *rletterFrame;
     UILabel *eletterFrame;
     UILabel * circleCountDown;
+    UIView * newForm;
 
 }
 
@@ -75,8 +76,15 @@
         playerTurn = 0;
         
         tappedDots = [@{}mutableCopy];
+//        NSLog(@"tapped dots %@", tappedDots);
         
+        countDownNumbers = [@{}mutableCopy];
+//        NSLog(@"countDownNumbers %@", countDownNumbers);
+
         allSquares = [@{}mutableCopy];
+        
+        newForm = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [self.view addSubview:newForm];
     }
     return self;
 }
@@ -106,6 +114,9 @@
     [player2Dot removeFromSuperview];
     [player1Score removeFromSuperview];
     [player2Score removeFromSuperview];
+    [newForm removeFromSuperview];
+    [circleCountDown removeFromSuperview];
+
 
     CAGradientLayer *bgLayer = [SCGBackgroundLayer blueGradient];
     bgLayer.frame = gameBoard.bounds;
@@ -122,7 +133,7 @@
     letterF.text = @"F";
     letterF.textAlignment = 1;
     letterF.font =[UIFont fontWithName:@"AvenirNext-DemiBold" size:35.0f];
-    letterF.textColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+    letterF.textColor = WHITE_COLOR;
     
     [UIView animateWithDuration:0.8 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut
                      animations: ^(void) {
@@ -141,7 +152,7 @@
     letterL.text = @"L";
     letterL.textAlignment = 1;
     letterL.font =[UIFont fontWithName:@"AvenirNext-DemiBold" size:35.0f];
-    letterL.textColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+    letterL.textColor = WHITE_COLOR;
     
     [UIView animateWithDuration:0.8 delay:0.3 options:UIViewAnimationOptionCurveEaseInOut
                      animations: ^(void) {
@@ -160,8 +171,7 @@
     letterI.text = @"I";
     letterI.textAlignment = 1;
     letterI.font =[UIFont fontWithName:@"AvenirNext-DemiBold" size:35.0f];
-    letterI.textColor = [UIColor colorWithWhite:0.95 alpha:1.0];
-    
+    letterI.textColor = WHITE_COLOR;
     [UIView animateWithDuration:0.8 delay:0.6 options:UIViewAnimationOptionCurveEaseInOut
                      animations: ^(void) {
                          titleFrameI.backgroundColor = LIGHTBLUE_COLOR;
@@ -179,7 +189,7 @@
     letterP.text = @"P";
     letterP.textAlignment = 1;
     letterP.font =[UIFont fontWithName:@"AvenirNext-DemiBold" size:35.0f];
-    letterP.textColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+    letterP.textColor = WHITE_COLOR;
     
     [UIView animateWithDuration:0.8 delay:0.9 options:UIViewAnimationOptionCurveEaseInOut
                      animations: ^(void) {
@@ -247,7 +257,7 @@
     [playerButton setTitle:@"1 PLAYER | 2 PLAYERS" forState:UIControlStateNormal];
    // [playerButton addTarget:self action:@selector(loadGameElements) forControlEvents:UIControlEventTouchUpInside];
     playerButton.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
-    [playerButton setTitleColor:[UIColor colorWithWhite:0.95 alpha:1.0]forState:UIControlStateNormal];
+    [playerButton setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
     [playerButton setTitleColor:[UIColor blueColor]forState:UIControlStateHighlighted];
     playerButton.layer.cornerRadius = 6;
     playerButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-light" size:17.0f];
@@ -260,7 +270,7 @@
     [gridSize setTitle:@"4 | 6 | 8" forState:UIControlStateNormal];
  //   [gridSize addTarget:self action:@selector(loadGameElements) forControlEvents:UIControlEventTouchUpInside];
     gridSize.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
-    [gridSize setTitleColor:[UIColor colorWithWhite:0.95 alpha:1.0]forState:UIControlStateNormal];
+    [gridSize setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
     [gridSize setTitleColor:[UIColor blueColor]forState:UIControlStateHighlighted];
     gridSize.layer.cornerRadius = 6;
     gridSize.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-light" size:17.0f];
@@ -271,14 +281,14 @@
     startButton = [[UIButton alloc] initWithFrame:CGRectMake(110, (SCREEN_HEIGHT * 0.99), 100, 30)];
     [startButton setTitle:@"START" forState:UIControlStateNormal];
     [startButton addTarget:self action:@selector(loadGameElements) forControlEvents:UIControlEventTouchUpInside];
-    [startButton setTitleColor:[UIColor colorWithWhite:0.95 alpha:1.0]forState:UIControlStateNormal];
+    [startButton setTitleColor:WHITE_COLOR forState:UIControlStateNormal];
     [startButton setTitleColor:[UIColor blueColor]forState:UIControlStateHighlighted];
     startButton.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
     startButton.layer.cornerRadius = 6;
     startButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-light" size:17.0f];
     startButton.alpha = 0;
     [gameBoard addSubview:startButton];
-    [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"alpha":@1.0, @"delay":@0.0, @"duration":@1.0}];
+    [MOVE animateView:startButton properties:@{@"y": @(SCREEN_HEIGHT * 0.85),@"alpha":@1.0, @"delay":@1.5, @"duration":@1.0}];
 }
 
 -(void)addF
@@ -337,16 +347,18 @@
     
     [playerButton removeFromSuperview];
     [gridSize removeFromSuperview];
+    
+    [self.view addSubview:newForm];
 
     [homeButton setTitle:@"H" forState:UIControlStateNormal];
     [homeButton addTarget:self action:@selector(loadGameBoard) forControlEvents:UIControlEventTouchUpInside];
     homeButton.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
     homeButton.layer.cornerRadius = 6;
-    [gameBoard addSubview:homeButton];
+    [newForm addSubview:homeButton];
     
     player1Label = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.03), 90, 18)];
     player1Label.text = @" PLAYER 1";
-    player1Label.textColor = [UIColor whiteColor];
+    player1Label.textColor = WHITE_COLOR;
     player1Label.backgroundColor = [UIColor colorWithRed:255/255.0f green:255/255.0f blue:255/255.0f alpha:0.5f];
     player1Label.layer.cornerRadius = 6;
     player1Label.layer.masksToBounds = YES;
@@ -363,14 +375,14 @@
     player1Score = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     player1Score.text = @"0";
     player1Score.textAlignment = 1;
-    player1Score.textColor = [UIColor whiteColor];
+    player1Score.textColor = WHITE_COLOR;
     player1Score.layer.cornerRadius = 6;
     player1Score.layer.masksToBounds = YES;
     [player1Dot addSubview:player1Score];
     
     player2Label = [[UILabel alloc] initWithFrame:CGRectMake(-100, (SCREEN_HEIGHT * 0.08), 90, 18)];
     player2Label.text = @" PLAYER 2";
-    player2Label.textColor = [UIColor whiteColor];
+    player2Label.textColor = WHITE_COLOR;
     player2Label.backgroundColor = [UIColor colorWithRed:0/255.0f green:0/255.0f blue:0/255.0f alpha:0.1f];
     player2Label.layer.cornerRadius = 6;
     player2Label.layer.masksToBounds = YES;
@@ -387,7 +399,7 @@
     player2Score = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
     player2Score.text = @"0";
     player2Score.textAlignment = 1;
-    player2Score.textColor = [UIColor whiteColor];
+    player2Score.textColor = WHITE_COLOR;
     player2Score.layer.cornerRadius = 6;
     player2Score.layer.masksToBounds = YES;
     [player2Dot addSubview:player2Score];
@@ -419,7 +431,7 @@
             
             allSquares[key] = square;
             
-            [self.view addSubview:square];
+            [newForm addSubview:square];
             [MOVE animateView:square properties:@{@"alpha":@1.0, @"duration":@2.0,@"delay":@.5}];
 
             
@@ -441,10 +453,11 @@
             NSString * key = [NSString stringWithFormat:@"c%dr%d",col,row]; //0,1 will say c0r1
             
             tappedDots[key] = @2;
+            countDownNumbers[key] = @6;
             
             circle.backgroundColor = [UIColor clearColor];
             
-            [self.view addSubview:circle];
+            [newForm addSubview:circle];
             
             [MOVE animateView:circle properties:@{@"alpha":@1, @"duration":@0.2,@"delay":@0.3}];
 
@@ -458,60 +471,84 @@
     //get tapped key from position
     NSString * key = [NSString stringWithFormat:@"c%dr%d", (int)position.x, (int)position.y];
     
-    NSLog(@"My touched position is col %d, row %d", (int)position.x, (int)position.y);
+   // NSLog(@"My touched position is col %d, row %d", (int)position.x, (int)position.y);
     
-    circleCountDown = [[UILabel alloc]initWithFrame:CGRectMake(circleWidth * position.x+22, (circleWidth * position.y+17) + ((SCREEN_HEIGHT - SCREEN_WIDTH) / 2), 20, 20)];
-    circleCountDown.textColor = [UIColor colorWithWhite:0.95 alpha:1.0];
-    circleCountDown.text = @"5";
-    [self.view addSubview:circleCountDown];
+    /////////////////////////////////////
+    // Checks to see if already tapped //
+    /////////////////////////////////////
     
-    //set player num to value in tapped dots
-    //if ([tappedDots[key]  isEqual: @(0)] || [tappedDots[key]  isEqual: @(1)]) {
-    //if ([tappedDots[key]  isEqual: @(playerTurn)])
-    //{
-     //   NSLog(@"IF");
-//        tappedDots[key] = @(playerTurn);
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"You selected your own color. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [alert show];
-//        [self highlightPlayerLabel];
-//        return playerColors[playerTurn];
-//    }
-//    else if (![tappedDots[key] isEqual: @(0)] && ![tappedDots[key] isEqual: @(2)])
-//    {
-//        tappedDots[key] = @(playerTurn);
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"That color has already been taken. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [alert show];
-     //   NSLog(@"ELSE IF");
-        currentColor = playerColors[playerTurn];
-//        [self highlightPlayerLabel];
-//        return playerColors[1];
-//    }
-//    else if (![tappedDots[key] isEqual: @(1)] && ![tappedDots[key] isEqual: @(2)])
-//    {
-//        tappedDots[key] = @(playerTurn);
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"That color has already been taken. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-//        [alert show];
-//        //NSLog(@"ELSE IF");
-//        currentColor = playerColors[playerTurn];
-//        [self highlightPlayerLabel];
-//        return playerColors[0];
-//    }
-//    else
-//    {
-       // NSLog(@"ELSE");
-    
-        // set player num to value in tappedDots
+    if ([tappedDots[key]  isEqual: @(playerTurn)])
+    {
+          NSLog(@"IF");
         tappedDots[key] = @(playerTurn);
-
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"You selected your own color. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        return playerColors[playerTurn];
+    }
+    else if (![tappedDots[key] isEqual: @(0)] && ![tappedDots[key] isEqual: @(2)])
+    {
+        NSLog(@"ELSE IF 1");
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"That color has already been taken. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+         return playerColors[1];
+    }
+    else if (![tappedDots[key] isEqual: @(1)] && ![tappedDots[key] isEqual: @(2)])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"That color has already been taken. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        NSLog(@"ELSE IF 0");
+         return playerColors[0];
+    }
+    else
+    {
+       NSLog(@"ELSE");
     
-        // check for square
-        [self checkForSquareAroundPosition:position];
-        
+    ///////////////////////
+    // CIRCLE COUNT DOWN //
+    ///////////////////////
+    
+    circleCountDown = [[UILabel alloc]initWithFrame:CGRectMake(circleWidth * position.x+22, (circleWidth * position.y+16.5) + ((SCREEN_HEIGHT - SCREEN_WIDTH) / 2), 20, 20)];
+    circleCountDown.textColor = WHITE_COLOR;
+    circleCountDown.font = [UIFont fontWithName:@"HelveticaNeue-light" size:17.0f];
+
+    if ([countDownNumbers[key] isEqual: @6]) {
+        countDownNumbers[key] = @5;
+        circleCountDown.text = @"5";
+        [newForm addSubview:circleCountDown];
+    }else if ([countDownNumbers[key] isEqual: @5]) {
+        countDownNumbers[key] = @4;
+    }else if ([countDownNumbers[key] isEqual: @4]) {
+        countDownNumbers[key] = @3;
+    }else if ([countDownNumbers[key] isEqual: @3]) {
+        countDownNumbers[key] = @2;
+    }else if ([countDownNumbers[key] isEqual: @2]) {
+        countDownNumbers[key] = @1;
+    }else if ([countDownNumbers[key] isEqual: @1]) {
+        countDownNumbers[key] = @0;
+    }else if ([countDownNumbers[key] isEqual: @0]) {
+        tappedDots[key] = @2;
         currentColor = playerColors[playerTurn];
         playerTurn = (playerTurn) ? 0 : 1;
         [self highlightPlayerLabel];
         return currentColor;
-//    }
+    }
+    //NSLog(@"countDownNumbers %@", countDownNumbers);
+    //NSLog(@"countDownNumbersKey %@", countDownNumbers[key]);
+    
+    
+    // set player num to value in tappedDots
+    tappedDots[key] = @(playerTurn);
+    //    NSLog(@"tapped dots %@", tappedDots);
+    //    NSLog(@"tapped dots %@", tappedDots[key]);
+
+    // check for square
+    [self checkForSquareAroundPosition:position];
+    
+    currentColor = playerColors[playerTurn];
+    playerTurn = (playerTurn) ? 0 : 1;
+    [self highlightPlayerLabel];
+    return currentColor;
+    }
 }
 
 //-(void)circleFlip
