@@ -37,6 +37,13 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self)
     {
+        UIActivityIndicatorView * spinner;
+        spinner = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        spinner.center = CGPointMake(160, 50);
+        spinner.hidesWhenStopped = YES;
+        [spinner setColor:[UIColor whiteColor]];
+        [self.view addSubview:spinner];
+        [spinner startAnimating];
         
         slider = [[UISlider alloc]initWithFrame:CGRectMake(60, 440, 200, 10)];
         [slider addTarget:self action:@selector(sliderVolume:) forControlEvents:UIControlEventValueChanged];
@@ -88,6 +95,8 @@
                 [playButton addTarget:self action:@selector(play) forControlEvents:UIControlEventTouchUpInside];
                 [pauseButton addTarget:self action:@selector(pause) forControlEvents:UIControlEventTouchUpInside];
                 [stopButton addTarget:self action:@selector(stop) forControlEvents:UIControlEventTouchUpInside];
+                
+                [spinner removeFromSuperview];
 
                 NSLog(@"play");
             });
@@ -170,6 +179,7 @@
     [self.view addSubview:playButton];
     [self.timer invalidate];
     self.timer = nil;
+
 }
 
 -(void)stop
@@ -181,6 +191,8 @@
     [player stop];
     [pauseButton removeFromSuperview];
     [self.view addSubview:playButton];
+    [self updateProgressBar:self.timer];
+
 }
 
 
@@ -205,8 +217,6 @@
         
         if (CGRectContainsPoint(progressCircle.frame, touchLocation))
         {
-            NSLog(@"Began");
-
             dragging = YES;
             oldX = touchLocation.x;
             oldY = touchLocation.y;
@@ -218,8 +228,6 @@
     
     for (UITouch* touch in touches)
     {
-        NSLog(@"Moved");
-
         CGPoint touchLocation = [touch locationInView:self.view];
         
         if ([[touch.view class] isSubclassOfClass:[UIView class]]) {
@@ -228,7 +236,6 @@
                 frame.origin.x = progressBar.frame.origin.x + touchLocation.x - oldX;
                 if (frame.origin.x > self.view.frame.size.width/2-160 && frame.origin.x < self.view.frame.size.width/2+110) {
                     progressCircle.frame = frame;
-                    
                 }
             }
         }
@@ -236,12 +243,11 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    
-    NSLog(@"%f", frame.origin.x);
-    xPosition = frame.origin.x;
 
+    xPosition = frame.origin.x;
     dragging = NO;
-    NSLog(@"Ended");
+    [self play];
+
     }
 
 /*
