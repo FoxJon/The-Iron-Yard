@@ -16,6 +16,7 @@
     UIButton * playButton;
     UIButton * pauseButton;
     UIView * progressBar;
+    UIView * progressBar2;
     UIView * progressCircle;
     UILabel * currentTimeLabel;
     NSTimeInterval duration;
@@ -23,7 +24,8 @@
     float oldY;
     BOOL dragging;
     UISlider * slider;
-
+    float xPosition;
+    CGRect frame;
 }
 
 @end
@@ -114,7 +116,7 @@
     
     float progress = currentTime/duration;
     
-    float xPosition = progressBar.frame.origin.x + progress * progressBar.frame.size.width;
+    xPosition = progressBar.frame.origin.x + progress * progressBar.frame.size.width;
     
     [progressCircle removeFromSuperview];
     progressCircle = [[UIView alloc]initWithFrame:CGRectMake(xPosition, progressBar.frame.origin.y-8, 20, 20)];
@@ -130,12 +132,18 @@
     currentTimeLabel.font = [UIFont systemFontOfSize:10];
     currentTimeLabel.textColor = [UIColor whiteColor];
     [self.view  addSubview:currentTimeLabel];
-
+    
+    [progressBar2 removeFromSuperview];
+    progressBar2 = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-150, self.view.frame.size.height/2, xPosition-10, 4)];
+    progressBar2.backgroundColor = [UIColor darkGrayColor];
+    [self.view addSubview:progressBar2];
 }
 
 
 - (void)play
 {
+    player.currentTime = xPosition;
+
     [playButton removeFromSuperview];
     [player play];
     [self.view addSubview:pauseButton];
@@ -146,12 +154,12 @@
     
     UILabel * totalTimeLabel = [[UILabel alloc]initWithFrame:CGRectMake(progressBar.frame.size.width + 12, progressBar.frame.origin.y - 8, 30, 20)];
     totalTimeLabel.backgroundColor = [UIColor clearColor];
-    
     totalTimeLabel.text = [NSString stringWithFormat:@"%02d:%02d", (int)totalMin, (int)totalSec];
     totalTimeLabel.textAlignment = 1;
     totalTimeLabel.font = [UIFont systemFontOfSize:10];
     totalTimeLabel.textColor = [UIColor whiteColor];
     [self.view  addSubview:totalTimeLabel];
+    
     self.timer = [NSTimer scheduledTimerWithTimeInterval:0.23 target:self selector:@selector(updateProgressBar:) userInfo:nil repeats:YES];
 }
 
@@ -169,11 +177,10 @@
     [self.timer invalidate];
     self.timer = nil;
     player.currentTime = 0;
+    xPosition = player.currentTime;
     [player stop];
     [pauseButton removeFromSuperview];
     [self.view addSubview:playButton];
-    [self updateProgressBar:self.timer];
-
 }
 
 
@@ -217,10 +224,11 @@
         
         if ([[touch.view class] isSubclassOfClass:[UIView class]]) {
             if (dragging) {
-                CGRect frame = progressCircle.frame;
+                frame = progressCircle.frame;
                 frame.origin.x = progressBar.frame.origin.x + touchLocation.x - oldX;
                 if (frame.origin.x > self.view.frame.size.width/2-160 && frame.origin.x < self.view.frame.size.width/2+110) {
                     progressCircle.frame = frame;
+                    
                 }
             }
         }
@@ -228,6 +236,10 @@
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    NSLog(@"%f", frame.origin.x);
+    xPosition = frame.origin.x;
+
     dragging = NO;
     NSLog(@"Ended");
     }
