@@ -33,9 +33,9 @@
     UIView * rippleLine = [[UIView alloc]initWithFrame:CGRectMake(0, 0, 0, 0)];
     
     rippleLine.layer.cornerRadius = 40;
-    rippleLine.layer.borderWidth = 1.0;
-    rippleLine.layer.borderColor = [UIColor whiteColor].CGColor;
-    rippleLine.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.3];
+    rippleLine.layer.borderWidth = 2.0;
+    rippleLine.layer.borderColor = [UIColor blackColor].CGColor;
+    rippleLine.backgroundColor = self.tintColor;
     
     [self addSubview:rippleLine];
     
