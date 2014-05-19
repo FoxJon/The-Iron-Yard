@@ -36,8 +36,8 @@
         blueVC.view.backgroundColor = [UIColor blueColor];
         [self.view addSubview:blueVC.view];
         
-        CBARedViewController.delegate = self;
-        CBABlueViewController.delegate = self;
+        redVC.delegate = self;
+        blueVC.delegate = self;
     }
     return self;
 }

@@ -16,22 +16,22 @@
     // Override point for customization after application launch.
     
     /// version 1: UITabBarController
-    UITabBarController * tbc = [[UITabBarController alloc]init];
-    
-    UITableViewController * tvc = [[UITableViewController alloc]init];
-    
-    UIViewController * vc = [[UIViewController alloc]init];
-    
-    [tbc setViewControllers: @[tvc,vc]animated:YES];
-    
-    tvc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"TVC" image:nil tag:0];
-    [tvc.tabBarItem setTitlePositionAdjustment:UIOffsetMake(10, -20)];
-
-    vc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"VC" image:nil tag:1];
-    [vc.tabBarItem setTitlePositionAdjustment:UIOffsetMake(10, -20)];
-
-    
-    self.window.rootViewController = tbc;
+//    UITabBarController * tbc = [[UITabBarController alloc]init];
+//    
+//    UITableViewController * tvc = [[UITableViewController alloc]init];
+//    
+//    UIViewController * vc = [[UIViewController alloc]init];
+//    
+//    [tbc setViewControllers: @[tvc,vc]animated:YES];
+//    
+//    tvc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"TVC" image:nil tag:0];
+//    [tvc.tabBarItem setTitlePositionAdjustment:UIOffsetMake(10, -20)];
+//
+//    vc.tabBarItem = [[UITabBarItem alloc]initWithTitle:@"VC" image:nil tag:1];
+//    [vc.tabBarItem setTitlePositionAdjustment:UIOffsetMake(10, -20)];
+//
+//    
+//    self.window.rootViewController = tbc;
     
     /// version 2: UIToolbar in UINavigationController
     
@@ -49,8 +49,6 @@
     [nc.toolbar setItems:@[flexible, button1, flexible, button2, flexible] animated:YES];
     
     self.window.rootViewController = nc;
-    
-    
     self.window.backgroundColor = [UIColor blueColor];
     [self.window makeKeyAndVisible];
     return YES;

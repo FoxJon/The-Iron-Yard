@@ -32,7 +32,7 @@
                        
         
         colors = @[
-                 [UIColor colorWithRed:0.349f green:0.894f blue:0.553f alpha:1.0f],
+                 [UIColor colorWithRed:0.0f green:0.0f blue:0.0f alpha:1.0f],
                  [UIColor colorWithRed:0.945f green:0.337f blue:0.149f alpha:1.0f],
                  [UIColor colorWithRed:0.914f green:0.090f blue:0.420f alpha:1.0f],
                  [UIColor colorWithRed:0.255f green:0.075f blue:0.780f alpha:1.0f],
@@ -148,7 +148,7 @@
         ripple.tintColor = otherColors[random];
         
         ripple.rippleCount = 3;
-        ripple.rippleLifeTime = 2;
+        ripple.rippleLifeTime = 4;
         
         [self.view addSubview:ripple];
     }
