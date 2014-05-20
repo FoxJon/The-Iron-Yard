@@ -9,6 +9,7 @@
 #import "SFASmileyViewController.h"
 #import "SFADisplayViewController.h"
 #import "SFAData.h"
+#import "SFAColorViewController.h"
 
 @interface SFASmileyViewController ()
 
@@ -70,12 +71,20 @@
         square = [[UIImageView alloc]initWithFrame:CGRectMake(-8, -8, 64, 64)];
         square.image = [UIImage imageNamed:@"squares.png"];
         
-        UIButton * arrow = [[UIButton alloc]initWithFrame:CGRectMake(144, 486, 24, 40)];
+        UIButton * arrow = [[UIButton alloc]initWithFrame:CGRectMake(174, 486, 24, 40)];
         arrow.backgroundColor = [UIColor lightGrayColor];
         [arrow addTarget:self action:@selector(selectSmileyVC) forControlEvents:UIControlEventTouchUpInside];
         [arrow setImage:[UIImage imageNamed: @"arrow.png"] forState:UIControlStateNormal];
         arrow.backgroundColor = [UIColor lightGrayColor];
         [self.view addSubview:arrow];
+        
+        UIButton * backArrow = [[UIButton alloc]initWithFrame:CGRectMake(124, 486, 24, 40)];
+        backArrow.backgroundColor = [UIColor lightGrayColor];
+        [backArrow addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        [backArrow setImage:[UIImage imageNamed: @"arrow.png"] forState:UIControlStateNormal];
+        backArrow.transform = CGAffineTransformMakeScale(-1.0, 1.0);
+        backArrow.backgroundColor = [UIColor lightGrayColor];
+        [self.view addSubview:backArrow];
     }
     return self;
 }
@@ -100,9 +109,15 @@
     [self.navigationController pushViewController:dvc animated:YES];
 }
 
+-(void)back
+{
+   // SFAColorViewController *cvc = [[SFAColorViewController alloc]initWithNibName:nil bundle:nil];
+    [self.navigationController popToViewController:self.navigationController.viewControllers[0] animated:YES];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
-    self.navigationController.navigationBar.hidden = NO;
+    self.navigationController.navigationBar.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning

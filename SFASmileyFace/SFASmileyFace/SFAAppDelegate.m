@@ -8,6 +8,7 @@
 
 #import "SFAAppDelegate.h"
 #import "SFAColorViewController.h"
+#import "STTwitter.h"
 
 @implementation SFAAppDelegate
 
@@ -16,9 +17,22 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    SFAColorViewController * rvc = [[SFAColorViewController alloc]initWithNibName:nil bundle:nil];
-    UINavigationController * nc = [[UINavigationController alloc]initWithRootViewController:rvc];
-    self.window.rootViewController = nc;
+//    SFAColorViewController * rvc = [[SFAColorViewController alloc]initWithNibName:nil bundle:nil];
+//    UINavigationController * nc = [[UINavigationController alloc]initWithRootViewController:rvc];
+//    self.window.rootViewController = nc;
+    
+    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[[SFAColorViewController alloc]initWithNibName:nil bundle:nil]];
+
+    
+    STTwitterAPI * twitter = [STTwitterAPI twitterAPIOSWithFirstAccount];
+    
+    [twitter verifyCredentialsWithSuccessBlock:^(NSString *username) {
+        
+        NSLog(@"%@", username);
+        
+    } errorBlock:^(NSError *error) {
+        NSLog(@"%@", error.userInfo);
+    }];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
