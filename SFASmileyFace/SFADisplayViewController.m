@@ -52,6 +52,7 @@
         
         tweetField = [[UITextField alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2 - 100, 325, 200, 165)];
         tweetField.backgroundColor = [UIColor colorWithWhite:0.9 alpha:0.5];
+        tweetField.delegate = self;
         tweetField.contentVerticalAlignment = UIControlContentVerticalAlignmentTop;
         [self.view addSubview:tweetField];
         
@@ -95,16 +96,18 @@
 {
     if (twitterButton.selected) {
         NSLog(@"I'm On!");
-    
-        [twitter postStatusUpdate:tweetField.text inReplyToStatusID:nil latitude:nil longitude:nil placeID:nil displayCoordinates:nil trimUser:nil successBlock:^(NSDictionary *status) {
-            
-            NSLog(@"Post Me!");
-
-            NSLog(@"%@", tweetField.text);
-            
-        } errorBlock:^(NSError *error) {
-            NSLog(@"%@", error.userInfo);
-        }];
+        
+//    [twitter postStatusUpdate:tweetField.text inReplyToStatusID:nil mediaURL:<#(NSURL *)#> placeID:nil latitude:nil longitude:nil uploadProgressBlock:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite) {
+//        
+//        NSLog(@"Post Me!");
+//        NSLog(@"%@", tweetField.text);
+//
+//        
+//    } successBlock:^(NSDictionary *status) {
+//        
+//    } errorBlock:^(NSError *error) {
+//        NSLog(@"%@", error.userInfo);
+//    }];
     }
 }
 
@@ -131,6 +134,23 @@
 }
 
 -(BOOL)prefersStatusBarHidden{return YES;}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
+    textField.placeholder = @"";
+    textField.textColor = [UIColor blackColor];
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField{
+    textField.textColor = [UIColor blackColor];
+    textField.placeholder = @"Enter here";
+}
+
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{         // for the return button
+    [tweetField resignFirstResponder];
+    return YES;
+}
 
 
 @end

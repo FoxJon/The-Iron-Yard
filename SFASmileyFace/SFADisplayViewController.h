@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SFADisplayViewController : UIViewController
+@interface SFADisplayViewController : UIViewController <UITextFieldDelegate>
 
 @end
