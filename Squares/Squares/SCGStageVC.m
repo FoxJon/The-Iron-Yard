@@ -455,7 +455,7 @@
             tappedDots[key] = @2;
             countDownNumbers[key] = @6;
             
-            circle.backgroundColor = [UIColor redColor];
+            circle.backgroundColor = [UIColor clearColor];
             
             [newForm addSubview:circle];
             
