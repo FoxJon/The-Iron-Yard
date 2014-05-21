@@ -9,8 +9,11 @@
 #import "SFADisplayViewController.h"
 #import "SFAData.h"
 #import "STTwitter.h"
+#import "MAPAnnotation.h"
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface SFADisplayViewController ()
+@interface SFADisplayViewController () <CLLocationManagerDelegate>
 
 @end
 
@@ -20,6 +23,13 @@
     UITextField * tweetField;
     STTwitterAPI * twitter;
     UIButton * twitterButton;
+    UIImageView * bigSmileyFrame;
+    
+    CLLocationManager * lmanager;
+    MKMapView * myMapView;
+    
+    NSString * latitude;
+    NSString * longitude;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -27,6 +37,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        lmanager = [[CLLocationManager alloc]init];
+        lmanager.delegate = self;
+        
+        lmanager.distanceFilter = 100;
+        lmanager.desiredAccuracy = kCLLocationAccuracyBest;
+        
+        [lmanager startUpdatingLocation];
+        
         twitter = [STTwitterAPI twitterAPIOSWithFirstAccount];
         
         
@@ -46,7 +65,7 @@
         
         bigSmiliesTag = [SFAData mainData].bigSmiley;
 
-        UIImageView * bigSmileyFrame = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-96, 125, 192, 192)];
+        bigSmileyFrame = [[UIImageView alloc]initWithFrame:CGRectMake(self.view.frame.size.width/2-96, 125, 192, 192)];
         bigSmileyFrame.image = [UIImage imageNamed: bigSmilies[bigSmiliesTag]];
         [self.view addSubview:bigSmileyFrame];
         
@@ -92,22 +111,57 @@
     return self;
 }
 
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    [myMapView removeAnnotations:myMapView.annotations];
+    
+    for (CLLocation * location in locations) {
+        
+        MAPAnnotation * annotation = [[MAPAnnotation alloc]initWithCoordinate:location.coordinate];
+        
+        [myMapView addAnnotation:annotation];
+        
+        //[mapView setCenterCoordinate:location.coordinate animated:YES];
+        
+        MKCoordinateRegion region = MKCoordinateRegionMake(location.coordinate, MKCoordinateSpanMake(0.2, 0.2));  // zooms to 69 X 69 mile perimeter.
+        
+        [myMapView setRegion:region animated:YES];
+        
+        // MKAnnotationView * annotationView = [[MKAnnotationView alloc]initWithAnnotation:annotation reuseIdentifier:@"annotationView"];
+        
+        [myMapView selectAnnotation:annotation animated:YES];
+        
+        latitude = [NSString stringWithFormat:@"%f",location.coordinate.latitude];
+        longitude = [NSString stringWithFormat:@"%f",location.coordinate.longitude];
+    }
+}
+
 -(void)postTweet
 {
     if (twitterButton.selected) {
         NSLog(@"I'm On!");
         
-//    [twitter postStatusUpdate:tweetField.text inReplyToStatusID:nil mediaURL:<#(NSURL *)#> placeID:nil latitude:nil longitude:nil uploadProgressBlock:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite) {
-//        
-//        NSLog(@"Post Me!");
-//        NSLog(@"%@", tweetField.text);
-//
-//        
-//    } successBlock:^(NSDictionary *status) {
-//        
-//    } errorBlock:^(NSError *error) {
-//        NSLog(@"%@", error.userInfo);
-//    }];
+        NSArray * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString * documentPath = paths[0];
+        NSData * imageData = UIImagePNGRepresentation(bigSmileyFrame.image);
+        NSString* imagePath = [documentPath stringByAppendingPathComponent:@"big_smilie.png"];
+        [imageData writeToFile:imagePath atomically:YES];
+        NSURL * url = [NSURL fileURLWithPath:imagePath];
+        
+        NSLog(@"latitude: %@", latitude);
+        NSLog(@"longitude %@", longitude);
+        
+    [twitter postStatusUpdate:tweetField.text inReplyToStatusID:nil mediaURL:url placeID:nil latitude:latitude longitude:longitude uploadProgressBlock:^(NSInteger bytesWritten, NSInteger totalBytesWritten, NSInteger totalBytesExpectedToWrite) {
+        
+        NSLog(@"Post Me!");
+        NSLog(@"%@", tweetField.text);
+
+        
+    } successBlock:^(NSDictionary *status) {
+        
+    } errorBlock:^(NSError *error) {
+        NSLog(@"%@", error.userInfo);
+    }];
     }
 }
 

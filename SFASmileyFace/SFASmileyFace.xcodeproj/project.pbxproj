@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B032A977192D25B600D35CFC /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B032A976192D25B600D35CFC /* MapKit.framework */; };
+		B032A97A192D263900D35CFC /* MAPAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = B032A979192D263900D35CFC /* MAPAnnotation.m */; };
 		B0CB4C5A192A399F0051908B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0CB4C59192A399F0051908B /* Foundation.framework */; };
 		B0CB4C5C192A399F0051908B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0CB4C5B192A399F0051908B /* CoreGraphics.framework */; };
 		B0CB4C5E192A399F0051908B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0CB4C5D192A399F0051908B /* UIKit.framework */; };
@@ -98,6 +100,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B032A976192D25B600D35CFC /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		B032A978192D263900D35CFC /* MAPAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MAPAnnotation.h; path = ../Maps/MAPAnnotation.h; sourceTree = "<group>"; };
+		B032A979192D263900D35CFC /* MAPAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MAPAnnotation.m; path = ../Maps/MAPAnnotation.m; sourceTree = "<group>"; };
 		B0CB4C56192A399F0051908B /* SFASmileyFace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFASmileyFace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0CB4C59192A399F0051908B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B0CB4C5B192A399F0051908B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -206,6 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B032A977192D25B600D35CFC /* MapKit.framework in Frameworks */,
 				B0ED532C192BAA5B00EFA2A9 /* Accounts.framework in Frameworks */,
 				B0ED532A192BAA4700EFA2A9 /* Social.framework in Frameworks */,
 				B0ED5328192BAA3900EFA2A9 /* Twitter.framework in Frameworks */,
@@ -231,6 +237,8 @@
 		B0CB4C4D192A399F0051908B = {
 			isa = PBXGroup;
 			children = (
+				B032A978192D263900D35CFC /* MAPAnnotation.h */,
+				B032A979192D263900D35CFC /* MAPAnnotation.m */,
 				B0CB4CC1192A3D750051908B /* SFAColorViewController.h */,
 				B0CB4CC2192A3D750051908B /* SFAColorViewController.m */,
 				B0CB4CC4192A3DA00051908B /* SFASmileyViewController.h */,
@@ -259,6 +267,7 @@
 		B0CB4C58192A399F0051908B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B032A976192D25B600D35CFC /* MapKit.framework */,
 				B0ED52FC192BA9D400EFA2A9 /* STTwitter */,
 				B0ED532B192BAA5B00EFA2A9 /* Accounts.framework */,
 				B0ED5329192BAA4700EFA2A9 /* Social.framework */,
@@ -568,6 +577,7 @@
 				B0ED5321192BA9D400EFA2A9 /* STTwitterOAuth.m in Sources */,
 				B0ED531E192BA9D400EFA2A9 /* STTwitterAPI.m in Sources */,
 				B0ED531C192BA9D400EFA2A9 /* NSString+STTwitter.m in Sources */,
+				B032A97A192D263900D35CFC /* MAPAnnotation.m in Sources */,
 				B0ED5322192BA9D400EFA2A9 /* STTwitterOS.m in Sources */,
 				B0ED5323192BA9D400EFA2A9 /* STTwitterOSRequest.m in Sources */,
 				B0ED5325192BA9D400EFA2A9 /* JSONSyntaxHighlight.m in Sources */,

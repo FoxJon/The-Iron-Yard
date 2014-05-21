@@ -24,15 +24,15 @@
     self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[[SFAColorViewController alloc]initWithNibName:nil bundle:nil]];
 
     
-    STTwitterAPI * twitter = [STTwitterAPI twitterAPIOSWithFirstAccount];
-    
-    [twitter verifyCredentialsWithSuccessBlock:^(NSString *username) {
-        
-        NSLog(@"%@", username);
-        
-    } errorBlock:^(NSError *error) {
-        NSLog(@"%@", error.userInfo);
-    }];
+//    STTwitterAPI * twitter = [STTwitterAPI twitterAPIOSWithFirstAccount];
+//    
+//    [twitter verifyCredentialsWithSuccessBlock:^(NSString *username) {
+//        
+//        NSLog(@"%@", username);
+//        
+//    } errorBlock:^(NSError *error) {
+//        NSLog(@"%@", error.userInfo);
+//    }];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
