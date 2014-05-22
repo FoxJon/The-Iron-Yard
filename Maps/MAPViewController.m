@@ -63,7 +63,7 @@
         
         [myMapView selectAnnotation:annotation animated:YES];
         
-        NSLog(@"%@", location);
+      //  NSLog(@"%@", location);
         
         CLGeocoder * geoCoder = [[CLGeocoder alloc]init];
         
@@ -72,7 +72,7 @@
             
             for (CLPlacemark * placemark in placemarks)
             {
-                NSLog(@"%@", placemark.addressDictionary);
+          //      NSLog(@"%@", placemark.addressDictionary);
                 
                 NSString * cityState = [NSString stringWithFormat:@"%@, %@, %@", placemark.addressDictionary[@"Street"],placemark.addressDictionary[@"City"],placemark.addressDictionary[@"State"]];
                                         
@@ -87,10 +87,51 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+    [self.view addGestureRecognizer:tap];
+    
     myMapView = [[MKMapView alloc]initWithFrame:self.view.frame];
     myMapView.delegate = self;
 
     [self.view addSubview:myMapView];
+}
+
+- (void)singleTap:(UITapGestureRecognizer *)recognizer
+{
+    
+    
+    CGPoint touchPoint = [recognizer locationInView:myMapView];
+    CLLocationCoordinate2D location = [myMapView convertPoint:touchPoint toCoordinateFromView:myMapView];
+    
+    NSLog(@"Location found from Map: %f %f",location.latitude,location.longitude);
+
+    [myMapView addAnnotations:myMapView.annotations];
+    
+    MAPAnnotation * annotation = [[MAPAnnotation alloc]initWithCoordinate:location];
+    
+    annotation.title = @"YOU ARE HERE";
+    annotation.subtitle = @"Wahooey!";
+    
+    [myMapView addAnnotation:annotation];
+    
+    CLGeocoder * geoCoder = [[CLGeocoder alloc]init];
+    
+    CLLocation * clLocation = [[CLLocation alloc]initWithLatitude:location.latitude longitude:location.longitude];
+    
+    [geoCoder reverseGeocodeLocation:clLocation completionHandler:^(NSArray *placemarks, NSError * error)
+     {
+         
+         for (CLPlacemark * placemark in placemarks)
+         {
+             //      NSLog(@"%@", placemark.addressDictionary);
+             
+             NSString * cityState = [NSString stringWithFormat:@"%@, %@, %@", placemark.addressDictionary[@"Street"],placemark.addressDictionary[@"City"],placemark.addressDictionary[@"State"]];
+             
+             [annotation setTitle:cityState];
+             [annotation setSubtitle:placemark.country];
+         }
+     }];
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
@@ -118,7 +159,7 @@
 
 -(void)mapView:(MKMapView *)mapView didDeselectAnnotationView:(MKAnnotationView *)view
 {
-    NSLog(@"%@", view.annotation.title);
+  //  NSLog(@"%@", view.annotation.title);
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,7 +170,7 @@
 
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view didChangeDragState:(MKAnnotationViewDragState)newState fromOldState:(MKAnnotationViewDragState)oldState
 {
-    NSLog(@"new state : %d and old state %d", (int)newState, (int)oldState);
+   // NSLog(@"new state : %d and old state %d", (int)newState, (int)oldState);
     
     switch ((int)newState)
     {
@@ -145,7 +186,7 @@
                 
                 for (CLPlacemark * placemark in placemarks)
                 {
-                    NSLog(@"%@", placemark.addressDictionary);
+                //    NSLog(@"%@", placemark.addressDictionary);
                     
                     NSString * cityState = [NSString stringWithFormat:@"%@, %@, %@", placemark.addressDictionary[@"Street"],placemark.addressDictionary[@"City"],placemark.addressDictionary[@"State"]];
                     
