@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B00A03A31931034F00780A26 /* SCGData.m in Sources */ = {isa = PBXBuildFile; fileRef = B00A03A21931034F00780A26 /* SCGData.m */; };
 		B039D4D918FCAF8600F64AFA /* SCGBackgroundLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = B039D4D818FCAF8600F64AFA /* SCGBackgroundLayer.m */; };
 		B039D4DC18FCBD8C00F64AFA /* MOVE.m in Sources */ = {isa = PBXBuildFile; fileRef = B039D4DB18FCBD8C00F64AFA /* MOVE.m */; };
 		B0AC0A0318F8247200A38715 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AC0A0218F8247200A38715 /* Foundation.framework */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B00A03A11931034F00780A26 /* SCGData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGData.h; sourceTree = "<group>"; };
+		B00A03A21931034F00780A26 /* SCGData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGData.m; sourceTree = "<group>"; };
 		B039D4D718FCAF8600F64AFA /* SCGBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCGBackgroundLayer.h; sourceTree = "<group>"; };
 		B039D4D818FCAF8600F64AFA /* SCGBackgroundLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCGBackgroundLayer.m; sourceTree = "<group>"; };
 		B039D4DA18FCBD8C00F64AFA /* MOVE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOVE.h; sourceTree = "<group>"; };
@@ -92,6 +95,8 @@
 		B0AC09F618F8247200A38715 = {
 			isa = PBXGroup;
 			children = (
+				B00A03A11931034F00780A26 /* SCGData.h */,
+				B00A03A21931034F00780A26 /* SCGData.m */,
 				B0AC0A3218F8273500A38715 /* Random */,
 				B0AC0A3118F8272900A38715 /* Controllers */,
 				B0AC0A0818F8247200A38715 /* Squares */,
@@ -294,6 +299,7 @@
 				B0AC0A3918F82B8A00A38715 /* SCGSquare.m in Sources */,
 				B0AC0A3C18F82BA300A38715 /* SCGCircle.m in Sources */,
 				B0AC0A1318F8247200A38715 /* SCGAppDelegate.m in Sources */,
+				B00A03A31931034F00780A26 /* SCGData.m in Sources */,
 				B0AC0A0F18F8247200A38715 /* main.m in Sources */,
 				B039D4DC18FCBD8C00F64AFA /* MOVE.m in Sources */,
 				B0AC0A3518F8280700A38715 /* SCGStageVC.m in Sources */,
