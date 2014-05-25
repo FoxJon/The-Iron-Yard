@@ -1,0 +1,528 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B00A03A0192FA35500780A26 /* brokenegg.png in Resources */ = {isa = PBXBuildFile; fileRef = B00A039F192FA35500780A26 /* brokenegg.png */; };
+		B089C458192E821B004BFCDB /* EDASounds.m in Sources */ = {isa = PBXBuildFile; fileRef = B089C457192E821B004BFCDB /* EDASounds.m */; };
+		B089C45D192E87CA004BFCDB /* chkEnd.wav in Resources */ = {isa = PBXBuildFile; fileRef = B089C45A192E87CA004BFCDB /* chkEnd.wav */; };
+		B089C45E192E87CA004BFCDB /* chkLoop.wav in Resources */ = {isa = PBXBuildFile; fileRef = B089C45B192E87CA004BFCDB /* chkLoop.wav */; };
+		B089C45F192E87CA004BFCDB /* EggCrack.wav in Resources */ = {isa = PBXBuildFile; fileRef = B089C45C192E87CA004BFCDB /* EggCrack.wav */; };
+		B089C461192E8C02004BFCDB /* silence.wav in Resources */ = {isa = PBXBuildFile; fileRef = B089C460192E8C02004BFCDB /* silence.wav */; };
+		B0AF6A0D192E43E800BCB69E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AF6A0C192E43E800BCB69E /* Foundation.framework */; };
+		B0AF6A0F192E43E800BCB69E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AF6A0E192E43E800BCB69E /* CoreGraphics.framework */; };
+		B0AF6A11192E43E800BCB69E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AF6A10192E43E800BCB69E /* UIKit.framework */; };
+		B0AF6A17192E43E800BCB69E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0AF6A15192E43E800BCB69E /* InfoPlist.strings */; };
+		B0AF6A19192E43E800BCB69E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AF6A18192E43E800BCB69E /* main.m */; };
+		B0AF6A1D192E43E800BCB69E /* EDAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AF6A1C192E43E800BCB69E /* EDAAppDelegate.m */; };
+		B0AF6A20192E43E800BCB69E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B0AF6A1E192E43E800BCB69E /* Main.storyboard */; };
+		B0AF6A23192E43E800BCB69E /* EDAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AF6A22192E43E800BCB69E /* EDAViewController.m */; };
+		B0AF6A25192E43E800BCB69E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0AF6A24192E43E800BCB69E /* Images.xcassets */; };
+		B0AF6A2C192E43E900BCB69E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AF6A2B192E43E900BCB69E /* XCTest.framework */; };
+		B0AF6A2D192E43E900BCB69E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AF6A0C192E43E800BCB69E /* Foundation.framework */; };
+		B0AF6A2E192E43E900BCB69E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AF6A10192E43E800BCB69E /* UIKit.framework */; };
+		B0AF6A36192E43E900BCB69E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0AF6A34192E43E900BCB69E /* InfoPlist.strings */; };
+		B0AF6A38192E43E900BCB69E /* EggDropTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AF6A37192E43E900BCB69E /* EggDropTests.m */; };
+		B0AF6A44192E463E00BCB69E /* egg.png in Resources */ = {isa = PBXBuildFile; fileRef = B0AF6A41192E463E00BCB69E /* egg.png */; };
+		B0AF6A45192E463E00BCB69E /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = B0AF6A42192E463E00BCB69E /* grass.png */; };
+		B0AF6A46192E463E00BCB69E /* spoon.png in Resources */ = {isa = PBXBuildFile; fileRef = B0AF6A43192E463E00BCB69E /* spoon.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B0AF6A2F192E43E900BCB69E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B0AF6A01192E43E800BCB69E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0AF6A08192E43E800BCB69E;
+			remoteInfo = EggDrop;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B00A039F192FA35500780A26 /* brokenegg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brokenegg.png; sourceTree = "<group>"; };
+		B089C456192E821B004BFCDB /* EDASounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDASounds.h; path = EggDrop/EDASounds.h; sourceTree = "<group>"; };
+		B089C457192E821B004BFCDB /* EDASounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDASounds.m; path = EggDrop/EDASounds.m; sourceTree = "<group>"; };
+		B089C45A192E87CA004BFCDB /* chkEnd.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chkEnd.wav; sourceTree = "<group>"; };
+		B089C45B192E87CA004BFCDB /* chkLoop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chkLoop.wav; sourceTree = "<group>"; };
+		B089C45C192E87CA004BFCDB /* EggCrack.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = EggCrack.wav; sourceTree = "<group>"; };
+		B089C460192E8C02004BFCDB /* silence.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = silence.wav; sourceTree = "<group>"; };
+		B0AF6A09192E43E800BCB69E /* EggDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EggDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0AF6A0C192E43E800BCB69E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B0AF6A0E192E43E800BCB69E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B0AF6A10192E43E800BCB69E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B0AF6A14192E43E800BCB69E /* EggDrop-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EggDrop-Info.plist"; sourceTree = "<group>"; };
+		B0AF6A16192E43E800BCB69E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B0AF6A18192E43E800BCB69E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B0AF6A1A192E43E800BCB69E /* EggDrop-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EggDrop-Prefix.pch"; sourceTree = "<group>"; };
+		B0AF6A1B192E43E800BCB69E /* EDAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EDAAppDelegate.h; sourceTree = "<group>"; };
+		B0AF6A1C192E43E800BCB69E /* EDAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EDAAppDelegate.m; sourceTree = "<group>"; };
+		B0AF6A1F192E43E800BCB69E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B0AF6A21192E43E800BCB69E /* EDAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EDAViewController.h; sourceTree = "<group>"; };
+		B0AF6A22192E43E800BCB69E /* EDAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EDAViewController.m; sourceTree = "<group>"; };
+		B0AF6A24192E43E800BCB69E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B0AF6A2A192E43E900BCB69E /* EggDropTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EggDropTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0AF6A2B192E43E900BCB69E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B0AF6A33192E43E900BCB69E /* EggDropTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EggDropTests-Info.plist"; sourceTree = "<group>"; };
+		B0AF6A35192E43E900BCB69E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B0AF6A37192E43E900BCB69E /* EggDropTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EggDropTests.m; sourceTree = "<group>"; };
+		B0AF6A41192E463E00BCB69E /* egg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = egg.png; path = ../../../../Downloads/Archive/egg.png; sourceTree = "<group>"; };
+		B0AF6A42192E463E00BCB69E /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass.png; path = ../../../../Downloads/Archive/grass.png; sourceTree = "<group>"; };
+		B0AF6A43192E463E00BCB69E /* spoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spoon.png; path = ../../../../Downloads/Archive/spoon.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B0AF6A06192E43E800BCB69E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0AF6A0F192E43E800BCB69E /* CoreGraphics.framework in Frameworks */,
+				B0AF6A11192E43E800BCB69E /* UIKit.framework in Frameworks */,
+				B0AF6A0D192E43E800BCB69E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0AF6A27192E43E900BCB69E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0AF6A2C192E43E900BCB69E /* XCTest.framework in Frameworks */,
+				B0AF6A2E192E43E900BCB69E /* UIKit.framework in Frameworks */,
+				B0AF6A2D192E43E900BCB69E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B089C459192E87C0004BFCDB /* SFX */ = {
+			isa = PBXGroup;
+			children = (
+				B089C460192E8C02004BFCDB /* silence.wav */,
+				B089C45A192E87CA004BFCDB /* chkEnd.wav */,
+				B089C45B192E87CA004BFCDB /* chkLoop.wav */,
+				B089C45C192E87CA004BFCDB /* EggCrack.wav */,
+			);
+			name = SFX;
+			sourceTree = "<group>";
+		};
+		B0AF6A00192E43E800BCB69E = {
+			isa = PBXGroup;
+			children = (
+				B089C459192E87C0004BFCDB /* SFX */,
+				B089C456192E821B004BFCDB /* EDASounds.h */,
+				B089C457192E821B004BFCDB /* EDASounds.m */,
+				B0AF6A47192E464E00BCB69E /* img */,
+				B0AF6A12192E43E800BCB69E /* EggDrop */,
+				B0AF6A31192E43E900BCB69E /* EggDropTests */,
+				B0AF6A0B192E43E800BCB69E /* Frameworks */,
+				B0AF6A0A192E43E800BCB69E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B0AF6A0A192E43E800BCB69E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B0AF6A09192E43E800BCB69E /* EggDrop.app */,
+				B0AF6A2A192E43E900BCB69E /* EggDropTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B0AF6A0B192E43E800BCB69E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0AF6A0C192E43E800BCB69E /* Foundation.framework */,
+				B0AF6A0E192E43E800BCB69E /* CoreGraphics.framework */,
+				B0AF6A10192E43E800BCB69E /* UIKit.framework */,
+				B0AF6A2B192E43E900BCB69E /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0AF6A12192E43E800BCB69E /* EggDrop */ = {
+			isa = PBXGroup;
+			children = (
+				B0AF6A1B192E43E800BCB69E /* EDAAppDelegate.h */,
+				B0AF6A1C192E43E800BCB69E /* EDAAppDelegate.m */,
+				B0AF6A1E192E43E800BCB69E /* Main.storyboard */,
+				B0AF6A21192E43E800BCB69E /* EDAViewController.h */,
+				B0AF6A22192E43E800BCB69E /* EDAViewController.m */,
+				B0AF6A24192E43E800BCB69E /* Images.xcassets */,
+				B0AF6A13192E43E800BCB69E /* Supporting Files */,
+			);
+			path = EggDrop;
+			sourceTree = "<group>";
+		};
+		B0AF6A13192E43E800BCB69E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B0AF6A14192E43E800BCB69E /* EggDrop-Info.plist */,
+				B0AF6A15192E43E800BCB69E /* InfoPlist.strings */,
+				B0AF6A18192E43E800BCB69E /* main.m */,
+				B0AF6A1A192E43E800BCB69E /* EggDrop-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B0AF6A31192E43E900BCB69E /* EggDropTests */ = {
+			isa = PBXGroup;
+			children = (
+				B0AF6A37192E43E900BCB69E /* EggDropTests.m */,
+				B0AF6A32192E43E900BCB69E /* Supporting Files */,
+			);
+			path = EggDropTests;
+			sourceTree = "<group>";
+		};
+		B0AF6A32192E43E900BCB69E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B0AF6A33192E43E900BCB69E /* EggDropTests-Info.plist */,
+				B0AF6A34192E43E900BCB69E /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B0AF6A47192E464E00BCB69E /* img */ = {
+			isa = PBXGroup;
+			children = (
+				B00A039F192FA35500780A26 /* brokenegg.png */,
+				B0AF6A41192E463E00BCB69E /* egg.png */,
+				B0AF6A42192E463E00BCB69E /* grass.png */,
+				B0AF6A43192E463E00BCB69E /* spoon.png */,
+			);
+			name = img;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B0AF6A08192E43E800BCB69E /* EggDrop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0AF6A3B192E43E900BCB69E /* Build configuration list for PBXNativeTarget "EggDrop" */;
+			buildPhases = (
+				B0AF6A05192E43E800BCB69E /* Sources */,
+				B0AF6A06192E43E800BCB69E /* Frameworks */,
+				B0AF6A07192E43E800BCB69E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EggDrop;
+			productName = EggDrop;
+			productReference = B0AF6A09192E43E800BCB69E /* EggDrop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B0AF6A29192E43E900BCB69E /* EggDropTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B0AF6A3E192E43E900BCB69E /* Build configuration list for PBXNativeTarget "EggDropTests" */;
+			buildPhases = (
+				B0AF6A26192E43E900BCB69E /* Sources */,
+				B0AF6A27192E43E900BCB69E /* Frameworks */,
+				B0AF6A28192E43E900BCB69E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B0AF6A30192E43E900BCB69E /* PBXTargetDependency */,
+			);
+			name = EggDropTests;
+			productName = EggDropTests;
+			productReference = B0AF6A2A192E43E900BCB69E /* EggDropTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B0AF6A01192E43E800BCB69E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = EDA;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Jon Fox";
+				TargetAttributes = {
+					B0AF6A29192E43E900BCB69E = {
+						TestTargetID = B0AF6A08192E43E800BCB69E;
+					};
+				};
+			};
+			buildConfigurationList = B0AF6A04192E43E800BCB69E /* Build configuration list for PBXProject "EggDrop" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B0AF6A00192E43E800BCB69E;
+			productRefGroup = B0AF6A0A192E43E800BCB69E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B0AF6A08192E43E800BCB69E /* EggDrop */,
+				B0AF6A29192E43E900BCB69E /* EggDropTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B0AF6A07192E43E800BCB69E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0AF6A25192E43E800BCB69E /* Images.xcassets in Resources */,
+				B0AF6A46192E463E00BCB69E /* spoon.png in Resources */,
+				B089C45D192E87CA004BFCDB /* chkEnd.wav in Resources */,
+				B089C45F192E87CA004BFCDB /* EggCrack.wav in Resources */,
+				B00A03A0192FA35500780A26 /* brokenegg.png in Resources */,
+				B0AF6A44192E463E00BCB69E /* egg.png in Resources */,
+				B0AF6A45192E463E00BCB69E /* grass.png in Resources */,
+				B0AF6A17192E43E800BCB69E /* InfoPlist.strings in Resources */,
+				B0AF6A20192E43E800BCB69E /* Main.storyboard in Resources */,
+				B089C461192E8C02004BFCDB /* silence.wav in Resources */,
+				B089C45E192E87CA004BFCDB /* chkLoop.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0AF6A28192E43E900BCB69E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0AF6A36192E43E900BCB69E /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B0AF6A05192E43E800BCB69E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B089C458192E821B004BFCDB /* EDASounds.m in Sources */,
+				B0AF6A23192E43E800BCB69E /* EDAViewController.m in Sources */,
+				B0AF6A19192E43E800BCB69E /* main.m in Sources */,
+				B0AF6A1D192E43E800BCB69E /* EDAAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0AF6A26192E43E900BCB69E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0AF6A38192E43E900BCB69E /* EggDropTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B0AF6A30192E43E900BCB69E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B0AF6A08192E43E800BCB69E /* EggDrop */;
+			targetProxy = B0AF6A2F192E43E900BCB69E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B0AF6A15192E43E800BCB69E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0AF6A16192E43E800BCB69E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B0AF6A1E192E43E800BCB69E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0AF6A1F192E43E800BCB69E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B0AF6A34192E43E900BCB69E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B0AF6A35192E43E900BCB69E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B0AF6A39192E43E900BCB69E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B0AF6A3A192E43E900BCB69E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B0AF6A3C192E43E900BCB69E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EggDrop/EggDrop-Prefix.pch";
+				INFOPLIST_FILE = "EggDrop/EggDrop-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B0AF6A3D192E43E900BCB69E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EggDrop/EggDrop-Prefix.pch";
+				INFOPLIST_FILE = "EggDrop/EggDrop-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B0AF6A3F192E43E900BCB69E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EggDrop.app/EggDrop";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EggDrop/EggDrop-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "EggDropTests/EggDropTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		B0AF6A40192E43E900BCB69E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/EggDrop.app/EggDrop";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "EggDrop/EggDrop-Prefix.pch";
+				INFOPLIST_FILE = "EggDropTests/EggDropTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B0AF6A04192E43E800BCB69E /* Build configuration list for PBXProject "EggDrop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0AF6A39192E43E900BCB69E /* Debug */,
+				B0AF6A3A192E43E900BCB69E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0AF6A3B192E43E900BCB69E /* Build configuration list for PBXNativeTarget "EggDrop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0AF6A3C192E43E900BCB69E /* Debug */,
+				B0AF6A3D192E43E900BCB69E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B0AF6A3E192E43E900BCB69E /* Build configuration list for PBXNativeTarget "EggDropTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B0AF6A3F192E43E900BCB69E /* Debug */,
+				B0AF6A40192E43E900BCB69E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B0AF6A01192E43E800BCB69E /* Project object */;
+}
