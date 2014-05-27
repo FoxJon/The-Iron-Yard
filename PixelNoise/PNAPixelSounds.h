@@ -14,7 +14,8 @@
 
 @interface PNAPixelSounds : NSObject <AVAudioPlayerDelegate>
 
-@property (nonatomic) AVAudioPlayer * player;
+//@property (nonatomic) AVAudioPlayer * player;
+@property (nonatomic) NSMutableArray * players;
 
 -(void)playSoundWithName:(NSString *)soundName;
 
