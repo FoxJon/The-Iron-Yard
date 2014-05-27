@@ -75,7 +75,7 @@
     if (self) {
         // Custom initialization
         
-        playerColors = @[LIGHTBLUE_COLOR, DARKBLUE_COLOR];     // O is lightblue, 1 is darkblue, 2 is white
+        playerColors = @[LIGHTBLUE_COLOR, DARKBLUE_COLOR, WHITE_COLOR];     // O is lightblue, 1 is darkblue, 2 is white
         
         playerTurn = 0;
         
@@ -85,58 +85,6 @@
         countDownNumbers = [@{}mutableCopy];
        // NSLog(@"countDownNumbers %@", countDownNumbers);
         
-        NSMutableDictionary * test = [@{@"one":@1, @"two":@2, @"three":@3}mutableCopy];
-        
-        NSLog(@"Before test: %@", test);
-    
-        NSArray *keys = [test allKeys];
-        NSInteger count = [keys count];
-        for (int i = 0; i < count; i++)
-        {
-            id key = [keys objectAtIndex: i];
-            id value = [test objectForKey: key];
-            value = [NSNumber numberWithInt:[value intValue]+1];
-            [test setValue:value forKey:key];
-            
-        }
-        NSLog(@"After test: %@", test);
-
-    
-    
-//        NSDictionary *testCopy = [test copy];
-//        for (NSNumber *number in [testCopy allValues]) {
-//
-//        NSNumber *update = [NSNumber numberWithInt:[number intValue]+1];
-//        
-//        [test setValue:update forKey:[test objectForKey:0]];
-//            
-//        NSLog(@"test %@",test);
-//        }
-        
-//        NSDictionary *testCopy = [test copy];
-//        
-//        for (NSNumber *number in [testCopy allValues]) {
-//            
-//            NSNumber *update = [NSNumber numberWithInt:[number intValue]+1];
-//            // NSLog(@"update %@",update);
-//            
-//            [test setValue:update forKey:[test objectForKey:0]];
-//            
-//            NSLog(@"test %@",test);
-//        }
-        
-        
-//        NSNumber *num;
-//        for (int i=0;i<[test count];i++)
-//        {
-//            num = (NSNumber *) [array objectAtIndex:i];
-//            if ([num intValue]> 0)
-//            {
-//                [array replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:[num intValue]+1]];
-//            }	
-//        }
-        
-
         allSquares = [@{}mutableCopy];
         
         newForm = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -474,8 +422,8 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"" message: @"Please select grid size." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }else{
-        NSLog(@"numberOfPlayers %d", [SCGData mainData].numberOfPlayers);
-        NSLog(@"gridSize %d", [SCGData mainData].gridSize);
+       // NSLog(@"numberOfPlayers %d", [SCGData mainData].numberOfPlayers);
+       // NSLog(@"gridSize %d", [SCGData mainData].gridSize);
         
         [self loadGameElements];
     }
@@ -617,7 +565,7 @@
             NSString * key = [NSString stringWithFormat:@"c%dr%d",col,row]; //0,1 will say c0r1
             
             tappedDots[key] = @2;
-            countDownNumbers[key] = @6;
+            countDownNumbers[key] = @5;
             
             circle.backgroundColor = [UIColor clearColor];
             
@@ -641,8 +589,9 @@
     /////////////////////////////////////
     
     if ([tappedDots[key]  isEqual: @(playerTurn)])
+        
     {
-          NSLog(@"IF");
+       //   NSLog(@"IF");
         tappedDots[key] = @(playerTurn);
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"You selected your own color. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
@@ -650,7 +599,7 @@
     }
     else if (![tappedDots[key] isEqual: @(0)] && ![tappedDots[key] isEqual: @(2)])
     {
-        NSLog(@"ELSE IF 1");
+       // NSLog(@"ELSE IF 1");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"That color has already been taken. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
          return playerColors[1];
@@ -659,63 +608,86 @@
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"Oops" message: @"That color has already been taken. Try again." delegate: nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
-        NSLog(@"ELSE IF 0");
+       // NSLog(@"ELSE IF 0");
          return playerColors[0];
     }
     else
     {
-       NSLog(@"ELSE");
+     //  NSLog(@"ELSE");
+        
     
     ///////////////////////
     // CIRCLE COUNT DOWN //
     ///////////////////////
-    
+        
+        
+    // create a mutable dictionary in the init area
+    // add each label created below to the dictionary with the key from above
+        
+    countDownNumbers[key] = @4;
+        
     circleCountDown = [[UILabel alloc]initWithFrame:CGRectMake(circleWidth * position.x+(circleWidth/2-5), (circleWidth * position.y+(circleWidth/2-10)) + ((SCREEN_HEIGHT - SCREEN_WIDTH) / 2), 20, 20)];
     circleCountDown.textColor = WHITE_COLOR;
     circleCountDown.font = [UIFont fontWithName:@"HelveticaNeue" size:20.0f];
         
-
-    if ([countDownNumbers[key] isEqual: @6]) {
-        countDownNumbers[key] = @5;
-        NSLog(@"countDownNumbers[key]: %@", countDownNumbers[key]);
-        circleCountDown.text = [NSString stringWithFormat:@"%@", countDownNumbers[key]];
-        [newForm addSubview:circleCountDown];
-    }else if ([countDownNumbers[key] isEqual: @5]) {
-        countDownNumbers[key] = @4;
-        NSLog(@"countDownNumbers[key]: %@", countDownNumbers[key]);
-        circleCountDown.text = [NSString stringWithFormat:@"%@", countDownNumbers[key]];
-        [newForm addSubview:circleCountDown];
-    }else if ([countDownNumbers[key] isEqual: @4]) {
-        countDownNumbers[key] = @3;
-        NSLog(@"countDownNumbers[key]: %@", countDownNumbers[key]);
-        circleCountDown.text = [NSString stringWithFormat:@"%@", countDownNumbers[key]];
-        [newForm addSubview:circleCountDown];
-    }else if ([countDownNumbers[key] isEqual: @3]) {
-        countDownNumbers[key] = @2;
-        NSLog(@"countDownNumbers[key]: %@", countDownNumbers[key]);
-        circleCountDown.text = [NSString stringWithFormat:@"%@", countDownNumbers[key]];
-        [newForm addSubview:circleCountDown];
-    }else if ([countDownNumbers[key] isEqual: @2]) {
-        countDownNumbers[key] = @1;
-        NSLog(@"countDownNumbers[key]: %@", countDownNumbers[key]);
-        circleCountDown.text = [NSString stringWithFormat:@"%@", countDownNumbers[key]];
-        [newForm addSubview:circleCountDown];
-    }else if ([countDownNumbers[key] isEqual: @1]) {
-        countDownNumbers[key] = @0;
-        tappedDots[key] = @2;
-        currentColor = playerColors[playerTurn];
-        playerTurn = (playerTurn) ? 0 : 1;
-        [self highlightPlayerLabel];
-        return currentColor;
+        
+       // NSLog(@"Before: %@", countDownNumbers);
+        
+//        NSArray *keys = [countDownNumbers allKeys];
+//        NSInteger count = [keys count];
+        
+        for (NSString * key in [countDownNumbers allKeys])
+        {
+//            id key = [keys objectAtIndex: i];
+//            id value = [countDownNumbers objectForKey: key];
+            
+            countDownNumbers[key] = @([countDownNumbers[key] intValue] - 1);
+            
+            // reset button and remove label
+            if (countDownNumbers[key] == 0)
+            {
+               countDownNumbers[key] = @4;
+            } else {
+                
+                id value = countDownNumbers[key];
+                
+                // grab label from the labels dictionary
+                circleCountDown.text = [NSString stringWithFormat:@"%@", value];
+                
+            }
+            
+            
+            
+//            if ([countDownNumbers[key] isEqual: @1]) {
+//          //      NSLog(@"Here0");
+//                countDownNumbers[key] = @0;
+//            }
+//            if ([countDownNumbers[key] isEqual: @2]) {
+//          //      NSLog(@"Here1");
+//                value = [NSNumber numberWithInt:[value intValue]- 1];
+//                [countDownNumbers setValue:value forKey:key];
+//                [newForm addSubview:circleCountDown];
+//            }
+//            if ([countDownNumbers[key] isEqual: @3]) {
+//        //       NSLog(@"Here2");
+//                value = [NSNumber numberWithInt:[value intValue]- 1];
+//                [countDownNumbers setValue:value forKey:key];
+//                [newForm addSubview:circleCountDown];
+//            }
+//            if ([countDownNumbers[key] isEqual: @4]) {
+//         //       NSLog(@"Here3");
+//                value = [NSNumber numberWithInt:[value intValue]- 1];
+//                [countDownNumbers setValue:value forKey:key];
+//                [newForm addSubview:circleCountDown];
+//            }
         }
+         NSLog(@"After : %@", countDownNumbers);
+        
     }
-  //  NSLog(@"countDownNumbers %@", countDownNumbers);
-  //  NSLog(@"countDownNumbersKey %@", countDownNumbers[key]);
+    
     
     // set player num to value in tappedDots
     tappedDots[key] = @(playerTurn);
-     //   NSLog(@"tapped dots %@", tappedDots);
-     //   NSLog(@"tapped dots %@", tappedDots[key]);
 
     // check for square
     [self checkForSquareAroundPosition:position];
@@ -725,23 +697,6 @@
     [self highlightPlayerLabel];
     return currentColor;
 }
-
-//-(void)circleFlip
-//{
-//    
-//    NSLog(@"BEING USED");
-//    [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionBeginFromCurrentState
-//                     animations: ^(void)
-//     {
-//         currentSquare.transform = CGAffineTransformMakeScale(1, -1);
-//     }
-//                     completion:^(BOOL b) {
-//                         currentSquare.layer.shadowColor = [UIColor blackColor].CGColor;
-//                         currentSquare.layer.shadowOpacity = 0.75;
-//                         currentSquare.layer.shadowRadius = 15.0;
-//                         currentSquare.layer.shadowOffset = (CGSize){0.0, 20.0};
-//                     }];
-//}
 
 - (void)highlightPlayerLabel{
     if (playerTurn == 1) {
@@ -880,7 +835,23 @@
             }];
         }
     }
+//    NSLog(@"before %@", countDownNumbers);
+//    
+//    NSArray *keys = [countDownNumbers allKeys];
+//    NSInteger count = [keys count];
+//    for (int i = 0; i < count; i++)
+//    {
+//        id key = [keys objectAtIndex: i];
+//        id value = [countDownNumbers objectForKey: key];
+//        value = [NSNumber numberWithInt:[value intValue]- 1];
+//        [countDownNumbers setValue:value forKey:key];
+//        [newForm addSubview:circleCountDown];
+//    }
+//    NSLog(@"after %@", countDownNumbers);
 }
+
+
+
 
 
 - (void)didReceiveMemoryWarning
