@@ -109,27 +109,32 @@
 //                   @{@"name" : @"Jo_Albright", @"avatar_url" : [UIImage imageNamed:@"JoAlbright"], @"html_url" : @"https://github.com/joalbright"},
 //                   ]mutableCopy];
     
-//    listItems = [@[
-//                   @{
-//                       @"name" : @"Jon Fox",
-//                       @"avatar_url" : @"https://avatars1.githubusercontent.com/u/7116114?s=460",
-//                       @"html_url" : @"https://github.com/FoxJon",
-//                       @"location" : @"Chicago, IL"
-//                       },
-//                   @{
-//                       @"name" : @"John Yam",
-//                       @"avatar_url" : @"https://avatars1.githubusercontent.com/u/2688381?s=460",
-//                       @"html_url" : @"https://github.com/yamski",
-//                       @"location" : @"Atlanta, GA"
-//                       },
-//                   @{
-//                       @"name" : @"John Yam",
-//                       @"avatar_url" : @"https://avatars1.githubusercontent.com/u/2688381?s=460",
-//                       @"html_url" : @"https://github.com/yamski",
-//                       @"location" : @"Atlanta, GA"
-//                       }
+    NSMutableArray * listItems = [@[
+                   @{
+                       @"name" : @"Jon Fox",
+                       @"avatar_url" : @"https://avatars1.githubusercontent.com/u/7116114?s=460",
+                       @"html_url" : @"https://github.com/FoxJon",
+                       @"location" : @"Chicago, IL"
+                       },
+                   @{
+                       @"name" : @"John Yam",
+                       @"avatar_url" : @"https://avatars1.githubusercontent.com/u/2688381?s=460",
+                       @"html_url" : @"https://github.com/yamski",
+                       @"location" : @"Atlanta, GA"
+                       },
+                   @{
+                       @"name" : @"John Yam",
+                       @"avatar_url" : @"https://avatars1.githubusercontent.com/u/2688381?s=460",
+                       @"html_url" : @"https://github.com/yamski",
+                       @"location" : @"Atlanta, GA"
+                       }
                    
-//                   ] mutableCopy];
+                   ] mutableCopy];
+    
+    NSLog(@"%@", listItems);
+    NSLog(@"%@", listItems[1]);
+    NSLog(@"%@", listItems[1][@"name"]);
+
     
 //    [self loadListItems];
 
@@ -149,9 +154,9 @@
     
     nameField.text = @"";
     
-    NSLog(@"%@", userName);
+   // NSLog(@"%@", userName);
     
-    NSLog(@"clicking");
+  //  NSLog(@"clicking");
     
     //[listItems addObject:@{@"name" : userName,@"avatar_url" : [UIImage imageNamed:@"unknown"],@"html_url" : [NSString stringWithFormat:@"https://github.com/%@", userName]}];
     
@@ -161,7 +166,7 @@
     {
         [[TDLSingleton sharedCollection] addListItem:userInfo];
     } else {
-        NSLog(@"not enough data");
+    //    NSLog(@"not enough data");
         
         UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Bad Information" message:@"Unable to add user." delegate:self cancelButtonTitle:@"Try Again" otherButtonTitles:nil];
         
@@ -210,7 +215,7 @@
 
     NSDictionary * listItem = [[TDLSingleton sharedCollection] allListItems][indexPath.row];
     
-    NSLog(@"%@", [listItem objectForKey:@"html_url"]);
+   // NSLog(@"%@", [listItem objectForKey:@"html_url"]);
     
     UIViewController * webController = [[UIViewController alloc]init];
     

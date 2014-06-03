@@ -43,7 +43,7 @@
     
     //for (NSString *key in [githubProfile allKeys]) {
 
-    NSLog(@"%@", githubProfile);
+  //  NSLog(@"%@", githubProfile);
     
 //  if (githubProfile[@"name"] !=nil)[userInfo setObject:githubProfile[@"name"] forKey:@"name"];
     
