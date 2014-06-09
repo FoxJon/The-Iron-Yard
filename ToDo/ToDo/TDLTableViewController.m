@@ -51,8 +51,6 @@
 {
     [super viewDidLoad];
     
-    
-    
     nameField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 170, 35)];
     self.navigationItem.titleView = nameField;
     

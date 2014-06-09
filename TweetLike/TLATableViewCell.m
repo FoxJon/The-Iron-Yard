@@ -39,11 +39,6 @@
         caption.font = [UIFont systemFontOfSize:13];
         caption.numberOfLines = 0;
         [self.contentView addSubview:caption];
-        
-        
-
-        
-        
     }
     return self;
 }
@@ -67,8 +62,6 @@
     caption.text = tweetInfo[@"caption"];
     
     likes.text = [tweetInfo[@"likes"] stringValue];
-
-    
 }
 
 @end

@@ -54,7 +54,6 @@
     profileName.textColor = [UIColor darkGrayColor];
     profileName.font = [UIFont systemFontOfSize: 20];
     
-    
     [self.contentView addSubview:profileName];
     
     profileURL = [[UILabel alloc] initWithFrame:CGRectMake(100, 60, 200, 30)];
@@ -67,9 +66,6 @@
     profileLocation = [[UILabel alloc] initWithFrame:CGRectMake(100, 40, 200, 30)];
     profileLocation.textColor = [UIColor lightGrayColor];
     profileLocation.font = [UIFont systemFontOfSize:14];
-
-
-    
     
     [self.contentView addSubview:profileLocation];
 
