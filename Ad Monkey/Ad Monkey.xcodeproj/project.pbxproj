@@ -1,0 +1,476 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B094F4F419473A04002D4E15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B094F4F319473A04002D4E15 /* Foundation.framework */; };
+		B094F4F619473A04002D4E15 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B094F4F519473A04002D4E15 /* CoreGraphics.framework */; };
+		B094F4F819473A04002D4E15 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B094F4F719473A04002D4E15 /* UIKit.framework */; };
+		B094F4FE19473A04002D4E15 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B094F4FC19473A04002D4E15 /* InfoPlist.strings */; };
+		B094F50019473A04002D4E15 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B094F4FF19473A04002D4E15 /* main.m */; };
+		B094F50419473A04002D4E15 /* AMAAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B094F50319473A04002D4E15 /* AMAAppDelegate.m */; };
+		B094F50719473A04002D4E15 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B094F50519473A04002D4E15 /* Main.storyboard */; };
+		B094F50A19473A04002D4E15 /* AMAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B094F50919473A04002D4E15 /* AMAViewController.m */; };
+		B094F50C19473A04002D4E15 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B094F50B19473A04002D4E15 /* Images.xcassets */; };
+		B094F51319473A04002D4E15 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B094F51219473A04002D4E15 /* XCTest.framework */; };
+		B094F51419473A04002D4E15 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B094F4F319473A04002D4E15 /* Foundation.framework */; };
+		B094F51519473A04002D4E15 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B094F4F719473A04002D4E15 /* UIKit.framework */; };
+		B094F51D19473A04002D4E15 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B094F51B19473A04002D4E15 /* InfoPlist.strings */; };
+		B094F51F19473A04002D4E15 /* Ad_MonkeyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B094F51E19473A04002D4E15 /* Ad_MonkeyTests.m */; };
+		B094F52919473A6F002D4E15 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B094F52819473A6E002D4E15 /* iAd.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B094F51619473A04002D4E15 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B094F4E819473A04002D4E15 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B094F4EF19473A04002D4E15;
+			remoteInfo = "Ad Monkey";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B094F4F019473A04002D4E15 /* Ad Monkey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ad Monkey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B094F4F319473A04002D4E15 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		B094F4F519473A04002D4E15 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		B094F4F719473A04002D4E15 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B094F4FB19473A04002D4E15 /* Ad Monkey-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ad Monkey-Info.plist"; sourceTree = "<group>"; };
+		B094F4FD19473A04002D4E15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B094F4FF19473A04002D4E15 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B094F50119473A04002D4E15 /* Ad Monkey-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ad Monkey-Prefix.pch"; sourceTree = "<group>"; };
+		B094F50219473A04002D4E15 /* AMAAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMAAppDelegate.h; sourceTree = "<group>"; };
+		B094F50319473A04002D4E15 /* AMAAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMAAppDelegate.m; sourceTree = "<group>"; };
+		B094F50619473A04002D4E15 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B094F50819473A04002D4E15 /* AMAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMAViewController.h; sourceTree = "<group>"; };
+		B094F50919473A04002D4E15 /* AMAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMAViewController.m; sourceTree = "<group>"; };
+		B094F50B19473A04002D4E15 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B094F51119473A04002D4E15 /* Ad MonkeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Ad MonkeyTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B094F51219473A04002D4E15 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		B094F51A19473A04002D4E15 /* Ad MonkeyTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ad MonkeyTests-Info.plist"; sourceTree = "<group>"; };
+		B094F51C19473A04002D4E15 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		B094F51E19473A04002D4E15 /* Ad_MonkeyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ad_MonkeyTests.m; sourceTree = "<group>"; };
+		B094F52819473A6E002D4E15 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B094F4ED19473A04002D4E15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B094F52919473A6F002D4E15 /* iAd.framework in Frameworks */,
+				B094F4F619473A04002D4E15 /* CoreGraphics.framework in Frameworks */,
+				B094F4F819473A04002D4E15 /* UIKit.framework in Frameworks */,
+				B094F4F419473A04002D4E15 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B094F50E19473A04002D4E15 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B094F51319473A04002D4E15 /* XCTest.framework in Frameworks */,
+				B094F51519473A04002D4E15 /* UIKit.framework in Frameworks */,
+				B094F51419473A04002D4E15 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B094F4E719473A04002D4E15 = {
+			isa = PBXGroup;
+			children = (
+				B094F4F919473A04002D4E15 /* Ad Monkey */,
+				B094F51819473A04002D4E15 /* Ad MonkeyTests */,
+				B094F4F219473A04002D4E15 /* Frameworks */,
+				B094F4F119473A04002D4E15 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B094F4F119473A04002D4E15 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B094F4F019473A04002D4E15 /* Ad Monkey.app */,
+				B094F51119473A04002D4E15 /* Ad MonkeyTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B094F4F219473A04002D4E15 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B094F52819473A6E002D4E15 /* iAd.framework */,
+				B094F4F319473A04002D4E15 /* Foundation.framework */,
+				B094F4F519473A04002D4E15 /* CoreGraphics.framework */,
+				B094F4F719473A04002D4E15 /* UIKit.framework */,
+				B094F51219473A04002D4E15 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B094F4F919473A04002D4E15 /* Ad Monkey */ = {
+			isa = PBXGroup;
+			children = (
+				B094F50219473A04002D4E15 /* AMAAppDelegate.h */,
+				B094F50319473A04002D4E15 /* AMAAppDelegate.m */,
+				B094F50519473A04002D4E15 /* Main.storyboard */,
+				B094F50819473A04002D4E15 /* AMAViewController.h */,
+				B094F50919473A04002D4E15 /* AMAViewController.m */,
+				B094F50B19473A04002D4E15 /* Images.xcassets */,
+				B094F4FA19473A04002D4E15 /* Supporting Files */,
+			);
+			path = "Ad Monkey";
+			sourceTree = "<group>";
+		};
+		B094F4FA19473A04002D4E15 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B094F4FB19473A04002D4E15 /* Ad Monkey-Info.plist */,
+				B094F4FC19473A04002D4E15 /* InfoPlist.strings */,
+				B094F4FF19473A04002D4E15 /* main.m */,
+				B094F50119473A04002D4E15 /* Ad Monkey-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B094F51819473A04002D4E15 /* Ad MonkeyTests */ = {
+			isa = PBXGroup;
+			children = (
+				B094F51E19473A04002D4E15 /* Ad_MonkeyTests.m */,
+				B094F51919473A04002D4E15 /* Supporting Files */,
+			);
+			path = "Ad MonkeyTests";
+			sourceTree = "<group>";
+		};
+		B094F51919473A04002D4E15 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B094F51A19473A04002D4E15 /* Ad MonkeyTests-Info.plist */,
+				B094F51B19473A04002D4E15 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B094F4EF19473A04002D4E15 /* Ad Monkey */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B094F52219473A04002D4E15 /* Build configuration list for PBXNativeTarget "Ad Monkey" */;
+			buildPhases = (
+				B094F4EC19473A04002D4E15 /* Sources */,
+				B094F4ED19473A04002D4E15 /* Frameworks */,
+				B094F4EE19473A04002D4E15 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Ad Monkey";
+			productName = "Ad Monkey";
+			productReference = B094F4F019473A04002D4E15 /* Ad Monkey.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B094F51019473A04002D4E15 /* Ad MonkeyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B094F52519473A04002D4E15 /* Build configuration list for PBXNativeTarget "Ad MonkeyTests" */;
+			buildPhases = (
+				B094F50D19473A04002D4E15 /* Sources */,
+				B094F50E19473A04002D4E15 /* Frameworks */,
+				B094F50F19473A04002D4E15 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B094F51719473A04002D4E15 /* PBXTargetDependency */,
+			);
+			name = "Ad MonkeyTests";
+			productName = "Ad MonkeyTests";
+			productReference = B094F51119473A04002D4E15 /* Ad MonkeyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B094F4E819473A04002D4E15 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = AMA;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Jon Fox";
+				TargetAttributes = {
+					B094F51019473A04002D4E15 = {
+						TestTargetID = B094F4EF19473A04002D4E15;
+					};
+				};
+			};
+			buildConfigurationList = B094F4EB19473A04002D4E15 /* Build configuration list for PBXProject "Ad Monkey" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B094F4E719473A04002D4E15;
+			productRefGroup = B094F4F119473A04002D4E15 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B094F4EF19473A04002D4E15 /* Ad Monkey */,
+				B094F51019473A04002D4E15 /* Ad MonkeyTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B094F4EE19473A04002D4E15 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B094F50C19473A04002D4E15 /* Images.xcassets in Resources */,
+				B094F4FE19473A04002D4E15 /* InfoPlist.strings in Resources */,
+				B094F50719473A04002D4E15 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B094F50F19473A04002D4E15 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B094F51D19473A04002D4E15 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B094F4EC19473A04002D4E15 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B094F50419473A04002D4E15 /* AMAAppDelegate.m in Sources */,
+				B094F50A19473A04002D4E15 /* AMAViewController.m in Sources */,
+				B094F50019473A04002D4E15 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B094F50D19473A04002D4E15 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B094F51F19473A04002D4E15 /* Ad_MonkeyTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B094F51719473A04002D4E15 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B094F4EF19473A04002D4E15 /* Ad Monkey */;
+			targetProxy = B094F51619473A04002D4E15 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B094F4FC19473A04002D4E15 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B094F4FD19473A04002D4E15 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		B094F50519473A04002D4E15 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B094F50619473A04002D4E15 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B094F51B19473A04002D4E15 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B094F51C19473A04002D4E15 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B094F52019473A04002D4E15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B094F52119473A04002D4E15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B094F52319473A04002D4E15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ad Monkey/Ad Monkey-Prefix.pch";
+				INFOPLIST_FILE = "Ad Monkey/Ad Monkey-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B094F52419473A04002D4E15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ad Monkey/Ad Monkey-Prefix.pch";
+				INFOPLIST_FILE = "Ad Monkey/Ad Monkey-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		B094F52619473A04002D4E15 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ad Monkey.app/Ad Monkey";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ad Monkey/Ad Monkey-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Ad MonkeyTests/Ad MonkeyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		B094F52719473A04002D4E15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Ad Monkey.app/Ad Monkey";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Ad Monkey/Ad Monkey-Prefix.pch";
+				INFOPLIST_FILE = "Ad MonkeyTests/Ad MonkeyTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B094F4EB19473A04002D4E15 /* Build configuration list for PBXProject "Ad Monkey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B094F52019473A04002D4E15 /* Debug */,
+				B094F52119473A04002D4E15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B094F52219473A04002D4E15 /* Build configuration list for PBXNativeTarget "Ad Monkey" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B094F52319473A04002D4E15 /* Debug */,
+				B094F52419473A04002D4E15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		B094F52519473A04002D4E15 /* Build configuration list for PBXNativeTarget "Ad MonkeyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B094F52619473A04002D4E15 /* Debug */,
+				B094F52719473A04002D4E15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B094F4E819473A04002D4E15 /* Project object */;
+}
