@@ -10,7 +10,6 @@
 #import "RDAFourSquareRequest.h"
 #import "RDATableViewController.h"
 #import "RDAAnnotation.h"
-
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 

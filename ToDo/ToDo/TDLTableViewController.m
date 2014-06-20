@@ -129,9 +129,9 @@
                    
                    ] mutableCopy];
     
-    NSLog(@"%@", listItems);
-    NSLog(@"%@", listItems[1]);
-    NSLog(@"%@", listItems[1][@"name"]);
+//    NSLog(@"%@", listItems);
+//    NSLog(@"%@", listItems[1]);
+//    NSLog(@"%@", listItems[1][@"name"]);
 
     
 //    [self loadListItems];
