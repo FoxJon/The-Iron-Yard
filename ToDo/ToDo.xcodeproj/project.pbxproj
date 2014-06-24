@@ -256,9 +256,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B0BCB05C18EC4B4E0065D4DD /* ToDo */ = {
+		B0BCB05C18EC4B4E0065D4DD /* Github Flow */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B0BCB08918EC4B4E0065D4DD /* Build configuration list for PBXNativeTarget "ToDo" */;
+			buildConfigurationList = B0BCB08918EC4B4E0065D4DD /* Build configuration list for PBXNativeTarget "Github Flow" */;
 			buildPhases = (
 				B0BCB05918EC4B4E0065D4DD /* Sources */,
 				B0BCB05A18EC4B4E0065D4DD /* Frameworks */,
@@ -268,7 +268,7 @@
 			);
 			dependencies = (
 			);
-			name = ToDo;
+			name = "Github Flow";
 			productName = ToDo;
 			productReference = B0BCB05D18EC4B4E0065D4DD /* ToDo.app */;
 			productType = "com.apple.product-type.application";
@@ -318,7 +318,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B0BCB05C18EC4B4E0065D4DD /* ToDo */,
+				B0BCB05C18EC4B4E0065D4DD /* Github Flow */,
 				B0BCB07718EC4B4E0065D4DD /* ToDoTests */,
 			);
 		};
@@ -389,7 +389,7 @@
 /* Begin PBXTargetDependency section */
 		B0BCB07E18EC4B4E0065D4DD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B0BCB05C18EC4B4E0065D4DD /* ToDo */;
+			target = B0BCB05C18EC4B4E0065D4DD /* Github Flow */;
 			targetProxy = B0BCB07D18EC4B4E0065D4DD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -564,7 +564,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B0BCB08918EC4B4E0065D4DD /* Build configuration list for PBXNativeTarget "ToDo" */ = {
+		B0BCB08918EC4B4E0065D4DD /* Build configuration list for PBXNativeTarget "Github Flow" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B0BCB08A18EC4B4E0065D4DD /* Debug */,

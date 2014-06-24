@@ -47,18 +47,15 @@
                                     @"url":  {
                                         @"urls":  [
                                                   {
-                                                      @"url": "http://t.co/0j8pzmKFox",
-                                                      @"expanded_url": "http://jo2.co",
-                                                      @"display_url": "jo2.co",
-                                                      @"indices":  [
-                                                                   0,
-                                                                   22
-                                                                   ]
+                                                      @"url": @"http://t.co/0j8pzmKFox",
+                                                      @"expanded_url": @"http://jo2.co",
+                                                      @"display_url": @"jo2.co",
+                                                      @"indices":@"0"
                                                   }
-                                                  ]
+                                            ],
                                     },
                                     @"description":  {
-                                        @"urls":  []
+                                        @"urls":null,
                                     }
                                 },
             @"protected": NO,

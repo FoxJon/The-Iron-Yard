@@ -19,7 +19,7 @@
 
 @end
 
-// 3. Definition of the delegate's interface and required method
+// Definition of the delegate's interface and required method
 @protocol CBABlueViewControllerDelegate <NSObject>
 
 -(void)tapScreen;

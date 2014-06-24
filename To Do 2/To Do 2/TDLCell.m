@@ -25,7 +25,7 @@
         
         self.bgView = [[UIView alloc] initWithFrame:CGRectMake(10, 5, self.frame.size.width -20, 40)];
         self.bgView.layer.cornerRadius = 6;
-        self.backgroundColor = [UIColor colorWithRed:0.937f green:0.965f blue:0.820f alpha:1.0f];
+        //self.backgroundColor = [UIColor colorWithRed:0.937f green:0.965f blue:0.820f alpha:1.0f];
         
         [self.contentView addSubview:self.bgView];
         

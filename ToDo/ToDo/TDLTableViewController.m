@@ -66,8 +66,8 @@
     self.tableView.rowHeight = 100;
     self.tableView.separatorInset = UIEdgeInsetsMake(0, 20, 0, 20);
     
-    UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 100)];
-    header.backgroundColor = [UIColor whiteColor];
+    UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    header.backgroundColor = [UIColor clearColor];
     self.tableView.tableHeaderView = header;
     //[self.tableView setTableHeaderView:header]  is the same thing
     
@@ -76,7 +76,7 @@
     self.tableView.tableFooterView = footer;
     
     
-    UILabel * titleHeader = [[UILabel alloc] initWithFrame:CGRectMake(20, 70, 280, 30)];
+    UILabel * titleHeader = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 280, 30)];
     
     titleHeader.text = @"Github Users";
     titleHeader.textColor = [UIColor lightGrayColor];

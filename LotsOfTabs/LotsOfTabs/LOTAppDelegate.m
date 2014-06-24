@@ -49,6 +49,7 @@
     [nc.toolbar setItems:@[flexible, button1, flexible, button2, flexible] animated:YES];
     
     self.window.rootViewController = nc;
+    
     self.window.backgroundColor = [UIColor blueColor];
     [self.window makeKeyAndVisible];
     return YES;

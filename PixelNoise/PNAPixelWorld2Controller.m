@@ -45,7 +45,7 @@
                               [NSValue valueWithCGPoint:CGPointMake(0.1, -0.1)]
                               ];
         
-        waterLevel = 470;
+        waterLevel = 557;
 
         self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
         

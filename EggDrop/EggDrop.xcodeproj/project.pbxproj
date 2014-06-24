@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B00A03A0192FA35500780A26 /* brokenegg.png in Resources */ = {isa = PBXBuildFile; fileRef = B00A039F192FA35500780A26 /* brokenegg.png */; };
+		B0167F131958AFA70064E902 /* egg.png in Resources */ = {isa = PBXBuildFile; fileRef = B0167F101958AFA70064E902 /* egg.png */; };
+		B0167F141958AFA70064E902 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = B0167F111958AFA70064E902 /* grass.png */; };
+		B0167F151958AFA70064E902 /* spoon.png in Resources */ = {isa = PBXBuildFile; fileRef = B0167F121958AFA70064E902 /* spoon.png */; };
 		B089C458192E821B004BFCDB /* EDASounds.m in Sources */ = {isa = PBXBuildFile; fileRef = B089C457192E821B004BFCDB /* EDASounds.m */; };
 		B089C45D192E87CA004BFCDB /* chkEnd.wav in Resources */ = {isa = PBXBuildFile; fileRef = B089C45A192E87CA004BFCDB /* chkEnd.wav */; };
 		B089C45E192E87CA004BFCDB /* chkLoop.wav in Resources */ = {isa = PBXBuildFile; fileRef = B089C45B192E87CA004BFCDB /* chkLoop.wav */; };
@@ -27,9 +30,6 @@
 		B0AF6A2E192E43E900BCB69E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0AF6A10192E43E800BCB69E /* UIKit.framework */; };
 		B0AF6A36192E43E900BCB69E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0AF6A34192E43E900BCB69E /* InfoPlist.strings */; };
 		B0AF6A38192E43E900BCB69E /* EggDropTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AF6A37192E43E900BCB69E /* EggDropTests.m */; };
-		B0AF6A44192E463E00BCB69E /* egg.png in Resources */ = {isa = PBXBuildFile; fileRef = B0AF6A41192E463E00BCB69E /* egg.png */; };
-		B0AF6A45192E463E00BCB69E /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = B0AF6A42192E463E00BCB69E /* grass.png */; };
-		B0AF6A46192E463E00BCB69E /* spoon.png in Resources */ = {isa = PBXBuildFile; fileRef = B0AF6A43192E463E00BCB69E /* spoon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		B00A039F192FA35500780A26 /* brokenegg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brokenegg.png; sourceTree = "<group>"; };
+		B0167F101958AFA70064E902 /* egg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = egg.png; sourceTree = "<group>"; };
+		B0167F111958AFA70064E902 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
+		B0167F121958AFA70064E902 /* spoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spoon.png; sourceTree = "<group>"; };
 		B089C456192E821B004BFCDB /* EDASounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EDASounds.h; path = EggDrop/EDASounds.h; sourceTree = "<group>"; };
 		B089C457192E821B004BFCDB /* EDASounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EDASounds.m; path = EggDrop/EDASounds.m; sourceTree = "<group>"; };
 		B089C45A192E87CA004BFCDB /* chkEnd.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = chkEnd.wav; sourceTree = "<group>"; };
@@ -69,9 +72,6 @@
 		B0AF6A33192E43E900BCB69E /* EggDropTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EggDropTests-Info.plist"; sourceTree = "<group>"; };
 		B0AF6A35192E43E900BCB69E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B0AF6A37192E43E900BCB69E /* EggDropTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EggDropTests.m; sourceTree = "<group>"; };
-		B0AF6A41192E463E00BCB69E /* egg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = egg.png; path = ../../../../Downloads/Archive/egg.png; sourceTree = "<group>"; };
-		B0AF6A42192E463E00BCB69E /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grass.png; path = ../../../../Downloads/Archive/grass.png; sourceTree = "<group>"; };
-		B0AF6A43192E463E00BCB69E /* spoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = spoon.png; path = ../../../../Downloads/Archive/spoon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,10 +189,10 @@
 		B0AF6A47192E464E00BCB69E /* img */ = {
 			isa = PBXGroup;
 			children = (
+				B0167F101958AFA70064E902 /* egg.png */,
+				B0167F111958AFA70064E902 /* grass.png */,
+				B0167F121958AFA70064E902 /* spoon.png */,
 				B00A039F192FA35500780A26 /* brokenegg.png */,
-				B0AF6A41192E463E00BCB69E /* egg.png */,
-				B0AF6A42192E463E00BCB69E /* grass.png */,
-				B0AF6A43192E463E00BCB69E /* spoon.png */,
 			);
 			name = img;
 			sourceTree = "<group>";
@@ -275,15 +275,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0AF6A25192E43E800BCB69E /* Images.xcassets in Resources */,
-				B0AF6A46192E463E00BCB69E /* spoon.png in Resources */,
 				B089C45D192E87CA004BFCDB /* chkEnd.wav in Resources */,
+				B0167F141958AFA70064E902 /* grass.png in Resources */,
 				B089C45F192E87CA004BFCDB /* EggCrack.wav in Resources */,
+				B0167F131958AFA70064E902 /* egg.png in Resources */,
 				B00A03A0192FA35500780A26 /* brokenegg.png in Resources */,
-				B0AF6A44192E463E00BCB69E /* egg.png in Resources */,
-				B0AF6A45192E463E00BCB69E /* grass.png in Resources */,
 				B0AF6A17192E43E800BCB69E /* InfoPlist.strings in Resources */,
 				B0AF6A20192E43E800BCB69E /* Main.storyboard in Resources */,
 				B089C461192E8C02004BFCDB /* silence.wav in Resources */,
+				B0167F151958AFA70064E902 /* spoon.png in Resources */,
 				B089C45E192E87CA004BFCDB /* chkLoop.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

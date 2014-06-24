@@ -171,9 +171,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B045E0DB18F44B5400898CFB /* To Do 2 */ = {
+		B045E0DB18F44B5400898CFB /* To Do */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B045E10818F44B5400898CFB /* Build configuration list for PBXNativeTarget "To Do 2" */;
+			buildConfigurationList = B045E10818F44B5400898CFB /* Build configuration list for PBXNativeTarget "To Do" */;
 			buildPhases = (
 				B045E0D818F44B5400898CFB /* Sources */,
 				B045E0D918F44B5400898CFB /* Frameworks */,
@@ -183,7 +183,7 @@
 			);
 			dependencies = (
 			);
-			name = "To Do 2";
+			name = "To Do";
 			productName = "To Do 2";
 			productReference = B045E0DC18F44B5400898CFB /* To Do 2.app */;
 			productType = "com.apple.product-type.application";
@@ -233,7 +233,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B045E0DB18F44B5400898CFB /* To Do 2 */,
+				B045E0DB18F44B5400898CFB /* To Do */,
 				B045E0F618F44B5400898CFB /* To Do 2Tests */,
 			);
 		};
@@ -285,7 +285,7 @@
 /* Begin PBXTargetDependency section */
 		B045E0FD18F44B5400898CFB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B045E0DB18F44B5400898CFB /* To Do 2 */;
+			target = B045E0DB18F44B5400898CFB /* To Do */;
 			targetProxy = B045E0FC18F44B5400898CFB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -458,7 +458,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B045E10818F44B5400898CFB /* Build configuration list for PBXNativeTarget "To Do 2" */ = {
+		B045E10818F44B5400898CFB /* Build configuration list for PBXNativeTarget "To Do" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B045E10918F44B5400898CFB /* Debug */,

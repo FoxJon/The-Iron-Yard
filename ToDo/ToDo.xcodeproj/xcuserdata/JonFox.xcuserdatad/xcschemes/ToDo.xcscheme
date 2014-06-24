@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B0BCB05C18EC4B4E0065D4DD"
-               BuildableName = "ToDo.app"
-               BlueprintName = "ToDo"
+               BuildableName = "Github Flow.app"
+               BlueprintName = "Github Flow"
                ReferencedContainer = "container:ToDo.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B0BCB05C18EC4B4E0065D4DD"
-            BuildableName = "ToDo.app"
-            BlueprintName = "ToDo"
+            BuildableName = "Github Flow.app"
+            BlueprintName = "Github Flow"
             ReferencedContainer = "container:ToDo.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B0BCB05C18EC4B4E0065D4DD"
-            BuildableName = "ToDo.app"
-            BlueprintName = "ToDo"
+            BuildableName = "Github Flow.app"
+            BlueprintName = "Github Flow"
             ReferencedContainer = "container:ToDo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -80,8 +80,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B0BCB05C18EC4B4E0065D4DD"
-            BuildableName = "ToDo.app"
-            BlueprintName = "ToDo"
+            BuildableName = "Github Flow.app"
+            BlueprintName = "Github Flow"
             ReferencedContainer = "container:ToDo.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
