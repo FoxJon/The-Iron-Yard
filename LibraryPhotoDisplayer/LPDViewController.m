@@ -30,7 +30,7 @@
     if (self) {
         // Custom initialization
         UIView * header = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 60)];
-        header.backgroundColor = [UIColor blueColor];
+        header.backgroundColor = [UIColor blackColor];
         [self.view addSubview:header];
         
         imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 60, 320, 420)];
@@ -50,7 +50,7 @@
         UIView * frame = [[UIView alloc]initWithFrame:CGRectMake(0, 335, SCREEN_WIDTH, 40)];
         frame.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.2];
         
-        [self.view addSubview:frame];
+       // [self.view addSubview:frame];
         
         filterVC = [[LPDFilterController alloc]initWithNibName:nil bundle:nil];
         

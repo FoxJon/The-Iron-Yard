@@ -77,7 +77,7 @@ class TableViewController:UITableViewController, UITextFieldDelegate{
         var cell = UITableViewCell()
         
         cell.textLabel.text = dinosaurs[indexPath.row]
-        cell.contentView.backgroundColor = UIColor.greenColor()
+       // cell.contentView.backgroundColor = UIColor.greenColor()
         
         return cell
     }
