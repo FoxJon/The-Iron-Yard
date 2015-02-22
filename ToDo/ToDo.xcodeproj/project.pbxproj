@@ -59,7 +59,7 @@
 		B01FF7E418EDE6D100632809 /* JoAlbright.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JoAlbright.png; sourceTree = "<group>"; };
 		B01FF7E618EDE80800632809 /* JonFox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = JonFox.png; sourceTree = "<group>"; };
 		B09B497318EEFF8D00A71C8A /* Unknown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Unknown.png; sourceTree = "<group>"; };
-		B0BCB05D18EC4B4E0065D4DD /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0BCB05D18EC4B4E0065D4DD /* Github Flow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Github Flow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0BCB06018EC4B4E0065D4DD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B0BCB06218EC4B4E0065D4DD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B0BCB06418EC4B4E0065D4DD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -160,7 +160,7 @@
 		B0BCB05E18EC4B4E0065D4DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B0BCB05D18EC4B4E0065D4DD /* ToDo.app */,
+				B0BCB05D18EC4B4E0065D4DD /* Github Flow.app */,
 				B0BCB07818EC4B4E0065D4DD /* ToDoTests.xctest */,
 			);
 			name = Products;
@@ -270,7 +270,7 @@
 			);
 			name = "Github Flow";
 			productName = ToDo;
-			productReference = B0BCB05D18EC4B4E0065D4DD /* ToDo.app */;
+			productReference = B0BCB05D18EC4B4E0065D4DD /* Github Flow.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B0BCB07718EC4B4E0065D4DD /* ToDoTests */ = {
